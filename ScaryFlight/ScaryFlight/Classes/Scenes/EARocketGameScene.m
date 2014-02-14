@@ -13,7 +13,7 @@
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
-    
+    self.physicsWorld.gravity = CGVectorMake(0.0f, -9.8f);
     self.backgroundColor = [SKColor yellowColor];
     [self addBackground];
 }
@@ -30,25 +30,25 @@
     [self addChild:background];
 }
 
-    
-//    CGPoint clickPoint = [theEvent locationInNode:self.playerNode.parent];
-//    
-//    CGPoint charPos = self.playerNode.position;
-//    
-//    CGFloat distance = sqrtf((clickPoint.x-charPos.x)*(clickPoint.x-charPos.x)+
-//                             
-//                             (clickPoint.y-charPos.y)*(clickPoint.y-charPos.y));
-//    
-//    
-//    
-//    SKAction *moveToClick = [SKAction moveTo:clickPoint duration:distance/characterSpeed];
-//    
-//    [self.playerNode runAction:moveToClick withKey:@"moveToClick"];
+
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     //UITouch *touch = [touches anyObject];
     //CGPoint positionInScene = [touch locationInNode:self];
     //[self selectNodeForTouch:positionInScene];
+    //CGPoint clickPoint = [theEvent locationInNode:self.playerNode.parent];
+    //
+     // CGPoint charPos = self.playerNode.position;
+    //
+    //    CGFloat distance = sqrtf((clickPoint.x-charPos.x)*(clickPoint.x-charPos.x)+
+    //
+    //                             (clickPoint.y-charPos.y)*(clickPoint.y-charPos.y));
+    //
+    //
+    //
+    //    SKAction *moveToClick = [SKAction moveTo:clickPoint duration:distance/characterSpeed];
+    //
+    //    [self.playerNode runAction:moveToClick withKey:@"moveToClick"];
 }
 
 @end
