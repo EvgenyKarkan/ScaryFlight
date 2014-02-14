@@ -48,19 +48,18 @@ static CGFloat const kGravity = -2.0f;
     //UITouch *touch = [touches anyObject];
     //CGPoint positionInScene = [touch locationInNode:self];
     //[self selectNodeForTouch:positionInScene];
-    //CGPoint clickPoint = [theEvent locationInNode:self.playerNode.parent];
-    //
-     // CGPoint charPos = self.playerNode.position;
-    //
-    //    CGFloat distance = sqrtf((clickPoint.x-charPos.x)*(clickPoint.x-charPos.x)+
-    //
-    //                             (clickPoint.y-charPos.y)*(clickPoint.y-charPos.y));
-    //
-    //
-    //
-    //    SKAction *moveToClick = [SKAction moveTo:clickPoint duration:distance/characterSpeed];
-    //
-    //    [self.playerNode runAction:moveToClick withKey:@"moveToClick"];
+    CGPoint clickPoint = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+
+   CGPoint charPos = self.hero.position;
+
+   CGFloat distance = sqrtf((clickPoint.x-charPos.x)*(clickPoint.x-charPos.x)+
+
+                             (clickPoint.y-charPos.y)*(clickPoint.y-charPos.y));
+
+
+    SKAction *moveToClick = [SKAction moveTo:clickPoint duration:2.0];
+    
+    [self.hero runAction:moveToClick withKey:@"moveToClick"];
 }
 
 - (void)addHero
