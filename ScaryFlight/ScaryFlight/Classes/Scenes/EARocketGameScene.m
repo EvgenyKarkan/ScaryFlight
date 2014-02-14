@@ -7,15 +7,27 @@
 //
 
 #import "EARocketGameScene.h"
+#import "EAHero.h"
+static uint32_t const kHeroCategory   = 0x1 << 0;
+static uint32_t const kPipeCategory   = 0x1 << 1;
+static uint32_t const kGroundCategory = 0x1 << 2;
+static CGFloat const kDensity = 2.0f;
+static CGFloat const kGravity = -2.0f;
 
+@interface EARocketGameScene ()
+
+@property (nonatomic, strong) EAHero *hero;
+
+@end
 @implementation EARocketGameScene;
 
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
-    self.physicsWorld.gravity = CGVectorMake(0.0f, -9.8f);
+    self.physicsWorld.gravity = CGVectorMake(0.0f, kGravity);
     self.backgroundColor = [SKColor yellowColor];
     [self addBackground];
+    [self addHero];
 }
 
 - (void)update:(NSTimeInterval)currentTime{
@@ -49,6 +61,30 @@
     //    SKAction *moveToClick = [SKAction moveTo:clickPoint duration:distance/characterSpeed];
     //
     //    [self.playerNode runAction:moveToClick withKey:@"moveToClick"];
+}
+
+- (void)addHero
+{
+    self.hero = [EAHero spriteNodeWithImageNamed:@"UFO_hero_1"];
+    self.hero.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
+    [self.hero setPosition:CGPointMake(self.size.width / 2.0f, self.size.height / 2.0f)];
+    
+    NSArray *animationFrames = @[[SKTexture textureWithImageNamed:@"Rocket"],
+                                 [SKTexture textureWithImageNamed:@"Rocket2"]];
+    
+    SKAction *heroAction = [SKAction repeatActionForever:[SKAction animateWithTextures:animationFrames
+                                                                          timePerFrame:0.1f
+                                                                                resize:NO
+                                                                               restore:YES]];
+    [self.hero runAction:heroAction withKey:@"flyingHero"];
+    [self addChild:self.hero];
+    
+    self.hero.physicsBody                    = [SKPhysicsBody bodyWithRectangleOfSize:self.hero.size];
+    self.hero.physicsBody.density            = kDensity;
+    self.hero.physicsBody.allowsRotation     = NO;
+    self.hero.physicsBody.categoryBitMask    = kHeroCategory;
+    self.hero.physicsBody.contactTestBitMask = kPipeCategory | kGroundCategory;
+    self.hero.physicsBody.collisionBitMask   = kGroundCategory | kPipeCategory;
 }
 
 @end
