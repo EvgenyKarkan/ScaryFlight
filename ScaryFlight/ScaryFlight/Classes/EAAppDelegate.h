@@ -6,10 +6,9 @@
 //  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
 @interface EAAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) UIWindow *window;
 
 @end

@@ -12,7 +12,6 @@
 		DEC7B47D18AE80E600724DE7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC7B47C18AE80E600724DE7 /* UIKit.framework */; };
 		DEC7B48318AE80E600724DE7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEC7B48118AE80E600724DE7 /* InfoPlist.strings */; };
 		DEC7B48518AE80E600724DE7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B48418AE80E600724DE7 /* main.m */; };
-		DEC7B48918AE80E600724DE7 /* EAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B48818AE80E600724DE7 /* EAAppDelegate.m */; };
 		DEC7B48B18AE80E600724DE7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC7B48A18AE80E600724DE7 /* Images.xcassets */; };
 		DEC7B49218AE80E600724DE7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC7B49118AE80E600724DE7 /* XCTest.framework */; };
 		DEC7B49318AE80E600724DE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC7B47818AE80E600724DE7 /* Foundation.framework */; };
@@ -20,6 +19,7 @@
 		DEC7B49C18AE80E600724DE7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEC7B49A18AE80E600724DE7 /* InfoPlist.strings */; };
 		DEC7B49E18AE80E600724DE7 /* ScaryFlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B49D18AE80E600724DE7 /* ScaryFlightTests.m */; };
 		DEC7B4A818AE81F500724DE7 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC7B4A718AE81F500724DE7 /* SpriteKit.framework */; };
+		DEC7B4B018AE876600724DE7 /* EAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4AC18AE876600724DE7 /* EAAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +41,6 @@
 		DEC7B48218AE80E600724DE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DEC7B48418AE80E600724DE7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DEC7B48618AE80E600724DE7 /* ScaryFlight-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScaryFlight-Prefix.pch"; sourceTree = "<group>"; };
-		DEC7B48718AE80E600724DE7 /* EAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EAAppDelegate.h; sourceTree = "<group>"; };
-		DEC7B48818AE80E600724DE7 /* EAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAAppDelegate.m; sourceTree = "<group>"; };
 		DEC7B48A18AE80E600724DE7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DEC7B49018AE80E600724DE7 /* ScaryFlightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScaryFlightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC7B49118AE80E600724DE7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -50,6 +48,8 @@
 		DEC7B49B18AE80E600724DE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DEC7B49D18AE80E600724DE7 /* ScaryFlightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScaryFlightTests.m; sourceTree = "<group>"; };
 		DEC7B4A718AE81F500724DE7 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		DEC7B4AB18AE876600724DE7 /* EAAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAAppDelegate.h; sourceTree = "<group>"; };
+		DEC7B4AC18AE876600724DE7 /* EAAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAAppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +111,7 @@
 		DEC7B47E18AE80E600724DE7 /* ScaryFlight */ = {
 			isa = PBXGroup;
 			children = (
-				DEC7B48718AE80E600724DE7 /* EAAppDelegate.h */,
-				DEC7B48818AE80E600724DE7 /* EAAppDelegate.m */,
+				DEC7B4A918AE876600724DE7 /* Classes */,
 				DEC7B48A18AE80E600724DE7 /* Images.xcassets */,
 				DEC7B47F18AE80E600724DE7 /* Supporting Files */,
 			);
@@ -146,6 +145,47 @@
 				DEC7B49A18AE80E600724DE7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DEC7B4A918AE876600724DE7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DEC7B4AB18AE876600724DE7 /* EAAppDelegate.h */,
+				DEC7B4AC18AE876600724DE7 /* EAAppDelegate.m */,
+				DEC7B4AF18AE876600724DE7 /* Sprites */,
+				DEC7B4AE18AE876600724DE7 /* Scenes */,
+				DEC7B4AA18AE876600724DE7 /* Controllers */,
+				DEC7B4AD18AE876600724DE7 /* Helpers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		DEC7B4AA18AE876600724DE7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DEC7B4AD18AE876600724DE7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DEC7B4AE18AE876600724DE7 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		DEC7B4AF18AE876600724DE7 /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sprites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,7 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEC7B48918AE80E600724DE7 /* EAAppDelegate.m in Sources */,
+				DEC7B4B018AE876600724DE7 /* EAAppDelegate.m in Sources */,
 				DEC7B48518AE80E600724DE7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
