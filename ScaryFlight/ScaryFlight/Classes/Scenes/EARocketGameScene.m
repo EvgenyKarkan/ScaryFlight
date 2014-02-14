@@ -15,25 +15,40 @@
     [super didMoveToView:view];
     
     self.backgroundColor = [SKColor yellowColor];
-   
+    [self addBackground];
 }
 
 - (void)update:(NSTimeInterval)currentTime{
     
 }
 
--(id)initWithSize:(CGSize)size {
-    if (self = [super initWithSize:size]) {
-        
-        SKSpriteNode *sn = [SKSpriteNode spriteNodeWithImageNamed:@"Space"];
-        
-        sn.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-        sn.name = @"BACKGROUND";
-        
-        [self addChild:sn];
-    }
-    return self;
+- (void)addBackground
+{
+    SKTexture *backgroundTexture = [SKTexture textureWithImageNamed:@"Space"];
+    SKSpriteNode *background = [SKSpriteNode spriteNodeWithTexture:backgroundTexture size:self.view.frame.size];
+    background.position = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame));
+    [self addChild:background];
 }
 
+    
+//    CGPoint clickPoint = [theEvent locationInNode:self.playerNode.parent];
+//    
+//    CGPoint charPos = self.playerNode.position;
+//    
+//    CGFloat distance = sqrtf((clickPoint.x-charPos.x)*(clickPoint.x-charPos.x)+
+//                             
+//                             (clickPoint.y-charPos.y)*(clickPoint.y-charPos.y));
+//    
+//    
+//    
+//    SKAction *moveToClick = [SKAction moveTo:clickPoint duration:distance/characterSpeed];
+//    
+//    [self.playerNode runAction:moveToClick withKey:@"moveToClick"];
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    //UITouch *touch = [touches anyObject];
+    //CGPoint positionInScene = [touch locationInNode:self];
+    //[self selectNodeForTouch:positionInScene];
+}
 
 @end
