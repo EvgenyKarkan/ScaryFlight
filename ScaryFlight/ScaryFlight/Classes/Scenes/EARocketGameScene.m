@@ -25,7 +25,7 @@
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         
-        SKSpriteNode *sn = [SKSpriteNode spriteNodeWithImageNamed:@"RocketBackground"];
+        SKSpriteNode *sn = [SKSpriteNode spriteNodeWithImageNamed:@"Space"];
         
         sn.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         sn.name = @"BACKGROUND";
