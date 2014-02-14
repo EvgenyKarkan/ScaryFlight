@@ -20,6 +20,11 @@
 		DEC7B49E18AE80E600724DE7 /* ScaryFlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B49D18AE80E600724DE7 /* ScaryFlightTests.m */; };
 		DEC7B4A818AE81F500724DE7 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC7B4A718AE81F500724DE7 /* SpriteKit.framework */; };
 		DEC7B4B018AE876600724DE7 /* EAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4AC18AE876600724DE7 /* EAAppDelegate.m */; };
+		DEC7B4B618AE998200724DE7 /* EAHero.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4B518AE998200724DE7 /* EAHero.m */; };
+		DEC7B4B918AE99AA00724DE7 /* EAObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4B818AE99AA00724DE7 /* EAObstacle.m */; };
+		DEC7B4BC18AE99FB00724DE7 /* EAUFOGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4BB18AE99FB00724DE7 /* EAUFOGameScene.m */; };
+		DEC7B4BF18AE9A1100724DE7 /* EARocketGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4BE18AE9A1100724DE7 /* EARocketGameScene.m */; };
+		DEC7B4C218AE9AD100724DE7 /* EAGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4C118AE9AD100724DE7 /* EAGameViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +55,16 @@
 		DEC7B4A718AE81F500724DE7 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		DEC7B4AB18AE876600724DE7 /* EAAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAAppDelegate.h; sourceTree = "<group>"; };
 		DEC7B4AC18AE876600724DE7 /* EAAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAAppDelegate.m; sourceTree = "<group>"; };
+		DEC7B4B418AE998200724DE7 /* EAHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAHero.h; sourceTree = "<group>"; };
+		DEC7B4B518AE998200724DE7 /* EAHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAHero.m; sourceTree = "<group>"; };
+		DEC7B4B718AE99AA00724DE7 /* EAObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAObstacle.h; sourceTree = "<group>"; };
+		DEC7B4B818AE99AA00724DE7 /* EAObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAObstacle.m; sourceTree = "<group>"; };
+		DEC7B4BA18AE99FB00724DE7 /* EAUFOGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAUFOGameScene.h; sourceTree = "<group>"; };
+		DEC7B4BB18AE99FB00724DE7 /* EAUFOGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAUFOGameScene.m; sourceTree = "<group>"; };
+		DEC7B4BD18AE9A1100724DE7 /* EARocketGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EARocketGameScene.h; sourceTree = "<group>"; };
+		DEC7B4BE18AE9A1100724DE7 /* EARocketGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EARocketGameScene.m; sourceTree = "<group>"; };
+		DEC7B4C018AE9AD100724DE7 /* EAGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGameViewController.h; sourceTree = "<group>"; };
+		DEC7B4C118AE9AD100724DE7 /* EAGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +178,8 @@
 		DEC7B4AA18AE876600724DE7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DEC7B4C018AE9AD100724DE7 /* EAGameViewController.h */,
+				DEC7B4C118AE9AD100724DE7 /* EAGameViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,6 +194,10 @@
 		DEC7B4AE18AE876600724DE7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DEC7B4BA18AE99FB00724DE7 /* EAUFOGameScene.h */,
+				DEC7B4BB18AE99FB00724DE7 /* EAUFOGameScene.m */,
+				DEC7B4BD18AE9A1100724DE7 /* EARocketGameScene.h */,
+				DEC7B4BE18AE9A1100724DE7 /* EARocketGameScene.m */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -184,6 +205,10 @@
 		DEC7B4AF18AE876600724DE7 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				DEC7B4B418AE998200724DE7 /* EAHero.h */,
+				DEC7B4B518AE998200724DE7 /* EAHero.m */,
+				DEC7B4B718AE99AA00724DE7 /* EAObstacle.h */,
+				DEC7B4B818AE99AA00724DE7 /* EAObstacle.m */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -285,7 +310,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEC7B4B018AE876600724DE7 /* EAAppDelegate.m in Sources */,
+				DEC7B4C218AE9AD100724DE7 /* EAGameViewController.m in Sources */,
+				DEC7B4BC18AE99FB00724DE7 /* EAUFOGameScene.m in Sources */,
+				DEC7B4BF18AE9A1100724DE7 /* EARocketGameScene.m in Sources */,
 				DEC7B48518AE80E600724DE7 /* main.m in Sources */,
+				DEC7B4B918AE99AA00724DE7 /* EAObstacle.m in Sources */,
+				DEC7B4B618AE998200724DE7 /* EAHero.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
