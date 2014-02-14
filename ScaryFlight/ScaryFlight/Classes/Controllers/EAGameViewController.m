@@ -7,19 +7,37 @@
 //
 
 #import "EAGameViewController.h"
+#import "EAMenuScene.h"
 
 @interface EAGameViewController ()
+
+@property (nonatomic, strong) SKView *skView;
 
 @end
 
 
 @implementation EAGameViewController;
 
+#pragma mark - Life cycle
+
+- (void)loadView
+{
+    self.view  = [[SKView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    
+    self.skView                = (SKView *)self.view;
+    self.skView.showsFPS       = YES;
+    self.skView.showsNodeCount = YES;
+    self.skView.showsDrawCount = YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor orangeColor];
-    NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
+
+    SKScene *scene = [EAMenuScene sceneWithSize:self.skView.bounds.size];
+    [scene setScaleMode:SKSceneScaleModeAspectFill];
+    
+    [self.skView presentScene:scene];
 }
 
 - (void)didReceiveMemoryWarning

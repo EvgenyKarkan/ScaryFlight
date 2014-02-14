@@ -8,6 +8,13 @@
 
 #import "EAUFOGameScene.h"
 
-@implementation EAUFOGameScene
+@implementation EAUFOGameScene;
+
+- (void)didMoveToView:(SKView *)view
+{
+    [super didMoveToView:view];
+    
+    self.backgroundColor = [SKColor greenColor];
+}
 
 @end

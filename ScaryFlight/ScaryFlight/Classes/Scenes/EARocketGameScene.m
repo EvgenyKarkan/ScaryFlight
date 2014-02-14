@@ -8,6 +8,13 @@
 
 #import "EARocketGameScene.h"
 
-@implementation EARocketGameScene
+@implementation EARocketGameScene;
+
+- (void)didMoveToView:(SKView *)view
+{
+    [super didMoveToView:view];
+    
+    self.backgroundColor = [SKColor yellowColor];
+}
 
 @end

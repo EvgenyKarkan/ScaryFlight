@@ -9,16 +9,16 @@
 #import "EAAppDelegate.h"
 #import "EAGameViewController.h"
 
-@implementation EAAppDelegate
+@implementation EAAppDelegate;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     EAGameViewController *gameViewController = [[EAGameViewController alloc] init];
-    self.window.rootViewController = gameViewController;    
+    self.window.rootViewController = gameViewController;
     self.window.backgroundColor = [UIColor whiteColor];
-
+    
     [self.window makeKeyAndVisible];
     
     return YES;
