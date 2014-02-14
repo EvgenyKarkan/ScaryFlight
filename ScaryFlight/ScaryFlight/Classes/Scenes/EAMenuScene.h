@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 
-#import <SpriteKit/SpriteKit.h>
 
 @interface EAMenuScene : SKScene
 

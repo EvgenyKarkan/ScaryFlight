@@ -7,6 +7,7 @@
 //
 
 #import "EAAppDelegate.h"
+#import "EAGameViewController.h"
 
 @implementation EAAppDelegate
 
@@ -14,8 +15,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    self.gameViewController = [[EAGameViewController alloc] init];
-    self.window.rootViewController = self.gameViewController;
+    EAGameViewController *gameViewController = [[EAGameViewController alloc] init];
+    self.window.rootViewController = gameViewController;
     [self.window makeKeyAndVisible];
     
     return YES;
