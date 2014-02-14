@@ -13,7 +13,7 @@ static uint32_t const kHeroCategory   = 0x1 << 0;
 static uint32_t const kPipeCategory   = 0x1 << 1;
 static uint32_t const kGroundCategory = 0x1 << 2;
 
-static CGFloat const kDensity = 1.15f;
+static CGFloat const kDensity = 2.0f;
 
 
 @interface EAUFOGameScene ()
@@ -25,6 +25,8 @@ static CGFloat const kDensity = 1.15f;
 
 @implementation EAUFOGameScene;
 
+#pragma mark - SKScene overriden API
+
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
@@ -35,11 +37,13 @@ static CGFloat const kDensity = 1.15f;
     [self addHero];
 }
 
+#pragma mark - Setup sprites
+
 - (void)addBackground
 {
     SKTexture *backgroundTexture = [SKTexture textureWithImageNamed:@"City"];
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithTexture:backgroundTexture size:self.view.frame.size];
-    background.position = (CGPoint) {CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame)};
+    background.position = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame));
     [self addChild:background];
 }
 
@@ -56,9 +60,7 @@ static CGFloat const kDensity = 1.15f;
                                                                           timePerFrame:0.1f
                                                                                 resize:NO
                                                                                restore:YES]];
-    
     [self.hero runAction:heroAction withKey:@"flyingHero"];
-    
     [self addChild:self.hero];
     
     self.hero.physicsBody                    = [SKPhysicsBody bodyWithRectangleOfSize:self.hero.size];
