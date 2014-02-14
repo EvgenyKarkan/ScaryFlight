@@ -15,16 +15,16 @@
     [super didMoveToView:view];
     
     self.backgroundColor = [SKColor yellowColor];
-   
 }
 
-- (void)update:(NSTimeInterval)currentTime{
+- (void)update:(NSTimeInterval)currentTime
+{
     
 }
 
--(id)initWithSize:(CGSize)size {
+- (id)initWithSize:(CGSize)size
+{
     if (self = [super initWithSize:size]) {
-        
         SKSpriteNode *sn = [SKSpriteNode spriteNodeWithImageNamed:@"RocketBackground"];
         
         sn.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
@@ -34,6 +34,4 @@
     }
     return self;
 }
-
-
 @end
