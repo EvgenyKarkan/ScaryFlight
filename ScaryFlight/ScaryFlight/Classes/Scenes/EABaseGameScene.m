@@ -73,6 +73,7 @@ static CGFloat const kGroundHeight  = 6.0f;
 - (void)addHero
 {
     self.hero = [EAHero spriteNodeWithImageNamed:@"UFO_new_hero"];
+    self.hero.name =@"hero";
     self.hero.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
     [self.hero setPosition:CGPointMake(self.size.width / 2.0f, self.size.height / 2.0f)];
     
@@ -99,6 +100,7 @@ static CGFloat const kGroundHeight  = 6.0f;
     CGFloat centerY = [self randomFloatWithMin:kPipeGap * 2 max:(self.size.height - kPipeGap * 2)];
     
     EAObstacle *pipeTop = [EAObstacle spriteNodeWithImageNamed:[self topObstacleImage]];
+    pipeTop.name =@"pipeTop";
     pipeTop.position = CGPointMake(self.size.width + (pipeTop.size.width / 2.0f), self.size.height - (pipeTop.size.height / 2.0f));
     [self addChild:pipeTop];
     
@@ -107,10 +109,13 @@ static CGFloat const kGroundHeight  = 6.0f;
     
     EAObstacle *pipeBottom = [EAObstacle spriteNodeWithImageNamed:[self bottomObstacleImage]];
     pipeBottom.position = CGPointMake(self.size.width + (pipeBottom.size.width / 2.0f), (pipeBottom.size.height / 2.0f) + (kGroundHeight - 2.0f));
+    pipeBottom.name =@"pipeBottom";
     [self addChild:pipeBottom];
     
     CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
     [pipeBottom moveObstacleWithHeight:pipeBottomHeight];
+    
+    
 }
 
 #pragma mark - Helper API
@@ -132,6 +137,12 @@ static CGFloat const kGroundHeight  = 6.0f;
 -(void)update:(NSTimeInterval)currentTime{
     [super update:currentTime];
      _scoresLabel.text = [NSString stringWithFormat:@"%d",_scores];
+    
+}
+-(float)getNearestPipeX{
+    //EAObstacle
+    
+    return 0;
 }
 
 -(NSString*)heroImageStateOne{
