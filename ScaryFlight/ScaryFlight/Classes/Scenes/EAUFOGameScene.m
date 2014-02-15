@@ -8,6 +8,7 @@
 
 #import "EAUFOGameScene.h"
 #import "EAHero.h"
+#import "EAObstacle.h"
 
 static uint32_t const kHeroCategory   = 0x1 << 0;
 static uint32_t const kPipeCategory   = 0x1 << 1;
@@ -16,9 +17,17 @@ static uint32_t const kGroundCategory = 0x1 << 2;
 static CGFloat const kDensity = 2.0f;
 
 
+static const CGFloat kPipeSpeed = 4.5f;
+static const CGFloat kPipeWidth = 56.0;
+static const CGFloat kPipeGap = 100;
+static const CGFloat kPipeFrequency = 3.0f;
+
+static const CGFloat kGroundHeight = 6.0;
+
 @interface EAUFOGameScene ()
 
 @property (nonatomic, strong) EAHero *hero;
+@property (nonatomic, strong) NSTimer *obstacleTimer;
 
 @end
 
@@ -33,10 +42,16 @@ static CGFloat const kDensity = 2.0f;
     
     self.backgroundColor = [SKColor greenColor];
     
-    self.physicsWorld.gravity = CGVectorMake(0.0f, -2.0);
+    self.physicsWorld.gravity = CGVectorMake(0.0f, -3.0);
     
     [self addBackground];
     [self addHero];
+    
+    self.obstacleTimer = [NSTimer scheduledTimerWithTimeInterval:kPipeFrequency
+                                                          target:self
+                                                        selector:@selector(addObstacle)
+                                                        userInfo:nil
+                                                         repeats:YES];
 }
 
 #pragma mark - Setup sprites
@@ -71,6 +86,63 @@ static CGFloat const kDensity = 2.0f;
     self.hero.physicsBody.categoryBitMask    = kHeroCategory;
     self.hero.physicsBody.contactTestBitMask = kPipeCategory | kGroundCategory;
     self.hero.physicsBody.collisionBitMask   = kGroundCategory | kPipeCategory;
+}
+
+- (void)addObstacle
+{
+    CGFloat centerY = [self randomFloatWithMin:kPipeGap max:self.size.height - kPipeGap];
+    CGFloat pipeTopHeight = centerY - (kPipeGap / 2.0f);
+    CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
+    
+        // Top Pipe
+    EAObstacle *pipeTop = [EAObstacle spriteNodeWithImageNamed:@"UFO_top_pipe"];
+    [pipeTop setCenterRect:CGRectMake(26.0 / kPipeWidth, 26.0 / kPipeWidth, 4.0 / kPipeWidth, 4.0 / kPipeWidth)];
+    [pipeTop setYScale:pipeTopHeight / kPipeWidth];
+    [pipeTop setPosition:CGPointMake(self.size.width + (pipeTop.size.width / 2) + 20.0f, self.size.height - (pipeTop.size.height / 2))];
+    [self addChild:pipeTop];
+    
+    pipeTop.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeTop.size];
+    [pipeTop.physicsBody setAffectedByGravity:NO];
+    [pipeTop.physicsBody setDynamic:NO];
+    [pipeTop.physicsBody setCategoryBitMask:kPipeCategory];
+    [pipeTop.physicsBody setCollisionBitMask:kHeroCategory];
+    
+        // Bottom Pipe
+    EAObstacle *pipeBottom = [EAObstacle spriteNodeWithImageNamed:@"UFO_down_pipe"];
+    [pipeBottom setCenterRect:CGRectMake(26.0 / kPipeWidth, 26.0 / kPipeWidth, 4.0 / kPipeWidth, 4.0 / kPipeWidth)];
+    [pipeBottom setYScale:(pipeBottomHeight - kGroundHeight) / kPipeWidth];
+    [pipeBottom setPosition:CGPointMake(self.size.width + (pipeBottom.size.width / 2) + 20.0f, (pipeBottom.size.height / 2) + (kGroundHeight - 2))];
+    [self addChild:pipeBottom];
+    
+    pipeBottom.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeBottom.size];
+    [pipeBottom.physicsBody setAffectedByGravity:NO];
+    [pipeBottom.physicsBody setDynamic:NO];
+    
+    [pipeBottom.physicsBody setCategoryBitMask:kPipeCategory];
+    [pipeBottom.physicsBody setCollisionBitMask:kHeroCategory];
+    
+        // Move top pipe
+    SKAction *pipeTopAction = [SKAction moveToX:-(pipeTop.size.width / 2) duration:kPipeSpeed];
+    SKAction *pipeTopSequence = [SKAction sequence:@[pipeTopAction, [SKAction runBlock: ^{
+        [pipeTop removeFromParent];
+    }]]];
+    
+    [pipeTop runAction:[SKAction repeatActionForever:pipeTopSequence]];
+    
+        // Move bottom pipe
+    SKAction *pipeBottomAction = [SKAction moveToX:-(pipeBottom.size.width / 2) duration:kPipeSpeed];
+    SKAction *pipeBottomSequence = [SKAction sequence:@[pipeBottomAction, [SKAction runBlock: ^{
+        [pipeBottom removeFromParent];
+    }]]];
+    
+    [pipeBottom runAction:[SKAction repeatActionForever:pipeBottomSequence]];
+}
+
+#pragma mark - Helper API
+
+- (CGFloat)randomFloatWithMin:(CGFloat)min max:(CGFloat)max
+{
+    return floor(((rand() % RAND_MAX) / (RAND_MAX * 1.0)) * (max - min) + min);
 }
 
 #pragma mark - UIResponder overriden API
