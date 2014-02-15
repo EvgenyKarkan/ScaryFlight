@@ -129,6 +129,10 @@ static CGFloat const kGroundHeight  = 6.0f;
      _scoresLabel.text = [NSString stringWithFormat:@"%d",_scores];
 }
 
+-(float)getNeareObstacleX{
+    return 0;
+}
+
 -(NSString*)heroImageStateOne{
     return nil;
 }
