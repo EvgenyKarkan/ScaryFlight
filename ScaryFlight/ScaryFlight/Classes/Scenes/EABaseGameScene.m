@@ -30,6 +30,7 @@ static CGFloat const kGroundHeight  = 6.0f;
 @property (nonatomic, strong) NSTimer *obstacleTimer;
 @property (nonatomic ,strong) SKLabelNode * scoresLabel;
 @property (nonatomic ,assign) int  scores;
+@property (nonatomic ,strong) EAObstacle *pipeTop;
 @end
 
 
@@ -95,11 +96,11 @@ static CGFloat const kGroundHeight  = 6.0f;
 {
     CGFloat centerY = [self randomFloatWithMin:kPipeGap * 1.5f max:(self.size.height - kPipeGap * 1.5f)];
     
-    EAObstacle *pipeTop = [EAObstacle obstacleWithImageNamed:@"UFO_top_pipe"];
+    self.pipeTop = [EAObstacle obstacleWithImageNamed:@"UFO_top_pipe"];
     CGFloat pipeTopHeight = centerY - (kPipeGap / 2.0f);
-    [pipeTop moveObstacleWithScale:pipeTopHeight / kPipeWidth];
-    pipeTop.position = CGPointMake(self.size.width + (pipeTop.size.width / 2.0f), self.size.height - (pipeTop.size.height / 2.0f));
-    [self addChild:pipeTop];
+    [self.pipeTop moveObstacleWithScale:pipeTopHeight / kPipeWidth];
+    self.pipeTop.position = CGPointMake(self.size.width + (self.pipeTop.size.width / 2.0f), self.size.height - (self.pipeTop.size.height / 2.0f));
+    [self addChild:self.pipeTop];
     
     EAObstacle *pipeBottom = [EAObstacle obstacleWithImageNamed:@"UFO_down_pipe"];
     CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
@@ -127,6 +128,7 @@ static CGFloat const kGroundHeight  = 6.0f;
 -(void)update:(NSTimeInterval)currentTime{
     [super update:currentTime];
      _scoresLabel.text = [NSString stringWithFormat:@"%d",_scores];
+    NSLog(@"origin x %f",self.pipeTop.position.x);
 }
 
 -(float)getNeareObstacleX{
