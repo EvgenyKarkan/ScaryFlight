@@ -31,6 +31,7 @@ static CGFloat const kGroundHeight  = 6.0f;
 @property (nonatomic ,strong) SKLabelNode * scoresLabel;
 @property (nonatomic ,assign) int  scores;
 @property (nonatomic ,strong) EAObstacle *pipeTop;
+@property (nonatomic ,strong) EAObstacle *lastPipe;
 @end
 
 
@@ -125,16 +126,19 @@ static CGFloat const kGroundHeight  = 6.0f;
     }
 }
 
-- (void)update:(NSTimeInterval)currentTime
-{
+-(void)update:(NSTimeInterval)currentTime{
     [super update:currentTime];
-    _scoresLabel.text = [NSString stringWithFormat:@"%d", _scores];
+     _scoresLabel.text = [NSString stringWithFormat:@"%d",_scores];
+    NSLog(@"origin x %f",self.pipeTop.position.x);
     
-    if (self.pipeTop.position.x > 0) {
+    if (self.pipeTop.position.x > 0&&self.lastPipe!=self.pipeTop) {
         if (self.hero.position.x > self.pipeTop.position.x) {
             NSLog(@"YOU GET A BONUS");
+            self.lastPipe=self.pipeTop;
         }
     }
+    
+    
 }
 
 -(float)getNeareObstacleX{
