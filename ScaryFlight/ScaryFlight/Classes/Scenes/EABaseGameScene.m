@@ -28,7 +28,8 @@ static CGFloat const kGroundHeight  = 6.0f;
 
 @property (nonatomic, strong) EAHero *hero;
 @property (nonatomic, strong) NSTimer *obstacleTimer;
-
+@property (nonatomic ,strong) SKLabelNode * scoresLabel;
+@property (nonatomic ,assign) int  scores;
 @end
 
 
@@ -50,6 +51,11 @@ static CGFloat const kGroundHeight  = 6.0f;
                                                          repeats:YES];
     
 
+    _scoresLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+    _scoresLabel.fontSize = 30;
+    _scoresLabel.fontColor = [SKColor yellowColor];
+    _scoresLabel.position = CGPointMake(self.size.width-30,self.size.height-30);
+    [self addChild:_scoresLabel];
     
     
 }
@@ -121,6 +127,11 @@ static CGFloat const kGroundHeight  = 6.0f;
     for (UITouch *touch in touches) {
         [self.hero fly];
     }
+}
+
+-(void)update:(NSTimeInterval)currentTime{
+    [super update:currentTime];
+     _scoresLabel.text = [NSString stringWithFormat:@"%d",_scores];
 }
 
 -(NSString*)heroImageStateOne{
