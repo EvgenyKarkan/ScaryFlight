@@ -8,6 +8,7 @@
 
 #import "EARocketGameScene.h"
 #import "EAHero.h"
+#import  "EAObstacle.h"
 
 static uint32_t const kHeroCategory   = 0x1 << 0;
 static uint32_t const kPipeCategory   = 0x1 << 1;
@@ -18,7 +19,7 @@ static CGFloat const kGravity = -2.0f;
 @interface EARocketGameScene ()
 
 @property (nonatomic, strong) EAHero *hero;
-
+@property (nonatomic, strong) NSMutableArray *obstaclesArray;
 @end
 
 
@@ -31,12 +32,27 @@ static CGFloat const kGravity = -2.0f;
     self.backgroundColor = [SKColor yellowColor];
     [self addBackground];
     [self addHero];
+    [self addObstacles];
 }
 
 - (void)update:(NSTimeInterval)currentTime{
     
 }
 
+-(void)addObstacles{
+    CGPoint startPoint = CGPointMake(self.size.width, self.size.height);
+    SKSpriteNode *obstacle = [EAObstacle spriteNodeWithImageNamed:@"AsteroidTop"];
+    obstacle.position = CGPointMake(startPoint.x, startPoint.y);
+    obstacle.name = @"obstacle0";
+    int MAX_TIME = 10;
+    int MIN_TIME = 2;
+    SKAction * topObstacleAction =[SKAction moveTo:CGPointMake( 0,  self.size.height ) duration:MIN_TIME + arc4random_uniform( MAX_TIME - MIN_TIME ) ] ;
+    [obstacle runAction:[SKAction repeatActionForever:topObstacleAction] completion:^{
+        obstacle.position = CGPointMake(startPoint.x, startPoint.y);
+    } ];
+    [self addChild:obstacle];
+    
+}
 - (void)addBackground
 {
     SKTexture *backgroundTexture = [SKTexture textureWithImageNamed:@"Space"];
@@ -54,7 +70,7 @@ static CGFloat const kGravity = -2.0f;
 
 - (void)addHero
 {
-    self.hero = [EAHero spriteNodeWithImageNamed:@"UFO_hero_1"];
+    self.hero = [EAHero spriteNodeWithImageNamed:@"Rocket"];
     self.hero.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
     [self.hero setPosition:CGPointMake(self.size.width / 2.0f, self.size.height / 2.0f)];
     
