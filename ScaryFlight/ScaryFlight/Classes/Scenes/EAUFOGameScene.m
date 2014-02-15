@@ -51,12 +51,12 @@ static CGFloat const kDensity = 2.0f;
 
 - (void)addHero
 {
-    self.hero = [EAHero spriteNodeWithImageNamed:@"UFO_hero_1"];
+    self.hero = [EAHero spriteNodeWithImageNamed:@"UFO_new_hero"];
     self.hero.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
     [self.hero setPosition:CGPointMake(self.size.width / 2.0f, self.size.height / 2.0f)];
     
-    NSArray *animationFrames = @[[SKTexture textureWithImageNamed:@"UFO_hero_1"],
-                                 [SKTexture textureWithImageNamed:@"UFO_hero_2"]];
+    NSArray *animationFrames = @[[SKTexture textureWithImageNamed:@"UFO_new_hero"],
+                                 [SKTexture textureWithImageNamed:@"UFO_new_hero2"]];
     
     SKAction *heroAction = [SKAction repeatActionForever:[SKAction animateWithTextures:animationFrames
                                                                           timePerFrame:0.1f
