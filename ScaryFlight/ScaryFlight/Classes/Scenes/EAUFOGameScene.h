@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 #import "EABaseGameScene.h"
+
 @interface EAUFOGameScene : EABaseGameScene
 
 @end
