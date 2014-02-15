@@ -11,7 +11,6 @@
 #import  "EAObstacle.h"
 
 
-
 @implementation EARocketGameScene;
 
 -(NSString*)backgroundImageName{

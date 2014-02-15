@@ -11,10 +11,7 @@
 #import "EAObstacle.h"
 
 
-
-
 @implementation EAUFOGameScene;
-
 
 -(NSString*)backgroundImageName{
     return @"City";
@@ -34,6 +31,5 @@
 -(NSString*)bottomObstacleImage{
     return @"UFO_down_pipe";
 }
-
 
 @end

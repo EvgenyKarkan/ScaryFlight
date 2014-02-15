@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
 @interface EABaseGameScene : SKScene
 
