@@ -8,7 +8,7 @@
 
 #import "EAHero.h"
 
-static CGFloat const kHeroDirection = 30.0f;
+static CGFloat const kHeroDirection = 25.0f;
 
 @implementation EAHero
 
