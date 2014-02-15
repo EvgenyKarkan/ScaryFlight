@@ -30,6 +30,7 @@ static CGFloat const kGravity = -2.0f;
     [super didMoveToView:view];
     self.physicsWorld.gravity = CGVectorMake(0.0f, kGravity);
     self.backgroundColor = [SKColor yellowColor];
+    _obstaclesArray = [NSMutableArray new];
     [self addBackground];
     [self addHero];
     [self addObstacles];
@@ -45,19 +46,20 @@ static CGFloat const kGravity = -2.0f;
     obstacleTop.position = CGPointMake(startPointTop.x, startPointTop.y);
     obstacleTop.name = @"obstacle0";
  
-   
-    SKAction * topObstacleAction =[SKAction moveTo:CGPointMake( -20,  self.size.height-50 ) duration:5 ] ;
-    //id __weak block  =
-    void (^__block CompleteTopObstacleAnimation)() ;
-    __block id __weak weakBlock ;
-     CompleteTopObstacleAnimation = ^()
-    {
-        obstacleTop.position = CGPointMake(startPointTop.x, startPointTop.y);
-        weakBlock= CompleteTopObstacleAnimation;
-        [obstacleTop runAction:topObstacleAction completion:weakBlock ];
-    };
+    [_obstaclesArray addObject:obstacleTop];
     
-    CompleteTopObstacleAnimation();
+//    SKAction * topObstacleAction =[SKAction moveTo:CGPointMake( -20,  self.size.height-50 ) duration:5 ] ;
+//    //id __weak block  =
+//    void (^__block CompleteTopObstacleAnimation)() ;
+// 
+//     CompleteTopObstacleAnimation = ^()
+//    {
+//        obstacleTop.position = CGPointMake(startPointTop.x, startPointTop.y);
+//       id __weak  weakBlock = CompleteTopObstacleAnimation;
+//        [obstacleTop runAction:topObstacleAction completion:weakBlock ];
+//    };
+    
+   // CompleteTopObstacleAnimation();
     //need to refactor fuck!
     [self addChild:obstacleTop];
     
@@ -67,9 +69,10 @@ static CGFloat const kGravity = -2.0f;
     obstacleBottom.name = @"obstacle0";
     
     SKAction * bottomObstacleAction =[SKAction moveTo:CGPointMake( -20,  50 ) duration:5 ] ;
-    [obstacleBottom runAction:[SKAction repeatActionForever:bottomObstacleAction ] completion:^{
+    /*[obstacleBottom runAction:[SKAction repeatActionForever:bottomObstacleAction ] completion:^{
         obstacleBottom.position = CGPointMake(startPointBottom.x, startPointBottom.y);
-    } ];
+    } ]*/
+    [_obstaclesArray addObject:obstacleBottom];
     [self addChild:obstacleBottom];
     
 }
