@@ -54,8 +54,8 @@ static CGFloat const kGravity = -2.0f;
 
 - (void)addHero
 {
-    self.hero = [EAHero spriteNodeWithImageNamed:@"UFO_hero_1"];
-    self.hero.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
+    self.hero = [EAHero spriteNodeWithImageNamed:@"Rocket"];
+    self.hero.size = CGSizeMake(111.0f / 2.0f, 85.0f / 2.0f);
     [self.hero setPosition:CGPointMake(self.size.width / 2.0f, self.size.height / 2.0f)];
     
     NSArray *animationFrames = @[[SKTexture textureWithImageNamed:@"Rocket"],
