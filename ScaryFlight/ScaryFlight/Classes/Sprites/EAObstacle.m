@@ -30,6 +30,8 @@ static uint32_t const kPipeCategory   = 0x1 << 1;
 
 - (void)moveObstacleWithScale:(CGFloat)scale
 {
+    NSParameterAssert(scale > 0.0f);
+    
     self.centerRect = CGRectMake(26.0f / kPipeWidth, 26.0f / kPipeWidth, 4.0f / kPipeWidth, 4.0f / kPipeWidth);
     self.yScale = scale;
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
@@ -38,12 +40,14 @@ static uint32_t const kPipeCategory   = 0x1 << 1;
     self.physicsBody.categoryBitMask = kPipeCategory;
     self.physicsBody.collisionBitMask = kHeroCategory;
     
-    SKAction *pipeTopAction = [SKAction moveToX:-(self.size.width / 2) duration:kPipeSpeed];
-    SKAction *pipeTopSequence = [SKAction sequence:@[pipeTopAction, [SKAction runBlock: ^{
+    SKAction *pipeAction = [SKAction moveToX:-(self.size.width / 2) duration:kPipeSpeed];
+    SKAction *pipeSequence = [SKAction sequence:@[pipeAction, [SKAction runBlock: ^{
         [self removeFromParent];
     }]]];
     
-    [self runAction:[SKAction repeatActionForever:pipeTopSequence]];
+    [self runAction:[SKAction repeatActionForever:pipeSequence]];
+    
+    NSLog(@"X %f", self.position.x);
 }
 
 @end

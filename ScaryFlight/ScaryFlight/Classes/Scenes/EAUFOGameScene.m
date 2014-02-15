@@ -7,8 +7,6 @@
 //
 
 #import "EAUFOGameScene.h"
-#import "EAHero.h"
-#import "EAObstacle.h"
 
 
 @implementation EAUFOGameScene;

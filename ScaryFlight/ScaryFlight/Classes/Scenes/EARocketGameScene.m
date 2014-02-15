@@ -7,8 +7,7 @@
 //
 
 #import "EARocketGameScene.h"
-#import "EAHero.h"
-#import  "EAObstacle.h"
+
 
 
 @implementation EARocketGameScene;
