@@ -8,14 +8,14 @@
 
 #import "EAHero.h"
 
-static CGFloat const kHeroDirection = 25.0f;
+static CGFloat const kHeroDirection = 30.0f;
 
 @implementation EAHero
 
 - (void)fly
 {
     CGFloat heroDirection = self.zRotation + M_PI_2;
-    self.physicsBody.velocity = CGVectorMake(0, 0);
+    self.physicsBody.velocity = CGVectorMake(0.0f, 0.0f);
     [self.physicsBody applyImpulse:CGVectorMake(kHeroDirection * cosf(heroDirection),
                                                 kHeroDirection * sinf(heroDirection))];
 }
