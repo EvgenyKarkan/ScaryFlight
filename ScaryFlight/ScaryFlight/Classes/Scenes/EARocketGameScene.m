@@ -50,7 +50,7 @@ static CGFloat const kGravity = -2.0f;
     //id __weak block  =
     void (^__block CompleteTopObstacleAnimation)() ;
     __block id __weak weakBlock ;
-    CompleteTopObstacleAnimation = ^()
+     CompleteTopObstacleAnimation = ^()
     {
         obstacleTop.position = CGPointMake(startPointTop.x, startPointTop.y);
         weakBlock= CompleteTopObstacleAnimation;
