@@ -16,12 +16,22 @@ static CGFloat const kPipeFrequency = 2.5f;
 static uint32_t const kHeroCategory   = 0x1 << 0;
 static uint32_t const kPipeCategory   = 0x1 << 1;
 
-@implementation EAObstacle
+@implementation EAObstacle;
 
-- (void)moveObstacleWithHeight:(CGFloat)height
++ (instancetype)obstacleWithImageNamed:(NSString *)name
+{
+    NSParameterAssert(name != nil);
+    NSParameterAssert([name length] > 0);
+    NSParameterAssert(![name isEqualToString:@" "]);
+    
+    EAObstacle *obstacle = [super spriteNodeWithImageNamed:name];
+    return obstacle;
+}
+
+- (void)moveObstacleWithScale:(CGFloat)scale
 {
     self.centerRect = CGRectMake(26.0f / kPipeWidth, 26.0f / kPipeWidth, 4.0f / kPipeWidth, 4.0f / kPipeWidth);
-    self.yScale = height / kPipeWidth;
+    self.yScale = scale;
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
     self.physicsBody.affectedByGravity = NO;
     self.physicsBody.dynamic = NO;

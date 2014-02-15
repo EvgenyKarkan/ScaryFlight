@@ -86,21 +86,19 @@ static CGFloat const kGroundHeight  = 6.0f;
 
 - (void)addObstacle
 {
-    CGFloat centerY = [self randomFloatWithMin:kPipeGap * 2 max:(self.size.height - kPipeGap * 2)];
+    CGFloat centerY = [self randomFloatWithMin:kPipeGap * 1.5f max:(self.size.height - kPipeGap * 1.5f)];
     
-    EAObstacle *pipeTop = [EAObstacle spriteNodeWithImageNamed:@"UFO_top_pipe"];
+    EAObstacle *pipeTop = [EAObstacle obstacleWithImageNamed:@"UFO_top_pipe"];
+    CGFloat pipeTopHeight = centerY - (kPipeGap / 2.0f);
+    [pipeTop moveObstacleWithScale:pipeTopHeight / kPipeWidth];
     pipeTop.position = CGPointMake(self.size.width + (pipeTop.size.width / 2.0f), self.size.height - (pipeTop.size.height / 2.0f));
     [self addChild:pipeTop];
     
-    CGFloat pipeTopHeight = centerY - (kPipeGap / 2.0f);
-    [pipeTop moveObstacleWithHeight:pipeTopHeight];
-    
-    EAObstacle *pipeBottom = [EAObstacle spriteNodeWithImageNamed:@"UFO_down_pipe"];
+    EAObstacle *pipeBottom = [EAObstacle obstacleWithImageNamed:@"UFO_down_pipe"];
+    CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
+    [pipeBottom moveObstacleWithScale:(pipeBottomHeight - kGroundHeight) / kPipeWidth];
     pipeBottom.position = CGPointMake(self.size.width + (pipeBottom.size.width / 2.0f), (pipeBottom.size.height / 2.0f) + (kGroundHeight - 2.0f));
     [self addChild:pipeBottom];
-    
-    CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
-    [pipeBottom moveObstacleWithHeight:pipeBottomHeight];
 }
 
 #pragma mark - Helper API
