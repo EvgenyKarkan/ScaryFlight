@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 
-
-@interface EARocketGameScene : SKScene
+#import "EABaseGameScene.h"
+@interface EARocketGameScene : EABaseGameScene
 
 @end
