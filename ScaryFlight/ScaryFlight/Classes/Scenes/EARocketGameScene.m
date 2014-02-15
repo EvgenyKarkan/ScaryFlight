@@ -44,22 +44,30 @@ static CGFloat const kGravity = -2.0f;
     SKSpriteNode *obstacleTop = [EAObstacle spriteNodeWithImageNamed:@"AsteroidTop"];
     obstacleTop.position = CGPointMake(startPointTop.x, startPointTop.y);
     obstacleTop.name = @"obstacle0";
-    int MAX_TIME_TOP = 10;
-    int MIN_TIME_TOP = 2;
-    SKAction * topObstacleAction =[SKAction moveTo:CGPointMake( -20,  self.size.height-50 ) duration:MIN_TIME_TOP + arc4random_uniform( MAX_TIME_TOP - MIN_TIME_TOP ) ] ;
-    [obstacleTop runAction:[SKAction repeatActionForever:topObstacleAction] completion:^{
+ 
+   
+    SKAction * topObstacleAction =[SKAction moveTo:CGPointMake( -20,  self.size.height-50 ) duration:5 ] ;
+    //id __weak block  =
+    void (^__block CompleteTopObstacleAnimation)() ;
+    __block id __weak weakBlock ;
+    CompleteTopObstacleAnimation = ^()
+    {
         obstacleTop.position = CGPointMake(startPointTop.x, startPointTop.y);
-    } ];
+        weakBlock= CompleteTopObstacleAnimation;
+        [obstacleTop runAction:topObstacleAction completion:weakBlock ];
+    };
+    
+    CompleteTopObstacleAnimation();
+    //need to refactor fuck!
     [self addChild:obstacleTop];
     
-    CGPoint startPointBottom = CGPointMake(self.size.width, self.size.height-50);
-    SKSpriteNode *obstacleBottom = [EAObstacle spriteNodeWithImageNamed:@"AsteroidTop"];
+    CGPoint startPointBottom = CGPointMake(self.size.width, 50);
+    SKSpriteNode *obstacleBottom = [EAObstacle spriteNodeWithImageNamed:@"AsteroidDown"];
     obstacleBottom.position = CGPointMake(startPointBottom.x, startPointBottom.y);
     obstacleBottom.name = @"obstacle0";
-    int MAX_TIME_BOTTOM = 10;
-    int MIN_TIME_BOTTOM = 2;
-    SKAction * bottomObstacleAction =[SKAction moveTo:CGPointMake( -20,  self.size.height-50 ) duration:MIN_TIME_BOTTOM + arc4random_uniform( MAX_TIME_BOTTOM - MIN_TIME_BOTTOM ) ] ;
-    [obstacleBottom runAction:[SKAction repeatActionForever:bottomObstacleAction] completion:^{
+    
+    SKAction * bottomObstacleAction =[SKAction moveTo:CGPointMake( -20,  50 ) duration:5 ] ;
+    [obstacleBottom runAction:[SKAction repeatActionForever:bottomObstacleAction ] completion:^{
         obstacleBottom.position = CGPointMake(startPointBottom.x, startPointBottom.y);
     } ];
     [self addChild:obstacleBottom];
