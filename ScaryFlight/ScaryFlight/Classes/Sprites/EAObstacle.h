@@ -9,4 +9,6 @@
 
 @interface EAObstacle : SKSpriteNode
 
+- (void)moveObstacleWithHeight:(CGFloat)height;
+
 @end
