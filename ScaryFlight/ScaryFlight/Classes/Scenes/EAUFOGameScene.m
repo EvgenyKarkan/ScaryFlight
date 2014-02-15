@@ -14,15 +14,13 @@ static uint32_t const kHeroCategory   = 0x1 << 0;
 static uint32_t const kPipeCategory   = 0x1 << 1;
 static uint32_t const kGroundCategory = 0x1 << 2;
 
-static CGFloat const kDensity = 2.0f;
+static CGFloat const kDensity       = 2.0f;
+static CGFloat const kPipeSpeed     = 4.5f;
+static CGFloat const kPipeWidth     = 56.0f;
+static CGFloat const kPipeGap       = 80.0f;
+static CGFloat const kPipeFrequency = 3.0f;
+static CGFloat const kGroundHeight  = 6.0f;
 
-
-static const CGFloat kPipeSpeed = 4.5f;
-static const CGFloat kPipeWidth = 56.0;
-static const CGFloat kPipeGap = 100;
-static const CGFloat kPipeFrequency = 3.0f;
-
-static const CGFloat kGroundHeight = 6.0;
 
 @interface EAUFOGameScene ()
 
@@ -41,7 +39,6 @@ static const CGFloat kGroundHeight = 6.0;
     [super didMoveToView:view];
     
     self.backgroundColor = [SKColor greenColor];
-    
     self.physicsWorld.gravity = CGVectorMake(0.0f, -3.0);
     
     [self addBackground];
@@ -80,12 +77,12 @@ static const CGFloat kGroundHeight = 6.0;
     [self.hero runAction:heroAction withKey:@"flyingHero"];
     [self addChild:self.hero];
     
-    self.hero.physicsBody                    = [SKPhysicsBody bodyWithRectangleOfSize:self.hero.size];
-    self.hero.physicsBody.density            = kDensity;
-    self.hero.physicsBody.allowsRotation     = NO;
-    self.hero.physicsBody.categoryBitMask    = kHeroCategory;
+    self.hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.hero.size];
+    self.hero.physicsBody.density = kDensity;
+    self.hero.physicsBody.allowsRotation = NO;
+    self.hero.physicsBody.categoryBitMask = kHeroCategory;
     self.hero.physicsBody.contactTestBitMask = kPipeCategory | kGroundCategory;
-    self.hero.physicsBody.collisionBitMask   = kGroundCategory | kPipeCategory;
+    self.hero.physicsBody.collisionBitMask = kGroundCategory | kPipeCategory;
 }
 
 - (void)addObstacle
@@ -94,34 +91,17 @@ static const CGFloat kGroundHeight = 6.0;
     CGFloat pipeTopHeight = centerY - (kPipeGap / 2.0f);
     CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
     
-        // Top Pipe
     EAObstacle *pipeTop = [EAObstacle spriteNodeWithImageNamed:@"UFO_top_pipe"];
-    [pipeTop setCenterRect:CGRectMake(26.0 / kPipeWidth, 26.0 / kPipeWidth, 4.0 / kPipeWidth, 4.0 / kPipeWidth)];
-    [pipeTop setYScale:pipeTopHeight / kPipeWidth];
-    [pipeTop setPosition:CGPointMake(self.size.width + (pipeTop.size.width / 2) + 20.0f, self.size.height - (pipeTop.size.height / 2))];
+    pipeTop.centerRect = CGRectMake(26.0f / kPipeWidth, 26.0f / kPipeWidth, 4.0f / kPipeWidth, 4.0f / kPipeWidth);
+    pipeTop.yScale = pipeTopHeight / kPipeWidth;
+    pipeTop.position = CGPointMake(self.size.width + (pipeTop.size.width / 2.0f), self.size.height - (pipeTop.size.height / 2.0f));
+    pipeTop.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeTop.size];
+    pipeTop.physicsBody.affectedByGravity = NO;
+    pipeTop.physicsBody.dynamic = NO;
+    pipeTop.physicsBody.categoryBitMask = kPipeCategory;
+    pipeTop.physicsBody.collisionBitMask = kHeroCategory;
     [self addChild:pipeTop];
     
-    pipeTop.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeTop.size];
-    [pipeTop.physicsBody setAffectedByGravity:NO];
-    [pipeTop.physicsBody setDynamic:NO];
-    [pipeTop.physicsBody setCategoryBitMask:kPipeCategory];
-    [pipeTop.physicsBody setCollisionBitMask:kHeroCategory];
-    
-        // Bottom Pipe
-    EAObstacle *pipeBottom = [EAObstacle spriteNodeWithImageNamed:@"UFO_down_pipe"];
-    [pipeBottom setCenterRect:CGRectMake(26.0 / kPipeWidth, 26.0 / kPipeWidth, 4.0 / kPipeWidth, 4.0 / kPipeWidth)];
-    [pipeBottom setYScale:(pipeBottomHeight - kGroundHeight) / kPipeWidth];
-    [pipeBottom setPosition:CGPointMake(self.size.width + (pipeBottom.size.width / 2) + 20.0f, (pipeBottom.size.height / 2) + (kGroundHeight - 2))];
-    [self addChild:pipeBottom];
-    
-    pipeBottom.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeBottom.size];
-    [pipeBottom.physicsBody setAffectedByGravity:NO];
-    [pipeBottom.physicsBody setDynamic:NO];
-    
-    [pipeBottom.physicsBody setCategoryBitMask:kPipeCategory];
-    [pipeBottom.physicsBody setCollisionBitMask:kHeroCategory];
-    
-        // Move top pipe
     SKAction *pipeTopAction = [SKAction moveToX:-(pipeTop.size.width / 2) duration:kPipeSpeed];
     SKAction *pipeTopSequence = [SKAction sequence:@[pipeTopAction, [SKAction runBlock: ^{
         [pipeTop removeFromParent];
@@ -129,8 +109,18 @@ static const CGFloat kGroundHeight = 6.0;
     
     [pipeTop runAction:[SKAction repeatActionForever:pipeTopSequence]];
     
-        // Move bottom pipe
-    SKAction *pipeBottomAction = [SKAction moveToX:-(pipeBottom.size.width / 2) duration:kPipeSpeed];
+    EAObstacle *pipeBottom = [EAObstacle spriteNodeWithImageNamed:@"UFO_down_pipe"];
+    pipeBottom.centerRect = CGRectMake(26.0f / kPipeWidth, 26.0f / kPipeWidth, 4.0f / kPipeWidth, 4.0f / kPipeWidth);
+    pipeBottom.yScale = (pipeBottomHeight - kGroundHeight) / kPipeWidth;
+    pipeBottom.position = CGPointMake(self.size.width + (pipeBottom.size.width / 2.0f), (pipeBottom.size.height / 2.0f) + (kGroundHeight - 2.0f));
+    pipeBottom.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:pipeBottom.size];
+    pipeBottom.physicsBody.affectedByGravity = NO;
+    pipeBottom.physicsBody.dynamic = NO;
+    pipeBottom.physicsBody.categoryBitMask = kPipeCategory;
+    pipeBottom.physicsBody.collisionBitMask = kHeroCategory;
+    [self addChild:pipeBottom];
+    
+    SKAction *pipeBottomAction = [SKAction moveToX:-(pipeBottom.size.width / 2.0f) duration:kPipeSpeed];
     SKAction *pipeBottomSequence = [SKAction sequence:@[pipeBottomAction, [SKAction runBlock: ^{
         [pipeBottom removeFromParent];
     }]]];
