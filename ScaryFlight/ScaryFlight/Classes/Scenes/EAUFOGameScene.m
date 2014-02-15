@@ -33,6 +33,8 @@ static CGFloat const kDensity = 2.0f;
     
     self.backgroundColor = [SKColor greenColor];
     
+    self.physicsWorld.gravity = CGVectorMake(0.0f, -2.0);
+    
     [self addBackground];
     [self addHero];
 }
@@ -69,6 +71,15 @@ static CGFloat const kDensity = 2.0f;
     self.hero.physicsBody.categoryBitMask    = kHeroCategory;
     self.hero.physicsBody.contactTestBitMask = kPipeCategory | kGroundCategory;
     self.hero.physicsBody.collisionBitMask   = kGroundCategory | kPipeCategory;
+}
+
+#pragma mark - UIResponder overriden API
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *touch in touches) {
+        [self.hero fly];
+    }
 }
 
 @end

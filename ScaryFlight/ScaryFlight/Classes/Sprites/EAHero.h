@@ -9,4 +9,6 @@
 
 @interface EAHero : SKSpriteNode
 
+- (void)fly;
+
 @end

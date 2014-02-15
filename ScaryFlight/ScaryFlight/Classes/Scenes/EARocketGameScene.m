@@ -8,6 +8,7 @@
 
 #import "EARocketGameScene.h"
 #import "EAHero.h"
+
 static uint32_t const kHeroCategory   = 0x1 << 0;
 static uint32_t const kPipeCategory   = 0x1 << 1;
 static uint32_t const kGroundCategory = 0x1 << 2;
@@ -19,6 +20,8 @@ static CGFloat const kGravity = -2.0f;
 @property (nonatomic, strong) EAHero *hero;
 
 @end
+
+
 @implementation EARocketGameScene;
 
 - (void)didMoveToView:(SKView *)view
@@ -42,24 +45,11 @@ static CGFloat const kGravity = -2.0f;
     [self addChild:background];
 }
 
-
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    //UITouch *touch = [touches anyObject];
-    //CGPoint positionInScene = [touch locationInNode:self];
-    //[self selectNodeForTouch:positionInScene];
-    CGPoint clickPoint = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-
-   CGPoint charPos = self.hero.position;
-
-   CGFloat distance = sqrtf((clickPoint.x-charPos.x)*(clickPoint.x-charPos.x)+
-
-                             (clickPoint.y-charPos.y)*(clickPoint.y-charPos.y));
-
-
-    SKAction *moveToClick = [SKAction moveTo:clickPoint duration:2.0];
-    
-    [self.hero runAction:moveToClick withKey:@"moveToClick"];
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *touch in touches) {
+        [self.hero fly];
+    }
 }
 
 - (void)addHero
