@@ -8,6 +8,7 @@
 
 #import "EARocketGameScene.h"
 #import "EAHero.h"
+#import  "EAObstacle.h"
 
 static uint32_t const kHeroCategory   = 0x1 << 0;
 static uint32_t const kPipeCategory   = 0x1 << 1;
@@ -18,7 +19,7 @@ static CGFloat const kGravity = -2.0f;
 @interface EARocketGameScene ()
 
 @property (nonatomic, strong) EAHero *hero;
-
+@property (nonatomic, strong) NSMutableArray *obstaclesArray;
 @end
 
 
@@ -31,12 +32,39 @@ static CGFloat const kGravity = -2.0f;
     self.backgroundColor = [SKColor yellowColor];
     [self addBackground];
     [self addHero];
+    [self addObstacles];
 }
 
 - (void)update:(NSTimeInterval)currentTime{
     
 }
 
+-(void)addObstacles{
+    CGPoint startPointTop = CGPointMake(self.size.width, self.size.height-50);
+    SKSpriteNode *obstacleTop = [EAObstacle spriteNodeWithImageNamed:@"AsteroidTop"];
+    obstacleTop.position = CGPointMake(startPointTop.x, startPointTop.y);
+    obstacleTop.name = @"obstacle0";
+    int MAX_TIME_TOP = 10;
+    int MIN_TIME_TOP = 2;
+    SKAction * topObstacleAction =[SKAction moveTo:CGPointMake( -20,  self.size.height-50 ) duration:MIN_TIME_TOP + arc4random_uniform( MAX_TIME_TOP - MIN_TIME_TOP ) ] ;
+    [obstacleTop runAction:[SKAction repeatActionForever:topObstacleAction] completion:^{
+        obstacleTop.position = CGPointMake(startPointTop.x, startPointTop.y);
+    } ];
+    [self addChild:obstacleTop];
+    
+    CGPoint startPointBottom = CGPointMake(self.size.width, self.size.height-50);
+    SKSpriteNode *obstacleBottom = [EAObstacle spriteNodeWithImageNamed:@"AsteroidTop"];
+    obstacleBottom.position = CGPointMake(startPointBottom.x, startPointBottom.y);
+    obstacleBottom.name = @"obstacle0";
+    int MAX_TIME_BOTTOM = 10;
+    int MIN_TIME_BOTTOM = 2;
+    SKAction * bottomObstacleAction =[SKAction moveTo:CGPointMake( -20,  self.size.height-50 ) duration:MIN_TIME_BOTTOM + arc4random_uniform( MAX_TIME_BOTTOM - MIN_TIME_BOTTOM ) ] ;
+    [obstacleBottom runAction:[SKAction repeatActionForever:bottomObstacleAction] completion:^{
+        obstacleBottom.position = CGPointMake(startPointBottom.x, startPointBottom.y);
+    } ];
+    [self addChild:obstacleBottom];
+    
+}
 - (void)addBackground
 {
     SKTexture *backgroundTexture = [SKTexture textureWithImageNamed:@"Space"];
