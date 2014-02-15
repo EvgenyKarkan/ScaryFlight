@@ -46,8 +46,6 @@ static uint32_t const kPipeCategory   = 0x1 << 1;
     }]]];
     
     [self runAction:[SKAction repeatActionForever:pipeSequence]];
-    
-    NSLog(@"X %f", self.position.x);
 }
 
 @end

@@ -125,10 +125,16 @@ static CGFloat const kGroundHeight  = 6.0f;
     }
 }
 
--(void)update:(NSTimeInterval)currentTime{
+- (void)update:(NSTimeInterval)currentTime
+{
     [super update:currentTime];
-     _scoresLabel.text = [NSString stringWithFormat:@"%d",_scores];
-    NSLog(@"origin x %f",self.pipeTop.position.x);
+    _scoresLabel.text = [NSString stringWithFormat:@"%d", _scores];
+    
+    if (self.pipeTop.position.x > 0) {
+        if (self.hero.position.x > self.pipeTop.position.x) {
+            NSLog(@"YOU GET A BONUS");
+        }
+    }
 }
 
 -(float)getNeareObstacleX{
