@@ -7,22 +7,25 @@
 //
 
 #import "EAScoresStoreManager.h"
+static  NSString * kTopScore= @"kTopScore";
 
 @implementation EAScoresStoreManager
 
 +(void)saveTopScore:(NSInteger)topScore{
     
-    
-    
-    NSString *valueToSave = @"someValue";
+    NSString *valueToSave = [NSString stringWithFormat:@"%d",topScore];
     [[NSUserDefaults standardUserDefaults]
-     setObject:valueToSave forKey:@"preferenceName"];
-    
-    
-    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
-                            stringForKey:@"preferenceName"];
-    
+     setObject:valueToSave forKey:kTopScore];
 
 }
+
++(NSInteger)getTopScore{
+    
+    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:kTopScore];
+    
+    return [savedValue integerValue];
+}
+
 
 @end
