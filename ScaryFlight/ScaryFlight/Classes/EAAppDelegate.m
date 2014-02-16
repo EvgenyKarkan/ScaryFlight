@@ -15,8 +15,6 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    
-    
     EAGameViewController *gameViewController = [[EAGameViewController alloc] init];
     self.window.rootViewController = gameViewController;
     self.window.backgroundColor = [UIColor whiteColor];

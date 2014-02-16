@@ -36,7 +36,9 @@ static CGFloat const kGroundHeight  = 6.0f;
 @end
 
 
-@implementation EABaseGameScene
+@implementation EABaseGameScene;
+
+#pragma mark - SKScene overriden API
 
 - (void)didMoveToView:(SKView *)view
 {
@@ -47,23 +49,8 @@ static CGFloat const kGroundHeight  = 6.0f;
     
     [self addBackground];
     [self addHero];
-    
-    self.obstacleTimer = [NSTimer scheduledTimerWithTimeInterval:kPipeFrequency
-                                                          target:self
-                                                        selector:@selector(addObstacle)
-                                                        userInfo:nil
-                                                         repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.obstacleTimer
-                                 forMode:NSRunLoopCommonModes];
-    
-    self.scoresLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
-    self.scoresLabel.fontSize = 30;
-    self.scoresLabel.fontColor = [SKColor yellowColor];
-    self.scoresLabel.position = CGPointMake(self.size.width - 30.0f, self.size.height - 30.0f);
-    self.scoresLabel.text = @"0";
-    [self addChild:self.scoresLabel];
-    
-    self.scores = 0;
+    [self addScoring];
+    [self makeObstaclesLoop];
 }
 
 #pragma mark - Setup sprites
@@ -100,6 +87,19 @@ static CGFloat const kGroundHeight  = 6.0f;
     self.hero.physicsBody.collisionBitMask = kGroundCategory | kPipeCategory;
 }
 
+- (void)addScoring
+{
+    self.scoresLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
+    self.scoresLabel.fontSize = 30.0f;
+    self.scoresLabel.fontColor = [SKColor yellowColor];
+    self.scoresLabel.position = CGPointMake(25.0f, self.size.height - 42.0f);
+    self.scoresLabel.text = @"0";
+    self.scoresLabel.zPosition = 1.0f;
+    [self addChild:self.scoresLabel];
+    
+    self.scores = 0;
+}
+
 - (void)addObstacle
 {
     CGFloat centerY = [self randomFloatWithMin:kPipeGap * 1.5f max:(self.size.height - kPipeGap * 1.5f)];
@@ -115,6 +115,17 @@ static CGFloat const kGroundHeight  = 6.0f;
     [pipeBottom moveObstacleWithScale:(pipeBottomHeight - kGroundHeight) / kPipeWidth];
     pipeBottom.position = CGPointMake(self.size.width + (pipeBottom.size.width / 2.0f), (pipeBottom.size.height / 2.0f) + (kGroundHeight - 2.0f));
     [self addChild:pipeBottom];
+}
+
+- (void)makeObstaclesLoop
+{
+    self.obstacleTimer = [NSTimer scheduledTimerWithTimeInterval:kPipeFrequency
+                                                          target:self
+                                                        selector:@selector(addObstacle)
+                                                        userInfo:nil
+                                                         repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.obstacleTimer
+                                 forMode:NSRunLoopCommonModes];
 }
 
 #pragma mark - Helper API
@@ -154,7 +165,6 @@ static CGFloat const kGroundHeight  = 6.0f;
     
     if ([node isKindOfClass:[EAHero class]]) {
         [self.obstacleTimer invalidate];
-        
         [self runAction:[SKAction fadeAlphaTo:0.5f duration:0.2f]
              completion: ^{
                  SKTransition *transition = [SKTransition doorsCloseHorizontalWithDuration:0.3f];

@@ -33,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     SKScene *scene = [EAMenuScene sceneWithSize:self.skView.bounds.size];
     [scene setScaleMode:SKSceneScaleModeAspectFill];
     
@@ -43,6 +43,11 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 @end
