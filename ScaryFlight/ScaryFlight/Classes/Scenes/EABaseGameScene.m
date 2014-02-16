@@ -61,9 +61,9 @@ static CGFloat const kGroundHeight  = 6.0f;
     self.scoresLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
     self.scoresLabel.fontSize = 30;
     self.scoresLabel.fontColor = [SKColor yellowColor];
-    self.scoresLabel.position = CGPointMake(self.size.width-30,self.size.height-30);
+    self.scoresLabel.position = CGPointMake(self.size.width - 30.0f, self.size.height - 30.0f);
     self.scoresLabel.text = @"0";
-    [self addChild:_scoresLabel];
+    [self addChild:self.scoresLabel];
     self.scores = 0;
 }
 
@@ -140,8 +140,8 @@ static CGFloat const kGroundHeight  = 6.0f;
     
     if (self.pipeTop.position.x > 0 && self.lastPipe != self.pipeTop) {
         if (self.hero.position.x > self.pipeTop.position.x) {
-            _scores++;
-            _scoresLabel.text = [NSString stringWithFormat:@"%d", _scores];
+            self.scores++;
+            self.scoresLabel.text = [NSString stringWithFormat:@"%d", self.scores];
             self.lastPipe = self.pipeTop;
         }
     }
