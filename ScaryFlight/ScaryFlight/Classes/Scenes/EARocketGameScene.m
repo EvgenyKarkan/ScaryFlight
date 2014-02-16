@@ -37,21 +37,7 @@
     [self addChild:background];
 }
 
-- (void)didBeginContact:(SKPhysicsContact *)contact
-{
-    [super didBeginContact:contact];
-    SKNode *node = contact.bodyA.node;
-    //SKNode *node2 = contact.bodyB.node;
-    
-    if ([node.name isEqual:@"empty"]) {
-        [self.obstacleTimer invalidate];
-        [self runAction:[SKAction fadeAlphaTo:0.5f duration:0.2f]
-             completion: ^{
-                 [self gameOver];
-             }];
-    }
 
-}
 
 -(NSString*)backgroundImageName{
     return @"Space";
