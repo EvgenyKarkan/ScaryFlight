@@ -138,8 +138,6 @@ static CGFloat const kGroundHeight  = 6.0f;
 {
     [super update:currentTime];
     
-    
-    
     if (self.pipeTop.position.x > 0 && self.lastPipe != self.pipeTop) {
         if (self.hero.position.x > self.pipeTop.position.x) {
             _scores++;
