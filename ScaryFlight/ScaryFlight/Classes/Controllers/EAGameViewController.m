@@ -45,6 +45,8 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - UIViewController overriden API
+
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
