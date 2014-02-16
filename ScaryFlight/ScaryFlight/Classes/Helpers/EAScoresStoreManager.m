@@ -13,7 +13,7 @@ static  NSString * kTopScore= @"kTopScore";
 
 +(void)saveTopScore:(NSInteger)topScore{
     
-    NSString *valueToSave = [NSString stringWithFormat:@"%d",topScore];
+    NSString *valueToSave = [NSString stringWithFormat:@"%ld",(long)topScore];
     [[NSUserDefaults standardUserDefaults]
      setObject:valueToSave forKey:kTopScore];
 

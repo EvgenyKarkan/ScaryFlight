@@ -33,7 +33,7 @@
     self.ground.centerRect = CGRectMake(26.0f / 20.0f, 26.0f / 20.0f, 4.0f / 20.0f, 4.0f / 20.0f);
     self.ground.xScale = self.size.width / 20.0f;
     self.ground.zPosition = 1.0f;
-    self.ground.position = CGPointMake(self.size.width / 2.0f, self.ground.size.height / 2.0f-self.ground.size.height-50);
+    self.ground.position = CGPointMake(self.size.width / 2.0f, self.ground.size.height / 2.0f - self.ground.size.height - 50.0f);
     self.ground.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.ground.size];
     self.ground.physicsBody.categoryBitMask = kGroundCategory;
     self.ground.physicsBody.collisionBitMask = kHeroCategory;

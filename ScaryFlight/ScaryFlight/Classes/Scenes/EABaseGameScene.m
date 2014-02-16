@@ -9,13 +9,12 @@
 #import "EABaseGameScene.h"
 #import "EAMenuScene.h"
 #import "Constants.h"
+#import "Utils.h"
 
 
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
 
-
 @property (nonatomic ,strong) SKLabelNode *topScoreLabel;
-
 @property (nonatomic ,strong) SKLabelNode * scoresLabel;
 @property (nonatomic ,assign) NSUInteger    scores;
 @property (nonatomic, strong) NSTimer     * obstacleTimer;
@@ -24,8 +23,6 @@
 @property (nonatomic ,strong) EAObstacle  * pipeBottom;
 @property (nonatomic ,strong) SKAction  * scoreSound;
 @property (nonatomic ,strong) SKAction  * crashSound;
-
-
 
 @end
 
@@ -112,7 +109,7 @@
 
 - (void)addObstacle
 {
-    CGFloat centerY = [self randomFloatWithMin:kPipeGap * 2.0f max:(self.size.height - kPipeGap * 2.0f)];
+    CGFloat centerY = randomFloatWithMinAndMax(kPipeGap * 2.0f, (self.size.height - kPipeGap * 2.0f));
     
     [self addTopPipe:centerY];
     [self addBottomPipe:centerY];

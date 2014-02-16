@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong) EAHero *hero;
 
-- (CGFloat)randomFloatWithMin:(CGFloat)min max:(CGFloat)max; // remove to utils
 - (void)addBottomPipe:(float)centerY;
 
 @end
