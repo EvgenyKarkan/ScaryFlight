@@ -14,12 +14,16 @@
 @end
 
 
+#import "EAHero.h"
+
+
 @implementation EARocketGameScene;
 
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
     
+
     self.hero.size = CGSizeMake(111.0f / 2.0f, 85.0f / 2.0f);
     [self addBottom];
 }
@@ -37,18 +41,16 @@
 {
     [super didBeginContact:contact];
     SKNode *node = contact.bodyA.node;
-     SKNode *node2 = contact.bodyB.node;
+    //SKNode *node2 = contact.bodyB.node;
     
     if ([node.name isEqual:@"empty"]) {
         [self.obstacleTimer invalidate];
         [self runAction:[SKAction fadeAlphaTo:0.5f duration:0.2f]
              completion: ^{
-                 SKTransition *transition = [SKTransition doorsCloseHorizontalWithDuration:0.3f];
-                 EAMenuScene *newGame = [[EAMenuScene alloc] initWithSize:self.size];
-                 [self.scene.view presentScene:newGame
-                                    transition:transition];
+                 [self gameOver];
              }];
     }
+
 }
 
 -(NSString*)backgroundImageName{
