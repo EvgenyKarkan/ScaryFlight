@@ -76,6 +76,7 @@
 {
     self.scoresLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
     self.scoresLabel.fontSize = 30.0f;
+    self.scoresLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
     self.scoresLabel.fontColor = [SKColor yellowColor];
     self.scoresLabel.position = CGPointMake(35.0f, self.size.height - 52.0f);
     self.scoresLabel.text = @"0";
