@@ -14,6 +14,7 @@
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
 
 @property (nonatomic ,strong) SKLabelNode *scoresLabel;
+@property (nonatomic ,strong) SKLabelNode *topScoreLabel;
 @property (nonatomic ,assign) NSUInteger   scores;
 @property (nonatomic ,strong) EAObstacle  *lastPipe;
 @property (nonatomic, strong) NSTimer     *obstacleTimer;
@@ -37,6 +38,7 @@
     [self addBackground];
     [self addHero];
     [self addScoring];
+    [self addTopScore];
     [self makeObstaclesLoop];
 }
 
@@ -86,6 +88,17 @@
     [self addChild:self.scoresLabel];
     
     self.scores = 0;
+}
+
+-(void)addTopScore{
+    self.topScoreLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
+    self.topScoreLabel.fontSize = 30.0f;
+    self.topScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    self.topScoreLabel.fontColor = [SKColor yellowColor];
+    self.topScoreLabel.position = CGPointMake(self.size.width - 50.0f, self.size.height - 52.0f);
+    self.topScoreLabel.text = @"0";
+    self.topScoreLabel.zPosition = 1.0f;
+    [self addChild:self.topScoreLabel];
 }
 
 - (void)addObstacle
