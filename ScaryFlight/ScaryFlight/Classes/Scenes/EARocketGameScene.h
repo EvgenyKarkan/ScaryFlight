@@ -10,6 +10,6 @@
 
 @interface EARocketGameScene : EABaseGameScene
 
--(void)addBottomPipe:(float)centerY;
+- (void)addBottomPipe:(float)centerY;
 
 @end

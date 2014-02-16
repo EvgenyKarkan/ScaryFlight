@@ -9,6 +9,7 @@
 #import "EAGameViewController.h"
 #import "EAMenuScene.h"
 
+
 @interface EAGameViewController ()
 
 @property (nonatomic, strong) SKView *skView;
@@ -22,12 +23,8 @@
 
 - (void)loadView
 {
-    self.view  = [[SKView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-    
-    self.skView                = (SKView *)self.view;
-    self.skView.showsFPS       = YES;
-    self.skView.showsNodeCount = YES;
-    self.skView.showsDrawCount = YES;
+    self.view = [[SKView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    self.skView = (SKView *)self.view;
 }
 
 - (void)viewDidLoad

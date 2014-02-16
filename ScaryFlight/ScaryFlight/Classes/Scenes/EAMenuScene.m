@@ -10,10 +10,13 @@
 #import "EAUFOGameScene.h"
 #import "EARocketGameScene.h"
 
+
 @interface EAMenuScene ()
 
-@property (nonatomic, strong) SKSpriteNode *ufoButton;
-@property (nonatomic, strong) SKSpriteNode *rocketButton;
+@property (nonatomic, strong) SKSpriteNode      *ufoButton;
+@property (nonatomic, strong) SKSpriteNode      *rocketButton;
+@property (nonatomic, strong) EAUFOGameScene    *ufoScene;
+@property (nonatomic, strong) EARocketGameScene *rocketScene;
 
 @end
 
@@ -27,6 +30,9 @@
     [super didMoveToView:view];
     
     self.backgroundColor = [SKColor orangeColor];
+    
+    self.ufoScene = [[EAUFOGameScene alloc] initWithSize:self.size];
+    self.rocketScene = [[EARocketGameScene alloc] initWithSize:self.size];
     
     [self createSpriteButtons];
 }
@@ -56,15 +62,13 @@
     CGPoint positionInScene = [touch locationInNode:self];
     
     if (CGRectContainsPoint(self.ufoButton.frame, positionInScene)) {
-        SKTransition *reveal = [SKTransition fadeWithDuration:0.5f];
-        EAUFOGameScene *ufoScene = [[EAUFOGameScene alloc] initWithSize:self.size];
-        [self.scene.view presentScene:ufoScene
+        SKTransition *reveal = [SKTransition fadeWithDuration:0.1f];
+        [self.scene.view presentScene:self.ufoScene
                            transition:reveal];
     }
     else if (CGRectContainsPoint(self.rocketButton.frame, positionInScene)) {
-        SKTransition *reveal = [SKTransition fadeWithDuration:0.5f];
-        EARocketGameScene *rocketScene = [[EARocketGameScene alloc] initWithSize:self.size];
-        [self.scene.view presentScene:rocketScene
+        SKTransition *reveal = [SKTransition fadeWithDuration:0.1f];
+        [self.scene.view presentScene:self.rocketScene
                            transition:reveal];
     }
 }
