@@ -169,9 +169,6 @@ static CGFloat const kGroundHeight  = 6.0f;
 
 #pragma mark - Private API
 
--(float)getNeareObstacleX{
-    return 0;
-}
 
 -(NSString*)heroImageStateOne{
     return nil;
