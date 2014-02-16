@@ -7,20 +7,8 @@
 //
 
 #import "EARocketGameScene.h"
-#import "EAMenuScene.h"
-#import  "Constants.h"
-@interface EARocketGameScene () <SKPhysicsContactDelegate>
+#import "Constants.h"
 
-
-@end
-
-
-#import "EAHero.h"
-
-//static uint32_t const kHeroCategory   = 0x1 << 0;
-//static uint32_t const kGroundCategory = 0x1 << 2;
-//static CGFloat const kPipeWidth     = 56.0f;
-//static CGFloat const kPipeGap       = 80.0f;
 
 @interface EARocketGameScene ()
 
@@ -28,20 +16,19 @@
 
 @end
 
+
 @implementation EARocketGameScene;
 
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
     
-
     self.hero.size = CGSizeMake(111.0f / 2.0f, 85.0f / 2.0f);
     [self addBottom];
 }
 
 - (void)addBottom
 {
-   
     self.ground = [SKSpriteNode spriteNodeWithColor:[SKColor grayColor] size:CGSizeMake(self.size.width, 30.0f)];
     //self.ground.size = CGSizeMake(self.size.width, 30.0f);
     self.ground.centerRect = CGRectMake(26.0f / 20.0f, 26.0f / 20.0f, 4.0f / 20.0f, 4.0f / 20.0f);
@@ -58,7 +45,7 @@
 
 - (void)addObstacle
 {
-    CGFloat centerY = [self randomFloatWithMin:kPipeGap * 1.5f max:(self.size.height - kPipeGap * 1.5f)];
+    CGFloat centerY = [self randomFloatWithMin:kPipeGap * 2.0f max:(self.size.height - kPipeGap * 2.0f)];
     
     self.pipeTop = [EAObstacle obstacleWithImageNamed:[self topObstacleImage]];
     CGFloat pipeTopHeight = centerY - (kPipeGap / 2.0f);

@@ -8,13 +8,15 @@
 
 #import "EAHero.h"
 #import "EAObstacle.h"
+
 @interface EABaseGameScene : SKScene
 
-
-@property (nonatomic, strong) EAHero *hero;
-
-- (void)addObstacle;
-- (CGFloat)randomFloatWithMin:(CGFloat)min max:(CGFloat)max;
+@property (nonatomic, strong) EAHero     *hero;
 @property (nonatomic ,strong) EAObstacle *pipeTop;
 @property (nonatomic ,strong) EAObstacle *pipeBottom;
+
+- (void)addObstacle;
+- (CGFloat)randomFloatWithMin:(CGFloat)min
+                          max:(CGFloat)max;
+
 @end

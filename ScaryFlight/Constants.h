@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 
-
-
 static uint32_t const kHeroCategory   = 0x1 << 0;
 static uint32_t const kPipeCategory   = 0x1 << 1;
 static uint32_t const kGroundCategory = 0x1 << 2;

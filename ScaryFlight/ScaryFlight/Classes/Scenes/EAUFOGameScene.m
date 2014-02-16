@@ -12,6 +12,7 @@
 static uint32_t const kHeroCategory   = 0x1 << 0;
 static uint32_t const kGroundCategory = 0x1 << 2;
 
+
 @interface EAUFOGameScene ()
 
 @property (nonatomic, strong) SKSpriteNode *ground;
@@ -41,23 +42,28 @@ static uint32_t const kGroundCategory = 0x1 << 2;
     [self addChild:self.ground];
 }
 
--(NSString*)backgroundImageName{
+- (NSString *)backgroundImageName
+{
     return @"City";
 }
 
--(NSString*)heroImageStateOne{
+- (NSString *)heroImageStateOne
+{
     return @"UFO_new_hero";
 }
 
--(NSString*)heroImageStateTwo{
+- (NSString *)heroImageStateTwo
+{
     return @"UFO_new_hero2";
 }
 
--(NSString*)topObstacleImage{
+- (NSString *)topObstacleImage
+{
     return @"UFO_top_pipe";
 }
 
--(NSString*)bottomObstacleImage{
+- (NSString *)bottomObstacleImage
+{
     return @"UFO_down_pipe";
 }
 

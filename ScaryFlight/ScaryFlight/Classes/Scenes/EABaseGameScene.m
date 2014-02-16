@@ -7,34 +7,16 @@
 //
 
 #import "EABaseGameScene.h"
-#import "EAUFOGameScene.h"
-#import "EAHero.h"
-#import "EAObstacle.h"
 #import "EAMenuScene.h"
 #import "Constants.h"
-
-//static uint32_t const kHeroCategory   = 0x1 << 0;
-//static uint32_t const kPipeCategory   = 0x1 << 1;
-//static uint32_t const kGroundCategory = 0x1 << 2;
-//
-//static CGFloat const kDensity       = 2.0f;
-//static CGFloat const kPipeSpeed     = 4.5f;
-//static CGFloat const kPipeWidth     = 56.0f;
-//static CGFloat const kPipeGap       = 80.0f;
-//static CGFloat const kPipeFrequency = 2.5f;
-//static CGFloat const kGroundHeight  = 36.0f;
 
 
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
 
-
-@property (nonatomic ,strong) SKLabelNode * scoresLabel;
-@property (nonatomic ,assign) NSUInteger  scores;
-
-@property (nonatomic ,strong) EAObstacle *lastPipe;
-@property (nonatomic, strong) NSTimer *obstacleTimer;
-
-
+@property (nonatomic ,strong) SKLabelNode *scoresLabel;
+@property (nonatomic ,assign) NSUInteger   scores;
+@property (nonatomic ,strong) EAObstacle  *lastPipe;
+@property (nonatomic, strong) NSTimer     *obstacleTimer;
 
 @end
 
@@ -105,7 +87,7 @@
 
 - (void)addObstacle
 {
-    CGFloat centerY = [self randomFloatWithMin:kPipeGap * 1.5f max:(self.size.height - kPipeGap * 1.5f)];
+    CGFloat centerY = [self randomFloatWithMin:kPipeGap * 2.0f max:(self.size.height - kPipeGap * 2.0f)];
     
     self.pipeTop = [EAObstacle obstacleWithImageNamed:[self topObstacleImage]];
     CGFloat pipeTopHeight = centerY - (kPipeGap / 2.0f);
@@ -127,6 +109,7 @@
                                                         selector:@selector(addObstacle)
                                                         userInfo:nil
                                                          repeats:YES];
+    
     [[NSRunLoop currentRunLoop] addTimer:self.obstacleTimer
                                  forMode:NSRunLoopCommonModes];
 }
@@ -175,7 +158,8 @@
     }
 }
 
--(void)gameOver{
+- (void)gameOver
+{
     SKTransition *transition = [SKTransition doorsCloseHorizontalWithDuration:0.3f];
     EAMenuScene *newGame = [[EAMenuScene alloc] initWithSize:self.size];
     [self.scene.view presentScene:newGame
@@ -184,23 +168,28 @@
 
 #pragma mark - Private API
 
--(NSString*)heroImageStateOne{
+- (NSString *)heroImageStateOne
+{
     return nil;
 }
 
--(NSString*)heroImageStateTwo{
+- (NSString *)heroImageStateTwo
+{
     return nil;
 }
 
--(NSString*)topObstacleImage{
+- (NSString *)topObstacleImage
+{
     return nil;
 }
 
--(NSString*)bottomObstacleImage{
+- (NSString *)bottomObstacleImage
+{
     return nil;
 }
 
--(NSString*)backgroundImageName{
+- (NSString *)backgroundImageName
+{
     return nil;
 }
 
