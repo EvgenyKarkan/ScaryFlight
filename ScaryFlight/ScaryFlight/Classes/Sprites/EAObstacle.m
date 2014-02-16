@@ -13,10 +13,13 @@ static CGFloat const kPipeWidth     = 56.0f;
 static CGFloat const kPipeGap       = 80.0f;
 static CGFloat const kPipeFrequency = 2.5f;
 
-static uint32_t const kHeroCategory   = 0x1 << 0;
-static uint32_t const kPipeCategory   = 0x1 << 1;
+static uint32_t const kHeroCategory = 0x1 << 0;
+static uint32_t const kPipeCategory = 0x1 << 1;
+
 
 @implementation EAObstacle;
+
+#pragma mark - Designated initializer
 
 + (instancetype)obstacleWithImageNamed:(NSString *)name
 {
@@ -27,6 +30,8 @@ static uint32_t const kPipeCategory   = 0x1 << 1;
     EAObstacle *obstacle = [super spriteNodeWithImageNamed:name];
     return obstacle;
 }
+
+#pragma mark - Public API
 
 - (void)moveObstacleWithScale:(CGFloat)scale
 {
@@ -40,9 +45,12 @@ static uint32_t const kPipeCategory   = 0x1 << 1;
     self.physicsBody.categoryBitMask = kPipeCategory;
     self.physicsBody.collisionBitMask = kHeroCategory;
     
-    SKAction *pipeAction = [SKAction moveToX:-(self.size.width / 2) duration:kPipeSpeed];
+    SKAction *pipeAction = [SKAction moveToX:-(self.size.width / 2.0f) duration:kPipeSpeed];
+    
+    __weak typeof(self) weakSelf = self;
+    
     SKAction *pipeSequence = [SKAction sequence:@[pipeAction, [SKAction runBlock: ^{
-        [self removeFromParent];
+        [weakSelf removeFromParent];
     }]]];
     
     [self runAction:[SKAction repeatActionForever:pipeSequence]];

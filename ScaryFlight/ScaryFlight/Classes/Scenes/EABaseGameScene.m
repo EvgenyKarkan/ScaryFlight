@@ -17,14 +17,14 @@
 
 @property (nonatomic ,strong) SKLabelNode *topScoreLabel;
 @property (nonatomic ,strong) SKLabelNode *scoresLabel;
+@property (nonatomic ,strong) SKAction    *scoreSound;
+@property (nonatomic ,strong) SKAction    *crashSound;
 @property (nonatomic ,assign) NSUInteger   scores;
 @property (nonatomic ,assign) NSUInteger   topScores;
 @property (nonatomic, strong) NSTimer     *obstacleTimer;
 @property (nonatomic ,strong) EAObstacle  *lastPipe;
 @property (nonatomic ,strong) EAObstacle  *pipeTop;
 @property (nonatomic ,strong) EAObstacle  *pipeBottom;
-@property (nonatomic ,strong) SKAction    *scoreSound;
-@property (nonatomic ,strong) SKAction    *crashSound;
 
 @end
 
@@ -47,9 +47,24 @@
     [self makeObstaclesLoop];
     
     self.topScores = [EAScoresStoreManager getTopScore];
-
+    
     self.scoreSound = [SKAction playSoundFileNamed:@"tick.mp3" waitForCompletion:NO];
     self.crashSound = [SKAction playSoundFileNamed:@"crash.wav" waitForCompletion:NO];
+}
+
+- (void)update:(NSTimeInterval)currentTime
+{
+    [super update:currentTime];
+    
+    self.topScoreLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.topScores];
+    if (self.pipeTop.position.x > 0 && self.lastPipe != self.pipeTop) {
+        if (self.hero.position.x > self.pipeTop.position.x) {
+            self.scores++;
+            self.scoresLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.scores];
+            self.lastPipe = self.pipeTop;
+            [self runAction:self.scoreSound];
+        }
+    }
 }
 
 #pragma mark - Setup sprites
@@ -129,6 +144,19 @@
     [self addChild:self.pipeTop];
 }
 
+- (void)makeObstaclesLoop
+{
+    self.obstacleTimer = [NSTimer scheduledTimerWithTimeInterval:kPipeFrequency
+                                                          target:self
+                                                        selector:@selector(addObstacle)
+                                                        userInfo:nil
+                                                         repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.obstacleTimer
+                                 forMode:NSRunLoopCommonModes];
+}
+
+#pragma mark - Public APi
+
 - (void)addBottomPipe:(float)centerY
 {
     self.pipeBottom = [EAObstacle obstacleWithImageNamed:[self bottomObstacleImage]];
@@ -138,23 +166,23 @@
     [self addChild:self.pipeBottom];
 }
 
-- (void)makeObstaclesLoop
-{
-    self.obstacleTimer = [NSTimer scheduledTimerWithTimeInterval:kPipeFrequency
-                                                          target:self
-                                                        selector:@selector(addObstacle)
-                                                        userInfo:nil
-                                                         repeats:YES];
-    
-    [[NSRunLoop currentRunLoop] addTimer:self.obstacleTimer
-                                 forMode:NSRunLoopCommonModes];
-}
-
 #pragma mark - Helper API
 
-- (CGFloat)randomFloatWithMin:(CGFloat)min max:(CGFloat)max
+- (void)gameOver
 {
-    return floor(((rand() % RAND_MAX) / (RAND_MAX * 1.0)) * (max - min) + min);
+    SKTransition *transition = [SKTransition doorsCloseHorizontalWithDuration:0.3f];
+    EAMenuScene *newGame = [[EAMenuScene alloc] initWithSize:self.size];
+    [self.scene.view presentScene:newGame
+                       transition:transition];
+    [self topScoresUpdateIfNeed];
+}
+
+- (void)topScoresUpdateIfNeed
+{
+    if (self.scores > self.topScores) {
+        self.topScores = self.scores;
+        [EAScoresStoreManager setTopScore:self.topScores];
+    }
 }
 
 #pragma mark - UIResponder overriden API
@@ -163,21 +191,6 @@
 {
     for (UITouch *touch in touches) {
         [self.hero fly];
-    }
-}
-
-- (void)update:(NSTimeInterval)currentTime
-{
-    [super update:currentTime];
-    self.topScoreLabel.text =[NSString stringWithFormat:@"%lu",(unsigned long)self.topScores];
-    if (self.pipeTop.position.x > 0 && self.lastPipe != self.pipeTop) {
-        if (self.hero.position.x > self.pipeTop.position.x) {
-            self.scores++;
-            self.scoresLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.scores];
-            
-            self.lastPipe = self.pipeTop;
-            [self runAction:self.scoreSound];
-        }
     }
 }
 
@@ -194,23 +207,6 @@
              completion: ^{
                  [weakSelf gameOver];
              }];
-    }
-}
-
-- (void)gameOver
-{
-    SKTransition *transition = [SKTransition doorsCloseHorizontalWithDuration:0.3f];
-    EAMenuScene *newGame = [[EAMenuScene alloc] initWithSize:self.size];
-    [self.scene.view presentScene:newGame
-                       transition:transition];
-    [self topScoresUpdateIfNeed];
-}
-
-- (void)topScoresUpdateIfNeed
-{
-    if (self.scores > self.topScores) {
-        self.topScores = self.scores;
-        [EAScoresStoreManager setTopScore:self.topScores];
     }
 }
 

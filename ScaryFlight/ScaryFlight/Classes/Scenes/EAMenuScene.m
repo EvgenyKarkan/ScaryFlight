@@ -41,13 +41,15 @@
 
 - (void)createSpriteButtons
 {
-    CGPoint location = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame) + 150.0f);
+    CGPoint location = CGPointMake(CGRectGetMidX(self.view.frame),
+                                   CGRectGetMidY(self.view.frame) + 150.0f);
     
     self.ufoButton = [SKSpriteNode spriteNodeWithImageNamed:@"UFOButton"];
     self.ufoButton.position = location;
     [self addChild:self.ufoButton];
     
-    CGPoint location2 = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame) + 50.0f);;
+    CGPoint location2 = CGPointMake(CGRectGetMidX(self.view.frame),
+                                    CGRectGetMidY(self.view.frame) + 50.0f);
     
     self.rocketButton = [SKSpriteNode spriteNodeWithImageNamed:@"RocketButton"];
     self.rocketButton.position = location2;
@@ -62,14 +64,10 @@
     CGPoint positionInScene = [touch locationInNode:self];
     
     if (CGRectContainsPoint(self.ufoButton.frame, positionInScene)) {
-        SKTransition *reveal = [SKTransition fadeWithDuration:0.1f];
-        [self.scene.view presentScene:self.ufoScene
-                           transition:reveal];
+        [self.scene.view presentScene:self.ufoScene];
     }
     else if (CGRectContainsPoint(self.rocketButton.frame, positionInScene)) {
-        SKTransition *reveal = [SKTransition fadeWithDuration:0.1f];
-        [self.scene.view presentScene:self.rocketScene
-                           transition:reveal];
+        [self.scene.view presentScene:self.rocketScene];
     }
 }
 
