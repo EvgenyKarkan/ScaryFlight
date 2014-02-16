@@ -13,12 +13,15 @@
 
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
 
-@property (nonatomic ,strong) SKLabelNode *scoresLabel;
-@property (nonatomic ,assign) NSUInteger   scores;
-@property (nonatomic ,strong) EAObstacle  *lastPipe;
-@property (nonatomic, strong) NSTimer     *obstacleTimer;
-@property (nonatomic ,strong) EAObstacle *pipeTop;
-@property (nonatomic ,strong) EAObstacle *pipeBottom;
+@property (nonatomic ,strong) SKLabelNode * scoresLabel;
+@property (nonatomic ,assign) NSUInteger    scores;
+@property (nonatomic, strong) NSTimer     * obstacleTimer;
+@property (nonatomic ,strong) EAObstacle  * lastPipe;
+@property (nonatomic ,strong) EAObstacle  * pipeTop;
+@property (nonatomic ,strong) EAObstacle  * pipeBottom;
+@property (nonatomic ,strong) SKAction  * scoreSound;
+@property (nonatomic ,strong) SKAction  * crashSound;
+
 
 @end
 
@@ -38,6 +41,9 @@
     [self addHero];
     [self addScoring];
     [self makeObstaclesLoop];
+    
+    self.scoreSound = [SKAction playSoundFileNamed:@"tick.mp3" waitForCompletion:NO];
+    self.crashSound = [SKAction playSoundFileNamed:@"crash.wav" waitForCompletion:NO];
 }
 
 #pragma mark - Setup sprites
@@ -91,11 +97,9 @@
 - (void)addObstacle
 {
     CGFloat centerY = [self randomFloatWithMin:kPipeGap * 2.0f max:(self.size.height - kPipeGap * 2.0f)];
+    
     [self addTopPipe:centerY];
     [self addBottomPipe:centerY];
-    
-    
-    
 }
 
 -(void)addTopPipe:(float)centerY{
@@ -151,6 +155,7 @@
             self.scores++;
             self.scoresLabel.text = [NSString stringWithFormat:@"%d", self.scores];
             self.lastPipe = self.pipeTop;
+            [self runAction:self.scoreSound];
         }
     }
 }
@@ -161,11 +166,13 @@
 {
     SKNode *node = contact.bodyA.node;
     
+    __weak typeof(self) weakSelf = self;
+    
     if ([node isKindOfClass:[EAHero class]]) {
         [self.obstacleTimer invalidate];
-        [self runAction:[SKAction fadeAlphaTo:0.5f duration:0.2f]
+        [self runAction:self.crashSound
              completion: ^{
-                 [self gameOver];
+                 [weakSelf gameOver];
              }];
     }
 }

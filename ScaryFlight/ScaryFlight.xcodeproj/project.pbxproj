@@ -28,6 +28,8 @@
 		DEC7B4BF18AE9A1100724DE7 /* EARocketGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4BE18AE9A1100724DE7 /* EARocketGameScene.m */; };
 		DEC7B4C218AE9AD100724DE7 /* EAGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4C118AE9AD100724DE7 /* EAGameViewController.m */; };
 		DEC7B4C518AE9C0000724DE7 /* EAMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4C418AE9C0000724DE7 /* EAMenuScene.m */; };
+		DEFFF69818B120DA002A48CD /* tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DEFFF69718B120DA002A48CD /* tick.mp3 */; };
+		DEFFF69A18B1210A002A48CD /* crash.wav in Resources */ = {isa = PBXBuildFile; fileRef = DEFFF69918B1210A002A48CD /* crash.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		DEC7B4C118AE9AD100724DE7 /* EAGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGameViewController.m; sourceTree = "<group>"; };
 		DEC7B4C318AE9C0000724DE7 /* EAMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAMenuScene.h; sourceTree = "<group>"; };
 		DEC7B4C418AE9C0000724DE7 /* EAMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAMenuScene.m; sourceTree = "<group>"; };
+		DEFFF69718B120DA002A48CD /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
+		DEFFF69918B1210A002A48CD /* crash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crash.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 		DEAB0D0318B01FDC00DD4A17 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DEFFF69918B1210A002A48CD /* crash.wav */,
+				DEFFF69718B120DA002A48CD /* tick.mp3 */,
 				DEAB0D0418B01FDC00DD4A17 /* PressStart2P.ttf */,
 			);
 			path = Resources;
@@ -312,6 +318,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEFFF69818B120DA002A48CD /* tick.mp3 in Resources */,
+				DEFFF69A18B1210A002A48CD /* crash.wav in Resources */,
 				DEAB0D0518B01FDC00DD4A17 /* PressStart2P.ttf in Resources */,
 				DEC7B48318AE80E600724DE7 /* InfoPlist.strings in Resources */,
 				DEC7B48B18AE80E600724DE7 /* Images.xcassets in Resources */,

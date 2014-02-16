@@ -23,7 +23,7 @@
 {
     [super didMoveToView:view];
     
-    self.hero.size = CGSizeMake(111.0f / 2.0f, 85.0f / 2.0f);
+    self.hero.size = CGSizeMake(116.0f / 2.0f, 91.0f / 2.0f);
     [self addBottom];
 }
 

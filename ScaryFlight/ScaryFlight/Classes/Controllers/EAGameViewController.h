@@ -9,5 +9,4 @@
 
 @interface EAGameViewController : UIViewController
 
-
 @end
