@@ -30,11 +30,10 @@
 - (void)addBottom
 {
     self.ground = [SKSpriteNode spriteNodeWithColor:[SKColor grayColor] size:CGSizeMake(self.size.width, 30.0f)];
-    //self.ground.size = CGSizeMake(self.size.width, 30.0f);
     self.ground.centerRect = CGRectMake(26.0f / 20.0f, 26.0f / 20.0f, 4.0f / 20.0f, 4.0f / 20.0f);
     self.ground.xScale = self.size.width / 20.0f;
     self.ground.zPosition = 1.0f;
-    self.ground.position = CGPointMake(self.size.width / 2.0f, self.ground.size.height / 2.0f-self.ground.size.height);
+    self.ground.position = CGPointMake(self.size.width / 2.0f, self.ground.size.height / 2.0f-self.ground.size.height-2);
     self.ground.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.ground.size];
     self.ground.physicsBody.categoryBitMask = kGroundCategory;
     self.ground.physicsBody.collisionBitMask = kHeroCategory;
@@ -43,21 +42,12 @@
     [self addChild:self.ground];
 }
 
-- (void)addObstacle
-{
-    CGFloat centerY = [self randomFloatWithMin:kPipeGap * 2.0f max:(self.size.height - kPipeGap * 2.0f)];
-    
-    self.pipeTop = [EAObstacle obstacleWithImageNamed:[self topObstacleImage]];
-    CGFloat pipeTopHeight = centerY - (kPipeGap / 2.0f);
-    [self.pipeTop moveObstacleWithScale:pipeTopHeight / kPipeWidth];
-    self.pipeTop.position = CGPointMake(self.size.width + (self.pipeTop.size.width / 2.0f), self.size.height - (self.pipeTop.size.height / 2.0f));
-    [self addChild:self.pipeTop];
-    
-    self.pipeBottom = [EAObstacle obstacleWithImageNamed:[self bottomObstacleImage]];
+-(void)addBottomPipe:(float)centerY{
+    [super addBottomPipe:centerY];
+    EAObstacle * pipeBottom = [self performSelector:@selector(pipeBottom)];
     CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
-    [self.pipeBottom moveObstacleWithScale:(pipeBottomHeight ) / kPipeWidth];
-    self.pipeBottom.position = CGPointMake(self.size.width + (self.pipeBottom.size.width / 2.0f), (self.pipeBottom.size.height / 2.0f) );
-    [self addChild:self.pipeBottom];
+    [pipeBottom moveObstacleWithScale:(pipeBottomHeight ) / kPipeWidth];
+    pipeBottom.position = CGPointMake(self.size.width + (pipeBottom.size.width / 2.0f), (pipeBottom.size.height / 2.0f));
 }
 
 -(NSString*)backgroundImageName{

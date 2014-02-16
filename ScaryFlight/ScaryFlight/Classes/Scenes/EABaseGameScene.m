@@ -17,6 +17,8 @@
 @property (nonatomic ,assign) NSUInteger   scores;
 @property (nonatomic ,strong) EAObstacle  *lastPipe;
 @property (nonatomic, strong) NSTimer     *obstacleTimer;
+@property (nonatomic ,strong) EAObstacle *pipeTop;
+@property (nonatomic ,strong) EAObstacle *pipeBottom;
 
 @end
 
@@ -88,13 +90,22 @@
 - (void)addObstacle
 {
     CGFloat centerY = [self randomFloatWithMin:kPipeGap * 2.0f max:(self.size.height - kPipeGap * 2.0f)];
+    [self addTopPipe:centerY];
+    [self addBottomPipe:centerY];
     
+    
+    
+}
+
+-(void)addTopPipe:(float)centerY{
     self.pipeTop = [EAObstacle obstacleWithImageNamed:[self topObstacleImage]];
     CGFloat pipeTopHeight = centerY - (kPipeGap / 2.0f);
     [self.pipeTop moveObstacleWithScale:pipeTopHeight / kPipeWidth];
     self.pipeTop.position = CGPointMake(self.size.width + (self.pipeTop.size.width / 2.0f), self.size.height - (self.pipeTop.size.height / 2.0f));
     [self addChild:self.pipeTop];
-    
+}
+
+-(void)addBottomPipe:(float)centerY{
     self.pipeBottom = [EAObstacle obstacleWithImageNamed:[self bottomObstacleImage]];
     CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
     [self.pipeBottom moveObstacleWithScale:(pipeBottomHeight - kGroundHeight) / kPipeWidth];
