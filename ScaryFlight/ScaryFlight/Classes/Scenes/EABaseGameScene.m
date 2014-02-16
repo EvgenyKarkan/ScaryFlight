@@ -45,7 +45,9 @@
     [self addScoring];
     [self addTopScore];
     [self makeObstaclesLoop];
-    self.topScores = [EAScoresStoreManager getTopScore];    self.scoreSound = [SKAction playSoundFileNamed:@"tick.mp3" waitForCompletion:NO];
+    self.topScores = [EAScoresStoreManager getTopScore];
+    NSLog(@"%i",self.topScores);
+    self.scoreSound = [SKAction playSoundFileNamed:@"tick.mp3" waitForCompletion:NO];
     self.crashSound = [SKAction playSoundFileNamed:@"crash.wav" waitForCompletion:NO];
 }
 
@@ -103,7 +105,7 @@
     self.topScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
     self.topScoreLabel.fontColor = [SKColor yellowColor];
     self.topScoreLabel.position = CGPointMake(self.size.width - 50.0f, self.size.height - 52.0f);
-    self.topScoreLabel.text = @"0";
+    self.topScoreLabel.text =[NSString stringWithFormat:@"%lu",(unsigned long)self.topScores];
     self.topScoreLabel.zPosition = 1.0f;
     [self addChild:self.topScoreLabel];
 }
@@ -163,12 +165,12 @@
 - (void)update:(NSTimeInterval)currentTime
 {
     [super update:currentTime];
-    
+    self.topScoreLabel.text =[NSString stringWithFormat:@"%lu",(unsigned long)self.topScores];
     if (self.pipeTop.position.x > 0 && self.lastPipe != self.pipeTop) {
         if (self.hero.position.x > self.pipeTop.position.x) {
             self.scores++;
             self.scoresLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.scores];
-            self.topScoreLabel.text =[NSString stringWithFormat:@"%lu",(unsigned long)self.topScores];;
+            
             self.lastPipe = self.pipeTop;
             [self runAction:self.scoreSound];
         }
