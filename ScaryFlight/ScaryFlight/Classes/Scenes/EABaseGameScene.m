@@ -27,7 +27,6 @@ static CGFloat const kGroundHeight  = 6.0f;
 
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
 
-@property (nonatomic, strong) EAHero *hero;
 @property (nonatomic, strong) NSTimer *obstacleTimer;
 @property (nonatomic ,strong) SKLabelNode * scoresLabel;
 @property (nonatomic ,assign) NSUInteger  scores;
@@ -57,13 +56,13 @@ static CGFloat const kGroundHeight  = 6.0f;
     [[NSRunLoop currentRunLoop] addTimer:self.obstacleTimer
                                  forMode:NSRunLoopCommonModes];
     
-    
     self.scoresLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
     self.scoresLabel.fontSize = 30;
     self.scoresLabel.fontColor = [SKColor yellowColor];
     self.scoresLabel.position = CGPointMake(self.size.width - 30.0f, self.size.height - 30.0f);
     self.scoresLabel.text = @"0";
     [self addChild:self.scoresLabel];
+    
     self.scores = 0;
 }
 
@@ -168,7 +167,6 @@ static CGFloat const kGroundHeight  = 6.0f;
 
 #pragma mark - Private API
 
-
 -(NSString*)heroImageStateOne{
     return nil;
 }
@@ -188,6 +186,5 @@ static CGFloat const kGroundHeight  = 6.0f;
 -(NSString*)backgroundImageName{
     return nil;
 }
-
 
 @end

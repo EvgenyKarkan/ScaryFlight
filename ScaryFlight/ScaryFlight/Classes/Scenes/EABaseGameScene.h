@@ -6,7 +6,10 @@
 //  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 
+#import "EAHero.h"
 
 @interface EABaseGameScene : SKScene
+
+@property (nonatomic, strong) EAHero *hero;
 
 @end

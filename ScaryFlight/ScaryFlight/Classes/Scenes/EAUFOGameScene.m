@@ -14,6 +14,7 @@
 -(NSString*)backgroundImageName{
     return @"City";
 }
+
 -(NSString*)heroImageStateOne{
     return @"UFO_new_hero";
 }

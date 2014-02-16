@@ -9,8 +9,14 @@
 #import "EARocketGameScene.h"
 
 
-
 @implementation EARocketGameScene;
+
+- (void)didMoveToView:(SKView *)view
+{
+    [super didMoveToView:view];
+    
+    self.hero.size = CGSizeMake(111.0f / 2.0f, 85.0f / 2.0f);
+}
 
 -(NSString*)backgroundImageName{
     return @"Space";
