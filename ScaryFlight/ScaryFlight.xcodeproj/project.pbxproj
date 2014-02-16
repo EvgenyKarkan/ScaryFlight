@@ -78,6 +78,7 @@
 		DEC7B4C418AE9C0000724DE7 /* EAMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAMenuScene.m; sourceTree = "<group>"; };
 		DEFFF69718B120DA002A48CD /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
 		DEFFF69918B1210A002A48CD /* crash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crash.wav; sourceTree = "<group>"; };
+		DEFFF69D18B129A8002A48CD /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				185C4E5A18B1011F00F6DBCE /* Constants.h */,
+				DEFFF69D18B129A8002A48CD /* Utils.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
