@@ -52,7 +52,7 @@
 {
     self.hero = [EAHero spriteNodeWithImageNamed:@"UFO_new_hero"];
     self.hero.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
-    [self.hero setPosition:CGPointMake(self.size.width / 2.0f, self.size.height / 2.0f)];
+    [self.hero setPosition:CGPointMake(self.size.width / 2.25f, self.size.height / 2.25f)];
     
     NSArray *animationFrames = @[[SKTexture textureWithImageNamed:[self heroImageStateOne]],
                                  [SKTexture textureWithImageNamed:[self heroImageStateTwo]]];
@@ -77,7 +77,7 @@
     self.scoresLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
     self.scoresLabel.fontSize = 30.0f;
     self.scoresLabel.fontColor = [SKColor yellowColor];
-    self.scoresLabel.position = CGPointMake(25.0f, self.size.height - 42.0f);
+    self.scoresLabel.position = CGPointMake(35.0f, self.size.height - 52.0f);
     self.scoresLabel.text = @"0";
     self.scoresLabel.zPosition = 1.0f;
     [self addChild:self.scoresLabel];

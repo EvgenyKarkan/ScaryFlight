@@ -14,6 +14,6 @@ static CGFloat const kDensity       = 2.0f;
 static CGFloat const kPipeSpeed     = 4.5f;
 static CGFloat const kPipeWidth     = 56.0f;
 static CGFloat const kPipeGap       = 80.0f;
-static CGFloat const kPipeFrequency = 2.5f;
+static CGFloat const kPipeFrequency = 3.0f;
 static CGFloat const kGroundHeight  = 36.0f;
 
