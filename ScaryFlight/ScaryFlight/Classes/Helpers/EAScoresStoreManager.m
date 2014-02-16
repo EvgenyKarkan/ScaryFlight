@@ -10,4 +10,19 @@
 
 @implementation EAScoresStoreManager
 
++(void)saveTopScore:(NSInteger)topScore{
+    
+    
+    
+    NSString *valueToSave = @"someValue";
+    [[NSUserDefaults standardUserDefaults]
+     setObject:valueToSave forKey:@"preferenceName"];
+    
+    
+    NSString *savedValue = [[NSUserDefaults standardUserDefaults]
+                            stringForKey:@"preferenceName"];
+    
+
+}
+
 @end
