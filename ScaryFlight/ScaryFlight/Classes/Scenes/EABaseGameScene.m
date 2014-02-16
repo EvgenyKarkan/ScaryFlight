@@ -27,12 +27,16 @@ static CGFloat const kGroundHeight  = 36.0f;
 
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
 
-@property (nonatomic, strong) EAHero *hero;
-@property (nonatomic ,strong) SKLabelNode * scoresLabel;
-@property (nonatomic ,assign) NSUInteger  scores;
-@property (nonatomic ,strong) EAObstacle *pipeTop;
-@property (nonatomic ,strong) EAObstacle *lastPipe;
-@property (nonatomic, strong) NSTimer *obstacleTimer;
+
+
+
+//@property (nonatomic, strong) EAHero *hero;
+//@property (nonatomic ,strong) SKLabelNode * scoresLabel;
+//@property (nonatomic ,assign) NSUInteger  scores;
+//@property (nonatomic ,strong) EAObstacle *pipeTop;
+//@property (nonatomic ,strong) EAObstacle *lastPipe;
+//@property (nonatomic, strong) NSTimer *obstacleTimer;
+
 
 @end
 
@@ -168,12 +172,16 @@ static CGFloat const kGroundHeight  = 36.0f;
         [self.obstacleTimer invalidate];
         [self runAction:[SKAction fadeAlphaTo:0.5f duration:0.2f]
              completion: ^{
-                 SKTransition *transition = [SKTransition doorsCloseHorizontalWithDuration:0.3f];
-                 EAMenuScene *newGame = [[EAMenuScene alloc] initWithSize:self.size];
-                 [self.scene.view presentScene:newGame
-                                    transition:transition];
+                 [self gameOver];
              }];
     }
+}
+
+-(void)gameOver{
+    SKTransition *transition = [SKTransition doorsCloseHorizontalWithDuration:0.3f];
+    EAMenuScene *newGame = [[EAMenuScene alloc] initWithSize:self.size];
+    [self.scene.view presentScene:newGame
+                       transition:transition];
 }
 
 #pragma mark - Private API

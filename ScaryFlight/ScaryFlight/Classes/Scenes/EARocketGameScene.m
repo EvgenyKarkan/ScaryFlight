@@ -7,7 +7,15 @@
 //
 
 #import "EARocketGameScene.h"
+#import "EAMenuScene.h"
+@interface EARocketGameScene () <SKPhysicsContactDelegate>
+
+
+@end
+
+
 #import "EAHero.h"
+
 
 @implementation EARocketGameScene;
 
@@ -15,14 +23,34 @@
 {
     [super didMoveToView:view];
     
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
+
+    self.hero.size = CGSizeMake(111.0f / 2.0f, 85.0f / 2.0f);
+    [self addBottom];
+}
+
+- (void)addBottom
+{
+   
+    SKSpriteNode *background = [SKSpriteNode spriteNodeWithColor:[SKColor grayColor] size:CGSizeMake(self.size.width, 20)];
+    background.position = CGPointMake(0, 0);
+    background.name = @"empty";
+    [self addChild:background];
+}
+
+- (void)didBeginContact:(SKPhysicsContact *)contact
+{
+    [super didBeginContact:contact];
+    SKNode *node = contact.bodyA.node;
+    //SKNode *node2 = contact.bodyB.node;
     
-    EAHero *referenceHero = [self performSelector:@selector(hero)];
-    
-#pragma clang diagnostic pop
-    
-    referenceHero.size = CGSizeMake(111.0f / 2.0f, 85.0f / 2.0f);
+    if ([node.name isEqual:@"empty"]) {
+        [self.obstacleTimer invalidate];
+        [self runAction:[SKAction fadeAlphaTo:0.5f duration:0.2f]
+             completion: ^{
+                 [self gameOver];
+             }];
+    }
+
 }
 
 -(NSString*)backgroundImageName{
