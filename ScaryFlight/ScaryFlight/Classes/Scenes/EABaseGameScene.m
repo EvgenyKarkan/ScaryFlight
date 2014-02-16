@@ -30,7 +30,7 @@ static CGFloat const kGroundHeight  = 6.0f;
 @property (nonatomic, strong) EAHero *hero;
 @property (nonatomic, strong) NSTimer *obstacleTimer;
 @property (nonatomic ,strong) SKLabelNode * scoresLabel;
-    //@property (nonatomic ,assign) int  scores;
+@property (nonatomic ,assign) int  scores;
 @property (nonatomic ,strong) EAObstacle *pipeTop;
 @property (nonatomic ,strong) EAObstacle *lastPipe;
 
@@ -64,6 +64,7 @@ static CGFloat const kGroundHeight  = 6.0f;
     _scoresLabel.position = CGPointMake(self.size.width-30,self.size.height-30);
     _scoresLabel.text = @"0";
     [self addChild:_scoresLabel];
+    _scores = 0;
 }
 
 #pragma mark - Setup sprites
@@ -137,12 +138,12 @@ static CGFloat const kGroundHeight  = 6.0f;
 {
     [super update:currentTime];
     
-    static NSUInteger counter;
+    
     
     if (self.pipeTop.position.x > 0 && self.lastPipe != self.pipeTop) {
         if (self.hero.position.x > self.pipeTop.position.x) {
-            counter++;
-            _scoresLabel.text = [NSString stringWithFormat:@"%d", counter];
+            _scores++;
+            _scoresLabel.text = [NSString stringWithFormat:@"%d", _scores];
             self.lastPipe = self.pipeTop;
         }
     }
