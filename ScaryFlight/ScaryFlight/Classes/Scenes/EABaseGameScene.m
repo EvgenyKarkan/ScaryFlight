@@ -10,6 +10,7 @@
 #import "EAUFOGameScene.h"
 #import "EAHero.h"
 #import "EAObstacle.h"
+#import "EAMenuScene.h"
 
 
 static uint32_t const kHeroCategory   = 0x1 << 0;
@@ -24,7 +25,7 @@ static CGFloat const kPipeFrequency = 2.5f;
 static CGFloat const kGroundHeight  = 6.0f;
 
 
-@interface EABaseGameScene ()
+@interface EABaseGameScene () <SKPhysicsContactDelegate>
 
 @property (nonatomic, strong) EAHero *hero;
 @property (nonatomic, strong) NSTimer *obstacleTimer;
@@ -43,6 +44,7 @@ static CGFloat const kGroundHeight  = 6.0f;
     [super didMoveToView:view];
     
     self.physicsWorld.gravity = CGVectorMake(0.0f, -3.0f);
+    self.physicsWorld.contactDelegate = self;
     
     [self addBackground];
     [self addHero];
@@ -52,6 +54,9 @@ static CGFloat const kGroundHeight  = 6.0f;
                                                         selector:@selector(addObstacle)
                                                         userInfo:nil
                                                          repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.obstacleTimer
+                                 forMode:NSRunLoopCommonModes];
+    
     
     _scoresLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
     _scoresLabel.fontSize = 30;
@@ -142,6 +147,27 @@ static CGFloat const kGroundHeight  = 6.0f;
         }
     }
 }
+
+#pragma mark - SKPhysicsContactDelegate
+
+- (void)didBeginContact:(SKPhysicsContact *)contact
+{
+    SKNode *node = contact.bodyA.node;
+    
+    if ([node isKindOfClass:[EAHero class]]) {
+        [self.obstacleTimer invalidate];
+        
+        [self runAction:[SKAction fadeAlphaTo:0.5f duration:0.2f]
+             completion: ^{
+                 SKTransition *transition = [SKTransition doorsCloseHorizontalWithDuration:0.3f];
+                 EAMenuScene *newGame = [[EAMenuScene alloc] initWithSize:self.size];
+                 [self.scene.view presentScene:newGame
+                                    transition:transition];
+             }];
+    }
+}
+
+#pragma mark - Private API
 
 -(float)getNeareObstacleX{
     return 0;
