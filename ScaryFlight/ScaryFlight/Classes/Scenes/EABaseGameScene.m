@@ -169,7 +169,7 @@
     if (self.pipeTop.position.x > 0 && self.lastPipe != self.pipeTop) {
         if (self.hero.position.x > self.pipeTop.position.x) {
             self.scores++;
-            self.scoresLabel.text = [NSString stringWithFormat:@"%d", self.scores];
+            self.scoresLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.scores];
             self.lastPipe = self.pipeTop;
             [self runAction:self.scoreSound];
         }
