@@ -9,7 +9,7 @@
 #import "EABaseGameScene.h"
 #import "EAMenuScene.h"
 #import "Constants.h"
-
+#import "EAScoresStoreManager.h"
 
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
 
@@ -18,6 +18,7 @@
 
 @property (nonatomic ,strong) SKLabelNode * scoresLabel;
 @property (nonatomic ,assign) NSUInteger    scores;
+@property (nonatomic ,assign) NSUInteger    topScores;
 @property (nonatomic, strong) NSTimer     * obstacleTimer;
 @property (nonatomic ,strong) EAObstacle  * lastPipe;
 @property (nonatomic ,strong) EAObstacle  * pipeTop;
@@ -46,8 +47,7 @@
     [self addScoring];
     [self addTopScore];
     [self makeObstaclesLoop];
-    
-    self.scoreSound = [SKAction playSoundFileNamed:@"tick.mp3" waitForCompletion:NO];
+    self.topScores = [EAScoresStoreManager getTopScore];    self.scoreSound = [SKAction playSoundFileNamed:@"tick.mp3" waitForCompletion:NO];
     self.crashSound = [SKAction playSoundFileNamed:@"crash.wav" waitForCompletion:NO];
 }
 
@@ -170,11 +170,14 @@
         if (self.hero.position.x > self.pipeTop.position.x) {
             self.scores++;
             self.scoresLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.scores];
+            self.topScoreLabel.text =[NSString stringWithFormat:@"%lu",(unsigned long)self.topScores];;
             self.lastPipe = self.pipeTop;
             [self runAction:self.scoreSound];
         }
     }
 }
+
+
 
 #pragma mark - SKPhysicsContactDelegate
 
@@ -199,6 +202,14 @@
     EAMenuScene *newGame = [[EAMenuScene alloc] initWithSize:self.size];
     [self.scene.view presentScene:newGame
                        transition:transition];
+    [self topScoresUpdateIfNeed];
+}
+
+-(void)topScoresUpdateIfNeed{
+    if (self.scores>self.topScores) {
+        self.topScores = self.scores;
+        [EAScoresStoreManager setTopScore:self.topScores];
+    }
 }
 
 #pragma mark - Private API

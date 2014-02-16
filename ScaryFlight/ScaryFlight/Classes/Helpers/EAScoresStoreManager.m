@@ -11,15 +11,16 @@ static  NSString * kTopScore= @"kTopScore";
 
 @implementation EAScoresStoreManager
 
-+(void)saveTopScore:(NSInteger)topScore{
++(void)setTopScore:(NSUInteger)topScore{
     
-    NSString *valueToSave = [NSString stringWithFormat:@"%d",topScore];
+    NSString *valueToSave = [NSString stringWithFormat:@"%lu",(unsigned long)topScore];
     [[NSUserDefaults standardUserDefaults]
      setObject:valueToSave forKey:kTopScore];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 
 }
 
-+(NSInteger)getTopScore{
++(NSUInteger)getTopScore{
     
     NSString *savedValue = [[NSUserDefaults standardUserDefaults]
                             stringForKey:kTopScore];
