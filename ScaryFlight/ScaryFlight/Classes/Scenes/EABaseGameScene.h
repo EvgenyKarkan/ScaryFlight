@@ -11,9 +11,10 @@
 
 @interface EABaseGameScene : SKScene
 
-@property (nonatomic, strong) EAHero     *hero;
+@property (nonatomic, strong) EAHero *hero;
+
 - (void)addObstacle;
-- (CGFloat)randomFloatWithMin:(CGFloat)min
-                          max:(CGFloat)max;
--(void)addBottomPipe:(float)centerY;
+- (CGFloat)randomFloatWithMin:(CGFloat)min max:(CGFloat)max; // remove to utils
+- (void)addBottomPipe:(float)centerY;
+
 @end
