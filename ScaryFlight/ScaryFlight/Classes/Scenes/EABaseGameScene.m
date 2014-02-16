@@ -11,18 +11,18 @@
 #import "EAHero.h"
 #import "EAObstacle.h"
 #import "EAMenuScene.h"
+#import "Constants.h"
 
-
-static uint32_t const kHeroCategory   = 0x1 << 0;
-static uint32_t const kPipeCategory   = 0x1 << 1;
-static uint32_t const kGroundCategory = 0x1 << 2;
-
-static CGFloat const kDensity       = 2.0f;
-static CGFloat const kPipeSpeed     = 4.5f;
-static CGFloat const kPipeWidth     = 56.0f;
-static CGFloat const kPipeGap       = 80.0f;
-static CGFloat const kPipeFrequency = 2.5f;
-static CGFloat const kGroundHeight  = 36.0f;
+//static uint32_t const kHeroCategory   = 0x1 << 0;
+//static uint32_t const kPipeCategory   = 0x1 << 1;
+//static uint32_t const kGroundCategory = 0x1 << 2;
+//
+//static CGFloat const kDensity       = 2.0f;
+//static CGFloat const kPipeSpeed     = 4.5f;
+//static CGFloat const kPipeWidth     = 56.0f;
+//static CGFloat const kPipeGap       = 80.0f;
+//static CGFloat const kPipeFrequency = 2.5f;
+//static CGFloat const kGroundHeight  = 36.0f;
 
 
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
@@ -30,7 +30,7 @@ static CGFloat const kGroundHeight  = 36.0f;
 
 @property (nonatomic ,strong) SKLabelNode * scoresLabel;
 @property (nonatomic ,assign) NSUInteger  scores;
-@property (nonatomic ,strong) EAObstacle *pipeTop;
+
 @property (nonatomic ,strong) EAObstacle *lastPipe;
 @property (nonatomic, strong) NSTimer *obstacleTimer;
 
@@ -113,11 +113,11 @@ static CGFloat const kGroundHeight  = 36.0f;
     self.pipeTop.position = CGPointMake(self.size.width + (self.pipeTop.size.width / 2.0f), self.size.height - (self.pipeTop.size.height / 2.0f));
     [self addChild:self.pipeTop];
     
-    EAObstacle *pipeBottom = [EAObstacle obstacleWithImageNamed:[self bottomObstacleImage]];
+    self.pipeBottom = [EAObstacle obstacleWithImageNamed:[self bottomObstacleImage]];
     CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
-    [pipeBottom moveObstacleWithScale:(pipeBottomHeight - kGroundHeight) / kPipeWidth];
-    pipeBottom.position = CGPointMake(self.size.width + (pipeBottom.size.width / 2.0f), (pipeBottom.size.height / 2.0f) + (kGroundHeight - 2.0f));
-    [self addChild:pipeBottom];
+    [self.pipeBottom moveObstacleWithScale:(pipeBottomHeight - kGroundHeight) / kPipeWidth];
+    self.pipeBottom.position = CGPointMake(self.size.width + (self.pipeBottom.size.width / 2.0f), (self.pipeBottom.size.height / 2.0f) + (kGroundHeight - 2.0f));
+    [self addChild:self.pipeBottom];
 }
 
 - (void)makeObstaclesLoop

@@ -43,6 +43,7 @@
 /* Begin PBXFileReference section */
 		185C4E5718AFF5A900F6DBCE /* EABaseGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EABaseGameScene.h; sourceTree = "<group>"; };
 		185C4E5818AFF5A900F6DBCE /* EABaseGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EABaseGameScene.m; sourceTree = "<group>"; };
+		185C4E5A18B1011F00F6DBCE /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = SOURCE_ROOT; };
 		DEAB0D0418B01FDC00DD4A17 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
 		DEC7B47518AE80E600724DE7 /* ScaryFlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScaryFlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC7B47818AE80E600724DE7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -204,6 +205,7 @@
 		DEC7B4AD18AE876600724DE7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				185C4E5A18B1011F00F6DBCE /* Constants.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

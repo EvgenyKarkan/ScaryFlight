@@ -8,6 +8,7 @@
 
 #import "EARocketGameScene.h"
 #import "EAMenuScene.h"
+#import  "Constants.h"
 @interface EARocketGameScene () <SKPhysicsContactDelegate>
 
 
@@ -16,8 +17,10 @@
 
 #import "EAHero.h"
 
-static uint32_t const kHeroCategory   = 0x1 << 0;
-static uint32_t const kGroundCategory = 0x1 << 2;
+//static uint32_t const kHeroCategory   = 0x1 << 0;
+//static uint32_t const kGroundCategory = 0x1 << 2;
+//static CGFloat const kPipeWidth     = 56.0f;
+//static CGFloat const kPipeGap       = 80.0f;
 
 @interface EARocketGameScene ()
 
@@ -53,7 +56,22 @@ static uint32_t const kGroundCategory = 0x1 << 2;
     [self addChild:self.ground];
 }
 
-
+- (void)addObstacle
+{
+    CGFloat centerY = [self randomFloatWithMin:kPipeGap * 1.5f max:(self.size.height - kPipeGap * 1.5f)];
+    
+    self.pipeTop = [EAObstacle obstacleWithImageNamed:[self topObstacleImage]];
+    CGFloat pipeTopHeight = centerY - (kPipeGap / 2.0f);
+    [self.pipeTop moveObstacleWithScale:pipeTopHeight / kPipeWidth];
+    self.pipeTop.position = CGPointMake(self.size.width + (self.pipeTop.size.width / 2.0f), self.size.height - (self.pipeTop.size.height / 2.0f));
+    [self addChild:self.pipeTop];
+    
+    self.pipeBottom = [EAObstacle obstacleWithImageNamed:[self bottomObstacleImage]];
+    CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
+    [self.pipeBottom moveObstacleWithScale:(pipeBottomHeight - kGroundHeight) / kPipeWidth];
+    self.pipeBottom.position = CGPointMake(self.size.width + (self.pipeBottom.size.width / 2.0f), (self.pipeBottom.size.height / 2.0f) + (kGroundHeight - 2.0f));
+    [self addChild:self.pipeBottom];
+}
 
 -(NSString*)backgroundImageName{
     return @"Space";
