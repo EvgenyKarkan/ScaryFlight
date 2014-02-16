@@ -30,7 +30,7 @@ static CGFloat const kGroundHeight  = 6.0f;
 @property (nonatomic, strong) EAHero *hero;
 @property (nonatomic, strong) NSTimer *obstacleTimer;
 @property (nonatomic ,strong) SKLabelNode * scoresLabel;
-@property (nonatomic ,assign) int  scores;
+@property (nonatomic ,assign) NSUInteger  scores;
 @property (nonatomic ,strong) EAObstacle *pipeTop;
 @property (nonatomic ,strong) EAObstacle *lastPipe;
 
@@ -58,13 +58,13 @@ static CGFloat const kGroundHeight  = 6.0f;
                                  forMode:NSRunLoopCommonModes];
     
     
-    _scoresLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
-    _scoresLabel.fontSize = 30;
-    _scoresLabel.fontColor = [SKColor yellowColor];
-    _scoresLabel.position = CGPointMake(self.size.width-30,self.size.height-30);
-    _scoresLabel.text = @"0";
+    self.scoresLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
+    self.scoresLabel.fontSize = 30;
+    self.scoresLabel.fontColor = [SKColor yellowColor];
+    self.scoresLabel.position = CGPointMake(self.size.width-30,self.size.height-30);
+    self.scoresLabel.text = @"0";
     [self addChild:_scoresLabel];
-    _scores = 0;
+    self.scores = 0;
 }
 
 #pragma mark - Setup sprites
@@ -105,13 +105,13 @@ static CGFloat const kGroundHeight  = 6.0f;
 {
     CGFloat centerY = [self randomFloatWithMin:kPipeGap * 1.5f max:(self.size.height - kPipeGap * 1.5f)];
     
-    self.pipeTop = [EAObstacle obstacleWithImageNamed:@"UFO_top_pipe"];
+    self.pipeTop = [EAObstacle obstacleWithImageNamed:[self topObstacleImage]];
     CGFloat pipeTopHeight = centerY - (kPipeGap / 2.0f);
     [self.pipeTop moveObstacleWithScale:pipeTopHeight / kPipeWidth];
     self.pipeTop.position = CGPointMake(self.size.width + (self.pipeTop.size.width / 2.0f), self.size.height - (self.pipeTop.size.height / 2.0f));
     [self addChild:self.pipeTop];
     
-    EAObstacle *pipeBottom = [EAObstacle obstacleWithImageNamed:@"UFO_down_pipe"];
+    EAObstacle *pipeBottom = [EAObstacle obstacleWithImageNamed:[self bottomObstacleImage]];
     CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
     [pipeBottom moveObstacleWithScale:(pipeBottomHeight - kGroundHeight) / kPipeWidth];
     pipeBottom.position = CGPointMake(self.size.width + (pipeBottom.size.width / 2.0f), (pipeBottom.size.height / 2.0f) + (kGroundHeight - 2.0f));
