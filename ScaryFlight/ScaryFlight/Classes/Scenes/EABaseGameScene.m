@@ -9,18 +9,23 @@
 #import "EABaseGameScene.h"
 #import "EAMenuScene.h"
 #import "Constants.h"
-#import "Utils.h"
+
 
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
 
-@property (nonatomic ,strong) SKLabelNode *scoresLabel;
-@property (nonatomic ,assign) NSUInteger   scores;
-@property (nonatomic, strong) NSTimer     *obstacleTimer;
-@property (nonatomic ,strong) EAObstacle  *lastPipe;
-@property (nonatomic ,strong) EAObstacle  *pipeTop;
-@property (nonatomic ,strong) EAObstacle  *pipeBottom;
-@property (nonatomic ,strong) SKAction    *scoreSound;
-@property (nonatomic ,strong) SKAction    *crashSound;
+
+@property (nonatomic ,strong) SKLabelNode *topScoreLabel;
+
+@property (nonatomic ,strong) SKLabelNode * scoresLabel;
+@property (nonatomic ,assign) NSUInteger    scores;
+@property (nonatomic, strong) NSTimer     * obstacleTimer;
+@property (nonatomic ,strong) EAObstacle  * lastPipe;
+@property (nonatomic ,strong) EAObstacle  * pipeTop;
+@property (nonatomic ,strong) EAObstacle  * pipeBottom;
+@property (nonatomic ,strong) SKAction  * scoreSound;
+@property (nonatomic ,strong) SKAction  * crashSound;
+
+
 
 @end
 
@@ -39,6 +44,7 @@
     [self addBackground];
     [self addHero];
     [self addScoring];
+    [self addTopScore];
     [self makeObstaclesLoop];
     
     self.scoreSound = [SKAction playSoundFileNamed:@"tick.mp3" waitForCompletion:NO];
@@ -93,16 +99,26 @@
     self.scores = 0;
 }
 
+-(void)addTopScore{
+    self.topScoreLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
+    self.topScoreLabel.fontSize = 30.0f;
+    self.topScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    self.topScoreLabel.fontColor = [SKColor yellowColor];
+    self.topScoreLabel.position = CGPointMake(self.size.width - 50.0f, self.size.height - 52.0f);
+    self.topScoreLabel.text = @"0";
+    self.topScoreLabel.zPosition = 1.0f;
+    [self addChild:self.topScoreLabel];
+}
+
 - (void)addObstacle
 {
-    CGFloat centerY = randomFloatWithMin(kPipeGap * 2.0f, (self.size.height - kPipeGap * 2.0f));
+    CGFloat centerY = [self randomFloatWithMin:kPipeGap * 2.0f max:(self.size.height - kPipeGap * 2.0f)];
     
     [self addTopPipe:centerY];
     [self addBottomPipe:centerY];
 }
 
-- (void)addTopPipe:(float)centerY
-{
+-(void)addTopPipe:(float)centerY{
     self.pipeTop = [EAObstacle obstacleWithImageNamed:[self topObstacleImage]];
     CGFloat pipeTopHeight = centerY - (kPipeGap / 2.0f);
     [self.pipeTop moveObstacleWithScale:pipeTopHeight / kPipeWidth];
@@ -110,8 +126,7 @@
     [self addChild:self.pipeTop];
 }
 
-- (void)addBottomPipe:(float)centerY
-{
+-(void)addBottomPipe:(float)centerY{
     self.pipeBottom = [EAObstacle obstacleWithImageNamed:[self bottomObstacleImage]];
     CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
     [self.pipeBottom moveObstacleWithScale:(pipeBottomHeight - kGroundHeight) / kPipeWidth];
