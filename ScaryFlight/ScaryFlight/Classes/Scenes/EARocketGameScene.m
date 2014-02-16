@@ -7,7 +7,7 @@
 //
 
 #import "EARocketGameScene.h"
-
+#import "EAHero.h"
 
 @implementation EARocketGameScene;
 
@@ -15,7 +15,14 @@
 {
     [super didMoveToView:view];
     
-    self.hero.size = CGSizeMake(111.0f / 2.0f, 85.0f / 2.0f);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    
+    EAHero *referenceHero = [self performSelector:@selector(hero)];
+    
+#pragma clang diagnostic pop
+    
+    referenceHero.size = CGSizeMake(111.0f / 2.0f, 85.0f / 2.0f);
 }
 
 -(NSString*)backgroundImageName{

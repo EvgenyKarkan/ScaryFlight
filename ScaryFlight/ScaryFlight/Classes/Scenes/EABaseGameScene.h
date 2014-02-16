@@ -10,6 +10,4 @@
 
 @interface EABaseGameScene : SKScene
 
-@property (nonatomic, strong) EAHero *hero;
-
 @end

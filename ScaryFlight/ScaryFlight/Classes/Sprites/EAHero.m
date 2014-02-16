@@ -10,7 +10,7 @@
 
 static CGFloat const kHeroDirection = 25.0f;
 
-@implementation EAHero
+@implementation EAHero;
 
 - (void)fly
 {
