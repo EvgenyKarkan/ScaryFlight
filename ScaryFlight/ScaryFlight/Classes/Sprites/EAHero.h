@@ -9,6 +9,6 @@
 
 @interface EAHero : SKSpriteNode
 
-- (void)fly;
+- (void)flyWithYLimit:(CGFloat)yLimit;
 
 @end
