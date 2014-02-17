@@ -40,7 +40,7 @@
     self.physicsWorld.contactDelegate = self;
     
     [self addBackground];
-    [self addHero];
+        //[self addHero];
     [self addScoring];
     [self addTopScore];
     [self makeObstaclesLoop];
@@ -136,8 +136,9 @@
 
 - (void)addObstacle
 {
+     // random game complexity. Changing hole position beetwen pipes
     CGFloat centerY = randomFloatWithMinAndMax(kPipeGap * 2.0f, (self.size.height - kPipeGap * 2.0f));
-    
+
     [self addTopPipe:centerY];
     [self addBottomPipe:centerY];
 }

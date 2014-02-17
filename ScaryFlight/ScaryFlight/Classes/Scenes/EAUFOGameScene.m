@@ -9,6 +9,7 @@
 #import "EAUFOGameScene.h"
 #import "EAHero.h"
 #import "EKMusicPlayer.h"
+#import "EAScrollingSprite.h"
 
 static uint32_t const kHeroCategory   = 0x1 << 0;
 static uint32_t const kGroundCategory = 0x1 << 2;
@@ -17,6 +18,7 @@ static uint32_t const kGroundCategory = 0x1 << 2;
 @interface EAUFOGameScene ()
 
 @property (nonatomic, strong) SKSpriteNode *ground;
+@property (nonatomic, strong) EAScrollingSprite *clouds;
 
 @end
 
@@ -44,6 +46,18 @@ static uint32_t const kGroundCategory = 0x1 << 2;
     
     [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"CityFlightSound.mp3"];
     [[EKMusicPlayer sharedInstance] setupNumberOfLoops:1000];
+    
+    self.clouds = [EAScrollingSprite spriteNodeWithImageNamed:@"Clouds"];
+
+    self.clouds.position = CGPointMake(0, self.size.height - 15.0f);
+    self.clouds.scrollingSpeed = 1.0f;
+    [self addChild:self.clouds];
+}
+
+- (void)update:(NSTimeInterval)currentTime
+{
+    [super update:currentTime];
+    [self.clouds update:currentTime];
 }
 
 - (NSString *)backgroundImageName

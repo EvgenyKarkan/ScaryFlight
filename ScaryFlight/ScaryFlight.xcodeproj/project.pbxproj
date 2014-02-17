@@ -36,6 +36,7 @@
 		DEF4643518B2320C00EDF3EA /* CityFlightSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DEF4643418B2320C00EDF3EA /* CityFlightSound.mp3 */; };
 		DEF4643918B246D300EDF3EA /* TouchNew.wav in Resources */ = {isa = PBXBuildFile; fileRef = DEF4643818B246D300EDF3EA /* TouchNew.wav */; };
 		DEF4643B18B2485C00EDF3EA /* Bonus.wav in Resources */ = {isa = PBXBuildFile; fileRef = DEF4643A18B2485C00EDF3EA /* Bonus.wav */; };
+		DEF4643E18B25A6700EDF3EA /* EAScrollingSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF4643D18B25A6700EDF3EA /* EAScrollingSprite.m */; };
 		DEFFF69818B120DA002A48CD /* tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DEFFF69718B120DA002A48CD /* tick.mp3 */; };
 		DEFFF69A18B1210A002A48CD /* crash.wav in Resources */ = {isa = PBXBuildFile; fileRef = DEFFF69918B1210A002A48CD /* crash.wav */; };
 /* End PBXBuildFile section */
@@ -94,6 +95,8 @@
 		DEF4643418B2320C00EDF3EA /* CityFlightSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CityFlightSound.mp3; sourceTree = "<group>"; };
 		DEF4643818B246D300EDF3EA /* TouchNew.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TouchNew.wav; sourceTree = "<group>"; };
 		DEF4643A18B2485C00EDF3EA /* Bonus.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bonus.wav; sourceTree = "<group>"; };
+		DEF4643C18B25A6700EDF3EA /* EAScrollingSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAScrollingSprite.h; sourceTree = "<group>"; };
+		DEF4643D18B25A6700EDF3EA /* EAScrollingSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAScrollingSprite.m; sourceTree = "<group>"; };
 		DEFFF69718B120DA002A48CD /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
 		DEFFF69918B1210A002A48CD /* crash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crash.wav; sourceTree = "<group>"; };
 		DEFFF69E18B12E80002A48CD /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
@@ -269,6 +272,8 @@
 				DEC7B4B518AE998200724DE7 /* EAHero.m */,
 				DEC7B4B718AE99AA00724DE7 /* EAObstacle.h */,
 				DEC7B4B818AE99AA00724DE7 /* EAObstacle.m */,
+				DEF4643C18B25A6700EDF3EA /* EAScrollingSprite.h */,
+				DEF4643D18B25A6700EDF3EA /* EAScrollingSprite.m */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				DEC7B4C518AE9C0000724DE7 /* EAMenuScene.m in Sources */,
 				DEC7B4C218AE9AD100724DE7 /* EAGameViewController.m in Sources */,
 				185C4E5918AFF5A900F6DBCE /* EABaseGameScene.m in Sources */,
+				DEF4643E18B25A6700EDF3EA /* EAScrollingSprite.m in Sources */,
 				DEC7B4BC18AE99FB00724DE7 /* EAUFOGameScene.m in Sources */,
 				DEC7B4BF18AE9A1100724DE7 /* EARocketGameScene.m in Sources */,
 				185C4E5D18B1255300F6DBCE /* EAScoresStoreManager.m in Sources */,
