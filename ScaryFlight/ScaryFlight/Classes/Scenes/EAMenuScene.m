@@ -10,12 +10,12 @@
 #import "EAUFOGameScene.h"
 #import "EARocketGameScene.h"
 #import "EKMusicPlayer.h"
-
+#import  "EAHero.h"
 
 @interface EAMenuScene ()
 
-@property (nonatomic, strong) SKSpriteNode      *ufoButton;
-@property (nonatomic, strong) SKSpriteNode      *rocketButton;
+@property (nonatomic, strong) EAHero      *ufoButton;
+@property (nonatomic, strong) EAHero      *rocketButton;
 @property (nonatomic, strong) EAUFOGameScene    *ufoScene;
 @property (nonatomic, strong) EARocketGameScene *rocketScene;
 @property (nonatomic, strong) SKAction *play;
@@ -29,7 +29,7 @@
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
-    
+    //[self createBackgroundAnimation];
     self.backgroundColor = [SKColor orangeColor];
     
     self.ufoScene = [[EAUFOGameScene alloc] initWithSize:self.size];
@@ -52,19 +52,8 @@
 
 - (void)createSpriteButtons
 {
-    CGPoint location = CGPointMake(CGRectGetMidX(self.view.frame),
-                                   CGRectGetMidY(self.view.frame) + 150.0f);
-    
-    self.ufoButton = [SKSpriteNode spriteNodeWithImageNamed:@"UFOButton"];
-    self.ufoButton.position = location;
-    [self addChild:self.ufoButton];
-    
-    CGPoint location2 = CGPointMake(CGRectGetMidX(self.view.frame),
-                                    CGRectGetMidY(self.view.frame) + 50.0f);
-    
-    self.rocketButton = [SKSpriteNode spriteNodeWithImageNamed:@"RocketButton"];
-    self.rocketButton.position = location2;
-    [self addChild:self.rocketButton];
+    [self createUfoButton];
+    [self createRocketButton];
 }
 
 #pragma mark - UIResponder overriden API
@@ -80,6 +69,44 @@
     else if (CGRectContainsPoint(self.rocketButton.frame, positionInScene)) {
         [self.scene.view presentScene:self.rocketScene];
     }
+}
+
+-(void)createUfoButton{
+    
+    self.ufoButton = [EAHero spriteNodeWithImageNamed:@"UFO_new_hero"];
+    self.ufoButton.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
+    [self.ufoButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame),
+                                            CGRectGetMidY(self.view.frame) + 150.0f)];
+    
+    NSArray *animationFrames = @[[SKTexture textureWithImageNamed:@"UFO_new_hero"],
+                                 [SKTexture textureWithImageNamed:@"UFO_new_hero2"]];
+    
+    SKAction *heroAction = [SKAction repeatActionForever:[SKAction animateWithTextures:animationFrames
+                                                                          timePerFrame:0.1f
+                                                                                resize:NO
+                                                                               restore:YES]];
+    [self.ufoButton runAction:heroAction withKey:@"flyingHeroUfo"];
+    [self addChild:self.ufoButton];
+    
+}
+
+-(void)createRocketButton{
+   
+        self.rocketButton = [EAHero spriteNodeWithImageNamed:@"Rocket"];
+        self.rocketButton.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
+        [self.rocketButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame),
+                                               CGRectGetMidY(self.view.frame) + 50.0f)];
+        
+        NSArray *animationFrames = @[[SKTexture textureWithImageNamed:@"Rocket"],
+                                     [SKTexture textureWithImageNamed:@"Rocket2"]];
+        
+        SKAction *heroAction = [SKAction repeatActionForever:[SKAction animateWithTextures:animationFrames
+                                                                              timePerFrame:0.1f
+                                                                                    resize:NO
+                                                                                   restore:YES]];
+        [self.rocketButton runAction:heroAction withKey:@"flyingHeroRocket"];
+        [self addChild:self.rocketButton];
+    
 }
 
 @end
