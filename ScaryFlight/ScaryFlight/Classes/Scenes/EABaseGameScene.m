@@ -134,6 +134,17 @@
     [self addChild:self.topScoreLabel];
 }
 
+- (void)makeObstaclesLoop
+{
+    self.obstacleTimer = [NSTimer scheduledTimerWithTimeInterval:kPipeFrequency
+                                                          target:self
+                                                        selector:@selector(addObstacle)
+                                                        userInfo:nil
+                                                         repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.obstacleTimer
+                                 forMode:NSRunLoopCommonModes];
+}
+
 - (void)addObstacle
 {
      // random game complexity. Changing hole position beetwen pipes
@@ -152,16 +163,7 @@
     [self addChild:self.pipeTop];
 }
 
-- (void)makeObstaclesLoop
-{
-    self.obstacleTimer = [NSTimer scheduledTimerWithTimeInterval:kPipeFrequency
-                                                          target:self
-                                                        selector:@selector(addObstacle)
-                                                        userInfo:nil
-                                                         repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.obstacleTimer
-                                 forMode:NSRunLoopCommonModes];
-}
+
 
 #pragma mark - Public APi
 
