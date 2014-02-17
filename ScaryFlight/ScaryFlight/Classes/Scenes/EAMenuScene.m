@@ -94,7 +94,7 @@
    
         self.rocketButton = [EAHero spriteNodeWithImageNamed:@"Rocket"];
         self.rocketButton.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
-        [self.rocketButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame),
+        [self.rocketButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame)-2.5,
                                                CGRectGetMidY(self.view.frame) + 50.0f)];
         
         NSArray *animationFrames = @[[SKTexture textureWithImageNamed:@"Rocket"],
