@@ -40,7 +40,7 @@
     self.physicsWorld.contactDelegate = self;
     
     [self addBackground];
-        //[self addHero];
+    [self addHero];
     [self addScoring];
     [self addTopScore];
     [self makeObstaclesLoop];
