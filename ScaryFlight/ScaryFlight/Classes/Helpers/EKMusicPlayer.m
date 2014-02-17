@@ -74,6 +74,8 @@ static id _sharedInstance;
 - (void)playMusicFileFromMainBundle:(NSString *)fileNameWithExtension
 {
     NSParameterAssert(fileNameWithExtension != nil);
+    NSParameterAssert([fileNameWithExtension length] > 0);
+    NSParameterAssert(![fileNameWithExtension isEqualToString:@" "]);
     
     NSError *error = nil;
     NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[fileNameWithExtension stringByDeletingPathExtension]
