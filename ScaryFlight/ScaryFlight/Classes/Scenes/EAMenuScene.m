@@ -71,8 +71,8 @@
     }
 }
 
--(void)createUfoButton{
-    
+- (void)createUfoButton
+{
     self.ufoButton = [EAHero spriteNodeWithImageNamed:@"UFO_new_hero"];
     self.ufoButton.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
     [self.ufoButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame),
@@ -87,26 +87,24 @@
                                                                                restore:YES]];
     [self.ufoButton runAction:heroAction withKey:@"flyingHeroUfo"];
     [self addChild:self.ufoButton];
-    
 }
 
--(void)createRocketButton{
-   
-        self.rocketButton = [EAHero spriteNodeWithImageNamed:@"Rocket"];
-        self.rocketButton.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
-        [self.rocketButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame)-2.5,
+- (void)createRocketButton
+{
+    self.rocketButton = [EAHero spriteNodeWithImageNamed:@"Rocket"];
+    self.rocketButton.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
+    [self.rocketButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame) - 2.5,
                                                CGRectGetMidY(self.view.frame) + 50.0f)];
-        
-        NSArray *animationFrames = @[[SKTexture textureWithImageNamed:@"Rocket"],
-                                     [SKTexture textureWithImageNamed:@"Rocket2"]];
-        
-        SKAction *heroAction = [SKAction repeatActionForever:[SKAction animateWithTextures:animationFrames
-                                                                              timePerFrame:0.1f
-                                                                                    resize:NO
-                                                                                   restore:YES]];
-        [self.rocketButton runAction:heroAction withKey:@"flyingHeroRocket"];
-        [self addChild:self.rocketButton];
     
+    NSArray *animationFrames = @[[SKTexture textureWithImageNamed:@"Rocket"],
+                                 [SKTexture textureWithImageNamed:@"Rocket2"]];
+    
+    SKAction *heroAction = [SKAction repeatActionForever:[SKAction animateWithTextures:animationFrames
+                                                                          timePerFrame:0.1f
+                                                                                resize:NO
+                                                                               restore:YES]];
+    [self.rocketButton runAction:heroAction withKey:@"flyingHeroRocket"];
+    [self addChild:self.rocketButton];
 }
 
 @end
