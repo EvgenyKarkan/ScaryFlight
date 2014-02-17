@@ -8,7 +8,7 @@
 
 #import "EARocketGameScene.h"
 #import "Constants.h"
-
+#import "EKMusicPlayer.h"
 
 @interface EARocketGameScene ()
 
@@ -25,6 +25,9 @@
     
     self.hero.size = CGSizeMake(116.0f / 2.0f, 91.0f / 2.0f);
     [self addBottom];
+    
+    [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"SpaceFlySound.mp3"];
+    [[EKMusicPlayer sharedInstance] setupNumberOfLoops:1000];
 }
 
 - (void)addBottom

@@ -8,6 +8,7 @@
 
 #import "EAUFOGameScene.h"
 #import "EAHero.h"
+#import "EKMusicPlayer.h"
 
 static uint32_t const kHeroCategory   = 0x1 << 0;
 static uint32_t const kGroundCategory = 0x1 << 2;
@@ -40,6 +41,9 @@ static uint32_t const kGroundCategory = 0x1 << 2;
     self.ground.physicsBody.affectedByGravity = NO;
     self.ground.physicsBody.dynamic = NO;
     [self addChild:self.ground];
+    
+    [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"CityFlightSound.mp3"];
+    [[EKMusicPlayer sharedInstance] setupNumberOfLoops:1000];
 }
 
 - (NSString *)backgroundImageName

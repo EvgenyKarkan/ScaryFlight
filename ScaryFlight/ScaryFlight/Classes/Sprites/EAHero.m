@@ -18,6 +18,8 @@ static CGFloat const kHeroDirection = 25.0f;
     self.physicsBody.velocity = CGVectorMake(0.0f, 0.0f);
     [self.physicsBody applyImpulse:CGVectorMake(kHeroDirection * cosf(heroDirection),
                                                 kHeroDirection * sinf(heroDirection))];
+    
+    [self runAction:[SKAction playSoundFileNamed:@"TouchNew.wav" waitForCompletion:NO]];
 }
 
 @end

@@ -48,8 +48,8 @@ static id _sharedInstance;
 
 + (id)new
 {
-    NSException *exception = [[NSException alloc] initWithName:kEKException
-                                                        reason:kEKExceptionReason
+    NSException *exception = [[NSException alloc] initWithName:@"Stop"
+                                                        reason:@"Doing this"
                                                       userInfo:nil];
     [exception raise];
     
@@ -65,6 +65,23 @@ static id _sharedInstance;
     NSError *error = nil;
     self.player = [[AVAudioPlayer alloc] initWithData:file
                                                 error:&error];
+    NSParameterAssert(error == nil);
+    
+    [self.player prepareToPlay];
+    [self.player play];
+}
+
+- (void)playMusicFileFromMainBundle:(NSString *)fileNameWithExtension
+{
+    NSParameterAssert(fileNameWithExtension != nil);
+    
+    NSError *error = nil;
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[fileNameWithExtension stringByDeletingPathExtension]
+                                                              ofType:[fileNameWithExtension pathExtension]];
+    
+    NSURL *url = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    
     NSParameterAssert(error == nil);
     
     [self.player prepareToPlay];
@@ -95,6 +112,11 @@ static id _sharedInstance;
 {
     [self.player stop];
     self.player.currentTime = 0.0f;
+}
+
+- (void)setupNumberOfLoops:(NSUInteger)loops
+{
+    self.player.numberOfLoops = loops;
 }
 
 @end

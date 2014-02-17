@@ -9,6 +9,7 @@
 #import "EAMenuScene.h"
 #import "EAUFOGameScene.h"
 #import "EARocketGameScene.h"
+#import "EKMusicPlayer.h"
 
 
 @interface EAMenuScene ()
@@ -17,7 +18,7 @@
 @property (nonatomic, strong) SKSpriteNode      *rocketButton;
 @property (nonatomic, strong) EAUFOGameScene    *ufoScene;
 @property (nonatomic, strong) EARocketGameScene *rocketScene;
-
+@property (nonatomic, strong) SKAction *play;
 @end
 
 
@@ -35,6 +36,16 @@
     self.rocketScene = [[EARocketGameScene alloc] initWithSize:self.size];
     
     [self createSpriteButtons];
+    
+    [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"MenuSound.mp3"];
+    [[EKMusicPlayer sharedInstance] setupNumberOfLoops:1000];
+}
+
+- (void)willMoveFromView:(SKView *)view
+{
+    [super willMoveFromView:view];
+    
+    [[EKMusicPlayer sharedInstance] stop];
 }
 
 #pragma mark - Private API

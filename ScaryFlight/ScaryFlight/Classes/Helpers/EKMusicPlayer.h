@@ -11,10 +11,12 @@
 
 + (EKMusicPlayer *)sharedInstance;
 - (void)playMusicFile:(NSData *)file;
+- (void)playMusicFileFromMainBundle:(NSString *)fileNameWithExtension;
 - (NSTimeInterval)currentTime;
 - (NSTimeInterval)duration;
 - (void)pause;
 - (void)play;
 - (void)stop;
+- (void)setupNumberOfLoops:(NSUInteger)loops;
 
 @end

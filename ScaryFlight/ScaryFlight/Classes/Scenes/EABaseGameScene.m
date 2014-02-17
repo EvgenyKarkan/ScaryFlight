@@ -12,7 +12,6 @@
 #import "EAScoresStoreManager.h"
 #import "Utils.h"
 
-
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
 
 @property (nonatomic ,strong) SKLabelNode *topScoreLabel;
@@ -60,6 +59,14 @@
     if (self.pipeTop.position.x > 0 && self.lastPipe != self.pipeTop) {
         if (self.hero.position.x > self.pipeTop.position.x) {
             self.scores++;
+            if (self.scores > self.topScores && self.topScores > 0) {
+                __weak typeof(self) weakSelf = self;
+                
+                static dispatch_once_t onceToken;
+                dispatch_once(&onceToken, ^{
+                    [weakSelf runAction:[SKAction playSoundFileNamed:@"Bonus.wav" waitForCompletion:NO]];
+                });
+            }
             self.scoresLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.scores];
             self.lastPipe = self.pipeTop;
             [self runAction:self.scoreSound];

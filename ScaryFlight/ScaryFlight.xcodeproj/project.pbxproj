@@ -29,6 +29,13 @@
 		DEC7B4BF18AE9A1100724DE7 /* EARocketGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4BE18AE9A1100724DE7 /* EARocketGameScene.m */; };
 		DEC7B4C218AE9AD100724DE7 /* EAGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4C118AE9AD100724DE7 /* EAGameViewController.m */; };
 		DEC7B4C518AE9C0000724DE7 /* EAMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4C418AE9C0000724DE7 /* EAMenuScene.m */; };
+		DEF4642C18B21E5100EDF3EA /* SpaceFlightSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DEF4642B18B21E5100EDF3EA /* SpaceFlightSound.mp3 */; };
+		DEF4642E18B21E9600EDF3EA /* MenuSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DEF4642D18B21E9600EDF3EA /* MenuSound.mp3 */; };
+		DEF4643118B2240000EDF3EA /* EKMusicPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF4642F18B2240000EDF3EA /* EKMusicPlayer.m */; };
+		DEF4643318B2242100EDF3EA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF4643218B2242100EDF3EA /* AVFoundation.framework */; };
+		DEF4643518B2320C00EDF3EA /* CityFlightSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DEF4643418B2320C00EDF3EA /* CityFlightSound.mp3 */; };
+		DEF4643918B246D300EDF3EA /* TouchNew.wav in Resources */ = {isa = PBXBuildFile; fileRef = DEF4643818B246D300EDF3EA /* TouchNew.wav */; };
+		DEF4643B18B2485C00EDF3EA /* Bonus.wav in Resources */ = {isa = PBXBuildFile; fileRef = DEF4643A18B2485C00EDF3EA /* Bonus.wav */; };
 		DEFFF69818B120DA002A48CD /* tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DEFFF69718B120DA002A48CD /* tick.mp3 */; };
 		DEFFF69A18B1210A002A48CD /* crash.wav in Resources */ = {isa = PBXBuildFile; fileRef = DEFFF69918B1210A002A48CD /* crash.wav */; };
 /* End PBXBuildFile section */
@@ -79,6 +86,14 @@
 		DEC7B4C118AE9AD100724DE7 /* EAGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGameViewController.m; sourceTree = "<group>"; };
 		DEC7B4C318AE9C0000724DE7 /* EAMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAMenuScene.h; sourceTree = "<group>"; };
 		DEC7B4C418AE9C0000724DE7 /* EAMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAMenuScene.m; sourceTree = "<group>"; };
+		DEF4642B18B21E5100EDF3EA /* SpaceFlightSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SpaceFlightSound.mp3; sourceTree = "<group>"; };
+		DEF4642D18B21E9600EDF3EA /* MenuSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MenuSound.mp3; sourceTree = "<group>"; };
+		DEF4642F18B2240000EDF3EA /* EKMusicPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMusicPlayer.m; sourceTree = "<group>"; };
+		DEF4643018B2240000EDF3EA /* EKMusicPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMusicPlayer.h; sourceTree = "<group>"; };
+		DEF4643218B2242100EDF3EA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DEF4643418B2320C00EDF3EA /* CityFlightSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CityFlightSound.mp3; sourceTree = "<group>"; };
+		DEF4643818B246D300EDF3EA /* TouchNew.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TouchNew.wav; sourceTree = "<group>"; };
+		DEF4643A18B2485C00EDF3EA /* Bonus.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bonus.wav; sourceTree = "<group>"; };
 		DEFFF69718B120DA002A48CD /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
 		DEFFF69918B1210A002A48CD /* crash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crash.wav; sourceTree = "<group>"; };
 		DEFFF69E18B12E80002A48CD /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
@@ -89,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEF4643318B2242100EDF3EA /* AVFoundation.framework in Frameworks */,
 				DEC7B4A818AE81F500724DE7 /* SpriteKit.framework in Frameworks */,
 				DEC7B47B18AE80E600724DE7 /* CoreGraphics.framework in Frameworks */,
 				DEC7B47D18AE80E600724DE7 /* UIKit.framework in Frameworks */,
@@ -112,6 +128,11 @@
 		DEAB0D0318B01FDC00DD4A17 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DEF4643A18B2485C00EDF3EA /* Bonus.wav */,
+				DEF4643818B246D300EDF3EA /* TouchNew.wav */,
+				DEF4643418B2320C00EDF3EA /* CityFlightSound.mp3 */,
+				DEF4642D18B21E9600EDF3EA /* MenuSound.mp3 */,
+				DEF4642B18B21E5100EDF3EA /* SpaceFlightSound.mp3 */,
 				DEFFF69918B1210A002A48CD /* crash.wav */,
 				DEFFF69718B120DA002A48CD /* tick.mp3 */,
 				DEAB0D0418B01FDC00DD4A17 /* PressStart2P.ttf */,
@@ -141,6 +162,7 @@
 		DEC7B47718AE80E600724DE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DEF4643218B2242100EDF3EA /* AVFoundation.framework */,
 				DEC7B4A718AE81F500724DE7 /* SpriteKit.framework */,
 				DEC7B47818AE80E600724DE7 /* Foundation.framework */,
 				DEC7B47A18AE80E600724DE7 /* CoreGraphics.framework */,
@@ -215,6 +237,8 @@
 		DEC7B4AD18AE876600724DE7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DEF4643018B2240000EDF3EA /* EKMusicPlayer.h */,
+				DEF4642F18B2240000EDF3EA /* EKMusicPlayer.m */,
 				DEFFF69E18B12E80002A48CD /* Utils.h */,
 				185C4E5A18B1011F00F6DBCE /* Constants.h */,
 				185C4E5B18B1255300F6DBCE /* EAScoresStoreManager.h */,
@@ -326,10 +350,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEFFF69818B120DA002A48CD /* tick.mp3 in Resources */,
+				DEF4643518B2320C00EDF3EA /* CityFlightSound.mp3 in Resources */,
 				DEFFF69A18B1210A002A48CD /* crash.wav in Resources */,
 				DEAB0D0518B01FDC00DD4A17 /* PressStart2P.ttf in Resources */,
+				DEF4642C18B21E5100EDF3EA /* SpaceFlightSound.mp3 in Resources */,
 				DEC7B48318AE80E600724DE7 /* InfoPlist.strings in Resources */,
+				DEF4643B18B2485C00EDF3EA /* Bonus.wav in Resources */,
+				DEF4642E18B21E9600EDF3EA /* MenuSound.mp3 in Resources */,
 				DEC7B48B18AE80E600724DE7 /* Images.xcassets in Resources */,
+				DEF4643918B246D300EDF3EA /* TouchNew.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +387,7 @@
 				DEC7B48518AE80E600724DE7 /* main.m in Sources */,
 				DEC7B4B918AE99AA00724DE7 /* EAObstacle.m in Sources */,
 				DEC7B4B618AE998200724DE7 /* EAHero.m in Sources */,
+				DEF4643118B2240000EDF3EA /* EKMusicPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +512,7 @@
 				GCC_PREFIX_HEADER = "ScaryFlight/ScaryFlight-Prefix.pch";
 				INFOPLIST_FILE = "ScaryFlight/ScaryFlight-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -495,6 +526,7 @@
 				GCC_PREFIX_HEADER = "ScaryFlight/ScaryFlight-Prefix.pch";
 				INFOPLIST_FILE = "ScaryFlight/ScaryFlight-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
