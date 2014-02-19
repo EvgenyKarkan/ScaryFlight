@@ -7,7 +7,7 @@
 //
 
 #import "EAAppDelegate.h"
-#import "EAGameViewController.h"
+#import "EAGameCenterProvider.h"
 
 @implementation EAAppDelegate;
 
@@ -15,11 +15,13 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    EAGameViewController *gameViewController = [[EAGameViewController alloc] init];
-    self.window.rootViewController = gameViewController;
+    self.gameViewController = [[EAGameViewController alloc] init];
+    self.window.rootViewController = self.gameViewController;
     self.window.backgroundColor = [UIColor whiteColor];
     
     [self.window makeKeyAndVisible];
+    
+    [[EAGameCenterProvider sharedInstance] authenticateLocalUser];
     
     return YES;
 }

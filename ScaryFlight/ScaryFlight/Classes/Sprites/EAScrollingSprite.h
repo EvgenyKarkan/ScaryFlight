@@ -9,7 +9,7 @@
 
 @interface EAScrollingSprite : SKSpriteNode
 
-@property (nonatomic) CGFloat scrollingSpeed;
+@property (nonatomic, assign) CGFloat scrollingSpeed;
 
 - (void) update:(NSTimeInterval)currentTime;
 

@@ -88,7 +88,7 @@
 {
     self.hero = [EAHero spriteNodeWithImageNamed:@"UFO_new_hero"];
     self.hero.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
-    [self.hero setPosition:CGPointMake(self.size.width / 2.25f, self.size.height / 2.25f)];
+    self.hero.position = CGPointMake(self.size.width / 2.25f, self.size.height / 2.25f);
     
     NSArray *animationFrames = @[[SKTexture textureWithImageNamed:[self heroImageStateOne]],
                                  [SKTexture textureWithImageNamed:[self heroImageStateTwo]]];
@@ -162,8 +162,6 @@
     self.pipeTop.position = CGPointMake(self.size.width + (self.pipeTop.size.width / 2.0f), self.size.height - (self.pipeTop.size.height / 2.0f));
     [self addChild:self.pipeTop];
 }
-
-
 
 #pragma mark - Public APi
 

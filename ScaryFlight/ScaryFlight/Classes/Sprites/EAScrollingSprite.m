@@ -8,26 +8,33 @@
 
 #import "EAScrollingSprite.h"
 
-@implementation EAScrollingSprite
+
+@implementation EAScrollingSprite;
+
+#pragma mark - Designated initializer
 
 + (id)spriteNodeWithImageNamed:(NSString *)name
 {
     UIImage *image = [UIImage imageNamed:name];
     
-    EAScrollingSprite *realNode = [EAScrollingSprite spriteNodeWithColor:[UIColor clearColor] size:CGSizeMake(320.0f, image.size.height)];
-    realNode.scrollingSpeed = 1;
+    EAScrollingSprite *node = [EAScrollingSprite spriteNodeWithColor:[UIColor clearColor]
+                                                                size:CGSizeMake(320.0f /* to add here support for iPad */, image.size.height)];
+    node.scrollingSpeed = 1.0f;
     
     CGFloat total = 0.0f;
-    while (total < (320.0f + image.size.width)) {
+    
+    while (total < (320.0f /* to add here support for iPad */ + image.size.width)) {
         SKSpriteNode *child = [SKSpriteNode spriteNodeWithImageNamed:name];
         [child setAnchorPoint:CGPointZero];
         [child setPosition:CGPointMake(total, 0.0f)];
-        [realNode addChild:child];
+        [node addChild:child];
         total += child.size.width;
     }
     
-    return realNode;
+    return node;
 }
+
+#pragma mark - Overriden SKSpriteNode API
 
 - (void)update:(NSTimeInterval)currentTime
 {

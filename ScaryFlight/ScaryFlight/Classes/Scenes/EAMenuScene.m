@@ -10,15 +10,15 @@
 #import "EAUFOGameScene.h"
 #import "EARocketGameScene.h"
 #import "EKMusicPlayer.h"
-#import  "EAHero.h"
+#import "EAHero.h"
 
 @interface EAMenuScene ()
 
-@property (nonatomic, strong) EAHero      *ufoButton;
-@property (nonatomic, strong) EAHero      *rocketButton;
+@property (nonatomic, strong) EAHero            *ufoButton;
+@property (nonatomic, strong) EAHero            *rocketButton;
 @property (nonatomic, strong) EAUFOGameScene    *ufoScene;
 @property (nonatomic, strong) EARocketGameScene *rocketScene;
-@property (nonatomic, strong) SKAction *play;
+
 @end
 
 
@@ -48,14 +48,6 @@
     [[EKMusicPlayer sharedInstance] stop];
 }
 
-#pragma mark - Private API
-
-- (void)createSpriteButtons
-{
-    [self createUfoButton];
-    [self createRocketButton];
-}
-
 #pragma mark - UIResponder overriden API
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -69,6 +61,14 @@
     else if (CGRectContainsPoint(self.rocketButton.frame, positionInScene)) {
         [self.scene.view presentScene:self.rocketScene];
     }
+}
+
+#pragma mark - Private API
+
+- (void)createSpriteButtons
+{
+    [self createUfoButton];
+    [self createRocketButton];
 }
 
 - (void)createUfoButton
