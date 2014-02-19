@@ -9,10 +9,13 @@
 #import "EAGameCenterProvider.h"
 #import "EAAppDelegate.h"
 
-@interface EAGameCenterProvider ()
+static NSString * const kEALeaderboardID = @"BestScoreID";
 
-@property (nonatomic, assign) BOOL gameCenterAvailable;
-@property (nonatomic, assign) BOOL userAuthenticated;
+@interface EAGameCenterProvider () <GKGameCenterControllerDelegate>
+
+@property (nonatomic, assign) BOOL           gameCenterAvailable;
+@property (nonatomic, assign) BOOL           userAuthenticated;
+@property (nonatomic, strong) EAAppDelegate *appDelegate;
 
 @end
 
@@ -65,6 +68,8 @@ static id _sharedInstance = nil;
 {
     if ((self = [super init])) {
         self.gameCenterAvailable = [self isGameCenterAvailable];
+        self.appDelegate = (EAAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
         if (self.gameCenterAvailable) {
             NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
             [notificationCenter addObserver:self
@@ -111,19 +116,57 @@ static id _sharedInstance = nil;
     }
     
     if ([GKLocalPlayer localPlayer].authenticated == NO) {
-        EAAppDelegate *appDelegate = (EAAppDelegate *)[[UIApplication sharedApplication] delegate];
-        
         [GKLocalPlayer localPlayer].authenticateHandler = ^(UIViewController *gameCenterLoginViewController, NSError *error) {
             if (gameCenterLoginViewController != nil) {
-                [appDelegate.gameViewController presentViewController:gameCenterLoginViewController
-                                                             animated:YES
-                                                           completion:nil];
+                [self.appDelegate.gameViewController presentViewController:gameCenterLoginViewController
+                                                                  animated:YES
+                                                                completion:nil];
             }
         };
     }
     else {
         NSLog(@"Already authenticated!");
     }
+}
+
+- (void)reportScore:(NSUInteger)score
+{
+    if ([GKLocalPlayer localPlayer].isAuthenticated) {
+        GKScore *scoreToReport = [[GKScore alloc] initWithLeaderboardIdentifier:kEALeaderboardID];
+        scoreToReport.value = score;
+        
+        [GKScore reportScores:@[scoreToReport] withCompletionHandler: ^(NSError *error) {
+            NSParameterAssert(error == nil);
+            if (error != nil) {
+                NSLog(@"Error occured: %@", [error localizedDescription]);
+            }
+        }];
+    }
+    else {
+        NSLog(@"Score is not reported: player not authenticated");
+    }
+}
+
+- (void)showLeaderboard
+{
+    GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init];
+    
+    if (gameCenterController != nil) {
+        gameCenterController.gameCenterDelegate = self;
+        gameCenterController.viewState = GKGameCenterViewControllerStateLeaderboards;
+        gameCenterController.leaderboardIdentifier = kEALeaderboardID;
+        
+        [self.appDelegate.gameViewController presentViewController:gameCenterController
+                                                          animated:YES
+                                                        completion:nil];
+    }
+}
+
+#pragma mark - GKGameCenterControllerDelegate
+
+- (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
+{
+    [self.appDelegate.gameViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

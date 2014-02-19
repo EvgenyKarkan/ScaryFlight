@@ -7,9 +7,11 @@
 //
 
 
-@interface EAGameCenterProvider : NSObject
+@interface EAGameCenterProvider : NSObject 
 
 + (EAGameCenterProvider *)sharedInstance;
 - (void)authenticateLocalUser;
+- (void)reportScore:(NSUInteger)score;
+- (void)showLeaderboard;
 
 @end

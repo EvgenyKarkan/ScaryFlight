@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "EAScoresStoreManager.h"
 #import "Utils.h"
+#import "EAGameCenterProvider.h"
 
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
 
@@ -56,9 +57,16 @@
     [super update:currentTime];
     
     self.topScoreLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.topScores];
+    
     if (self.pipeTop.position.x > 0 && self.lastPipe != self.pipeTop) {
         if (self.hero.position.x > self.pipeTop.position.x) {
             self.scores++;
+            
+            if (self.topScores == 0) {  // only if it is first game start
+                [[EAGameCenterProvider sharedInstance] reportScore:self.scores];
+                NSLog(@"First game start");
+            }
+            
             if (self.scores > self.topScores && self.topScores > 0) {
                 __weak typeof(self) weakSelf = self;
                 
@@ -66,6 +74,7 @@
                 dispatch_once(&onceToken, ^{
                     [weakSelf runAction:[SKAction playSoundFileNamed:@"Bonus.wav" waitForCompletion:NO]];
                 });
+                [[EAGameCenterProvider sharedInstance] reportScore:self.scores];
             }
             self.scoresLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.scores];
             self.lastPipe = self.pipeTop;

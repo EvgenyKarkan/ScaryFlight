@@ -11,6 +11,7 @@
 #import "EARocketGameScene.h"
 #import "EKMusicPlayer.h"
 #import "EAHero.h"
+#import "EAGameCenterProvider.h"
 
 @interface EAMenuScene ()
 
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) EAHero            *rocketButton;
 @property (nonatomic, strong) EAUFOGameScene    *ufoScene;
 @property (nonatomic, strong) EARocketGameScene *rocketScene;
+@property (nonatomic, strong) SKSpriteNode      *rankButton;
 
 @end
 
@@ -61,6 +63,9 @@
     else if (CGRectContainsPoint(self.rocketButton.frame, positionInScene)) {
         [self.scene.view presentScene:self.rocketScene];
     }
+    else if (CGRectContainsPoint(self.rankButton.frame, positionInScene)) {
+        [[EAGameCenterProvider sharedInstance] showLeaderboard];
+    }
 }
 
 #pragma mark - Private API
@@ -69,6 +74,7 @@
 {
     [self createUfoButton];
     [self createRocketButton];
+    [self createRankButton];
 }
 
 - (void)createUfoButton
@@ -85,7 +91,7 @@
                                                                           timePerFrame:0.1f
                                                                                 resize:NO
                                                                                restore:YES]];
-    [self.ufoButton runAction:heroAction withKey:@"flyingHeroUfo"];
+    [self.ufoButton runAction:heroAction];
     [self addChild:self.ufoButton];
 }
 
@@ -93,7 +99,7 @@
 {
     self.rocketButton = [EAHero spriteNodeWithImageNamed:@"Rocket"];
     self.rocketButton.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
-    [self.rocketButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame) - 2.5,
+    [self.rocketButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame) - 2.5f,
                                                CGRectGetMidY(self.view.frame) + 50.0f)];
     
     NSArray *animationFrames = @[[SKTexture textureWithImageNamed:@"Rocket"],
@@ -103,8 +109,17 @@
                                                                           timePerFrame:0.1f
                                                                                 resize:NO
                                                                                restore:YES]];
-    [self.rocketButton runAction:heroAction withKey:@"flyingHeroRocket"];
+    [self.rocketButton runAction:heroAction];
     [self addChild:self.rocketButton];
+}
+
+- (void)createRankButton
+{
+    self.rankButton = [EAHero spriteNodeWithImageNamed:@"Rank"];
+    [self.rankButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame) - 2.5f,
+                                             CGRectGetMidY(self.view.frame) - 50.0f)];
+    
+    [self addChild:self.rankButton];
 }
 
 @end

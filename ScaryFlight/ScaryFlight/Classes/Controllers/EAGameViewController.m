@@ -10,7 +10,7 @@
 #import "EAMenuScene.h"
 
 
-@interface EAGameViewController ()
+@interface EAGameViewController () 
 
 @property (nonatomic, strong) SKView *skView;
 
