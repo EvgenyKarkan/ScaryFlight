@@ -21,7 +21,7 @@
     
     [self.window makeKeyAndVisible];
     
-    [[EAGameCenterProvider sharedInstance] authenticateLocalUser];
+        //[[EAGameCenterProvider sharedInstance] authenticateLocalUser];
     
     return YES;
 }
