@@ -13,7 +13,6 @@
 #import "EAHero.h"
 #import "EAGameCenterProvider.h"
 
-
 @interface EAMenuScene ()
 
 @property (nonatomic, strong) EAHero            *ufoButton;
@@ -39,6 +38,7 @@
     self.rocketScene = [[EARocketGameScene alloc] initWithSize:self.size];
     
     [self provideBackground];
+    [self addLabel];
     [self createSpriteButtons];
     
     [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"MenuSound.mp3"];
@@ -131,6 +131,18 @@
     background.position = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame));
     background.zPosition = 0.0;
     [self addChild:background];
+}
+
+- (void)addLabel
+{
+    SKLabelNode *topScoreLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
+    topScoreLabel.text = @"Scary Flight";
+    topScoreLabel.fontSize = 20.0f; //iPad support add
+    topScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    topScoreLabel.fontColor = [SKColor whiteColor];
+    topScoreLabel.position = CGPointMake(self.position.x + 45.0f, self.size.height - 100.0f);
+
+    [self addChild:topScoreLabel];
 }
 
 @end

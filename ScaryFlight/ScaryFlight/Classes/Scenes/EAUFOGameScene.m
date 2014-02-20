@@ -48,7 +48,6 @@ static uint32_t const kGroundCategory = 0x1 << 2;
     [[EKMusicPlayer sharedInstance] setupNumberOfLoops:1000];
     
     self.clouds = [EAScrollingSprite spriteNodeWithImageNamed:@"Clouds"];
-
     self.clouds.position = CGPointMake(0, self.size.height - 15.0f);
     self.clouds.scrollingSpeed = 1.0f;
     [self addChild:self.clouds];

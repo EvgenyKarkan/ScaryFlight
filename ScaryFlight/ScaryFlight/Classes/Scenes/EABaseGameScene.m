@@ -235,7 +235,6 @@
 
 - (NSString *)heroImageStateTwo
 {
-    NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
     return nil;
 }
 
