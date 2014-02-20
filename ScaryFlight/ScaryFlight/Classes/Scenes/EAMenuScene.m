@@ -13,6 +13,7 @@
 #import "EAHero.h"
 #import "EAGameCenterProvider.h"
 
+
 @interface EAMenuScene ()
 
 @property (nonatomic, strong) EAHero            *ufoButton;
@@ -37,6 +38,7 @@
     self.ufoScene = [[EAUFOGameScene alloc] initWithSize:self.size];
     self.rocketScene = [[EARocketGameScene alloc] initWithSize:self.size];
     
+    [self provideBackground];
     [self createSpriteButtons];
     
     [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"MenuSound.mp3"];
@@ -120,6 +122,15 @@
                                              CGRectGetMidY(self.view.frame) - 50.0f)];
     
     [self addChild:self.rankButton];
+}
+
+- (void)provideBackground
+{
+    SKTexture *backgroundTexture = [SKTexture textureWithImageNamed:[EAUtils assetName]];
+    SKSpriteNode *background = [SKSpriteNode spriteNodeWithTexture:backgroundTexture size:self.view.frame.size];
+    background.position = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame));
+    background.zPosition = 0.0;
+    [self addChild:background];
 }
 
 @end

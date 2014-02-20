@@ -10,7 +10,6 @@
 #import "EAMenuScene.h"
 #import "Constants.h"
 #import "EAScoresStoreManager.h"
-#import "Utils.h"
 #import "EAGameCenterProvider.h"
 
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
@@ -157,8 +156,8 @@
 - (void)addObstacle
 {
      // random game complexity. Changing hole position beetwen pipes
-    CGFloat centerY = randomFloatWithMinAndMax(kPipeGap * 2.0f, (self.size.height - kPipeGap * 2.0f));
-
+    CGFloat centerY = [EAUtils randomFloatWithMin:kPipeGap * 2.0f max:(self.size.height - kPipeGap * 2.0f)];
+    
     [self addTopPipe:centerY];
     [self addBottomPipe:centerY];
 }
@@ -236,6 +235,7 @@
 
 - (NSString *)heroImageStateTwo
 {
+    NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
     return nil;
 }
 

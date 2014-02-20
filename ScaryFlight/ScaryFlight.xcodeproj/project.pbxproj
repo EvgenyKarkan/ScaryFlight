@@ -12,6 +12,7 @@
 		DE41575318B3F793008E0BC0 /* Jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE41575218B3F793008E0BC0 /* Jump.wav */; };
 		DE41575518B40107008E0BC0 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE41575418B40107008E0BC0 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DE41575818B401A2008E0BC0 /* EAGameCenterProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DE41575718B401A2008E0BC0 /* EAGameCenterProvider.m */; };
+		DE582F5118B694DB001D345B /* EAUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DE582F5018B694DB001D345B /* EAUtils.m */; };
 		DEAB0D0518B01FDC00DD4A17 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEAB0D0418B01FDC00DD4A17 /* PressStart2P.ttf */; };
 		DEC7B47918AE80E600724DE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC7B47818AE80E600724DE7 /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DEC7B47B18AE80E600724DE7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC7B47A18AE80E600724DE7 /* CoreGraphics.framework */; };
@@ -63,6 +64,8 @@
 		DE41575418B40107008E0BC0 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		DE41575618B401A2008E0BC0 /* EAGameCenterProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGameCenterProvider.h; sourceTree = "<group>"; };
 		DE41575718B401A2008E0BC0 /* EAGameCenterProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGameCenterProvider.m; sourceTree = "<group>"; };
+		DE582F4F18B694DB001D345B /* EAUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAUtils.h; sourceTree = "<group>"; };
+		DE582F5018B694DB001D345B /* EAUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAUtils.m; sourceTree = "<group>"; };
 		DEAB0D0418B01FDC00DD4A17 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
 		DEC7B47518AE80E600724DE7 /* ScaryFlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScaryFlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC7B47818AE80E600724DE7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -104,7 +107,6 @@
 		DEF4643D18B25A6700EDF3EA /* EAScrollingSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAScrollingSprite.m; sourceTree = "<group>"; };
 		DEFFF69718B120DA002A48CD /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
 		DEFFF69918B1210A002A48CD /* crash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crash.wav; sourceTree = "<group>"; };
-		DEFFF69E18B12E80002A48CD /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,12 +251,13 @@
 			children = (
 				DEF4643018B2240000EDF3EA /* EKMusicPlayer.h */,
 				DEF4642F18B2240000EDF3EA /* EKMusicPlayer.m */,
-				DEFFF69E18B12E80002A48CD /* Utils.h */,
 				185C4E5A18B1011F00F6DBCE /* Constants.h */,
 				185C4E5B18B1255300F6DBCE /* EAScoresStoreManager.h */,
 				185C4E5C18B1255300F6DBCE /* EAScoresStoreManager.m */,
 				DE41575618B401A2008E0BC0 /* EAGameCenterProvider.h */,
 				DE41575718B401A2008E0BC0 /* EAGameCenterProvider.m */,
+				DE582F4F18B694DB001D345B /* EAUtils.h */,
+				DE582F5018B694DB001D345B /* EAUtils.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				DEC7B4C218AE9AD100724DE7 /* EAGameViewController.m in Sources */,
 				185C4E5918AFF5A900F6DBCE /* EABaseGameScene.m in Sources */,
 				DEF4643E18B25A6700EDF3EA /* EAScrollingSprite.m in Sources */,
+				DE582F5118B694DB001D345B /* EAUtils.m in Sources */,
 				DE41575818B401A2008E0BC0 /* EAGameCenterProvider.m in Sources */,
 				DEC7B4BC18AE99FB00724DE7 /* EAUFOGameScene.m in Sources */,
 				DEC7B4BF18AE9A1100724DE7 /* EARocketGameScene.m in Sources */,
