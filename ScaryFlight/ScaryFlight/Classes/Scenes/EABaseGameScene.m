@@ -135,7 +135,7 @@
     self.topScoreLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
     self.topScoreLabel.fontSize = 30.0f;
     self.topScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
-    self.topScoreLabel.fontColor = [SKColor yellowColor];
+    self.topScoreLabel.fontColor = [SKColor cyanColor];
     self.topScoreLabel.position = CGPointMake(self.size.width - 50.0f, self.size.height - 52.0f);
     self.topScoreLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.topScores];
     self.topScoreLabel.zPosition = 1.0f;
@@ -178,7 +178,8 @@
     self.pipeBottom = [EAObstacle obstacleWithImageNamed:[self bottomObstacleImage]];
     CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
     [self.pipeBottom moveObstacleWithScale:(pipeBottomHeight - kGroundHeight) / kPipeWidth];
-    self.pipeBottom.position = CGPointMake(self.size.width + (self.pipeBottom.size.width / 2.0f), (self.pipeBottom.size.height / 2.0f) + (kGroundHeight - 2.0f));
+    self.pipeBottom.position = CGPointMake(self.size.width + (self.pipeBottom.size.width / 2.0f),
+                                           (self.pipeBottom.size.height / 2.0f) + (kGroundHeight - 2.0f));
     [self addChild:self.pipeBottom];
 }
 

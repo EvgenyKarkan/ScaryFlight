@@ -59,6 +59,8 @@ static uint32_t const kGroundCategory = 0x1 << 2;
     [self.clouds update:currentTime];
 }
 
+#pragma mark - Overriden private API
+
 - (NSString *)backgroundImageName
 {
     return @"City";

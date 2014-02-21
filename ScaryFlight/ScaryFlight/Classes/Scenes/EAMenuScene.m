@@ -31,14 +31,12 @@
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
-    //[self createBackgroundAnimation];
-    self.backgroundColor = [SKColor orangeColor];
     
     self.ufoScene = [[EAUFOGameScene alloc] initWithSize:self.size];
     self.rocketScene = [[EARocketGameScene alloc] initWithSize:self.size];
     
     [self provideBackground];
-    [self addLabel];
+    [self addLabels];
     [self createSpriteButtons];
     
     [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"MenuSound.mp3"];
@@ -83,8 +81,8 @@
 {
     self.ufoButton = [EAHero spriteNodeWithImageNamed:@"UFO_new_hero"];
     self.ufoButton.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
-    [self.ufoButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame),
-                                            CGRectGetMidY(self.view.frame) + 150.0f)];
+    [self.ufoButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame) - 70.0f,
+                                            CGRectGetMidY(self.view.frame) - 60.0f)];
     
     NSArray *animationFrames = @[[SKTexture textureWithImageNamed:@"UFO_new_hero"],
                                  [SKTexture textureWithImageNamed:@"UFO_new_hero2"]];
@@ -100,9 +98,9 @@
 - (void)createRocketButton
 {
     self.rocketButton = [EAHero spriteNodeWithImageNamed:@"Rocket"];
-    self.rocketButton.size = CGSizeMake(101.0f / 2.0f, 75.0f / 2.0f);
-    [self.rocketButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame) - 2.5f,
-                                               CGRectGetMidY(self.view.frame) + 50.0f)];
+    self.rocketButton.size = CGSizeMake(111.0f / 2.0f, 85.0f / 2.0f);
+    [self.rocketButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame) + 70.0f,
+                                               CGRectGetMidY(self.view.frame) - 60.0f)];
     
     NSArray *animationFrames = @[[SKTexture textureWithImageNamed:@"Rocket"],
                                  [SKTexture textureWithImageNamed:@"Rocket2"]];
@@ -117,10 +115,9 @@
 
 - (void)createRankButton
 {
-    self.rankButton = [EAHero spriteNodeWithImageNamed:@"Rank"];
-    [self.rankButton setPosition:CGPointMake(CGRectGetMidX(self.view.frame) - 2.5f,
-                                             CGRectGetMidY(self.view.frame) - 50.0f)];
-    
+    self.rankButton = [EAHero spriteNodeWithImageNamed:@"Places"];
+    self.rankButton.position = CGPointMake(CGRectGetMidX(self.view.frame) - self.rankButton.frame.size.width / 128.0f,
+                                           self.position.y + 25.0f);
     [self addChild:self.rankButton];
 }
 
@@ -133,16 +130,31 @@
     [self addChild:background];
 }
 
-- (void)addLabel
+- (void)addLabels
 {
-    SKLabelNode *topScoreLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
-    topScoreLabel.text = @"Scary Flight";
-    topScoreLabel.fontSize = 20.0f; //iPad support add
-    topScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-    topScoreLabel.fontColor = [SKColor whiteColor];
-    topScoreLabel.position = CGPointMake(self.position.x + 45.0f, self.size.height - 100.0f);
-
-    [self addChild:topScoreLabel];
+    SKLabelNode *titleLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
+    titleLabel.text = @"Scary";
+    titleLabel.fontSize = 50.0f;
+    titleLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    titleLabel.fontColor = [SKColor yellowColor];
+    titleLabel.position = CGPointMake(self.frame.origin.x + 35.0f, self.frame.size.height - 110.0f);
+    [self addChild:titleLabel];
+    
+    SKLabelNode *titleLabel2 = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
+    titleLabel2.text = @"Flight";
+    titleLabel2.fontSize = 50.0f;
+    titleLabel2.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    titleLabel2.fontColor = [SKColor yellowColor];
+    titleLabel2.position = CGPointMake(self.frame.origin.x + 15.0f, self.frame.size.height - 170.0f);
+    [self addChild:titleLabel2];
+    
+    SKLabelNode *titleLabel3 = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
+    titleLabel3.text = @"select flight";
+    titleLabel3.fontSize = 12.0f;
+    titleLabel3.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+    titleLabel3.fontColor = [SKColor cyanColor];
+    titleLabel3.position = CGPointMake(CGRectGetMidX(self.view.frame) - titleLabel3.frame.size.width / 2.0f, self.frame.size.height - 250.0f);
+    [self addChild:titleLabel3];
 }
 
 @end

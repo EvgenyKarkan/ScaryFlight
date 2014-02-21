@@ -19,6 +19,8 @@
 
 @implementation EARocketGameScene;
 
+#pragma mark - Overriden SKScene API
+
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
@@ -29,6 +31,8 @@
     [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"SpaceFlightSound.mp3"];
     [[EKMusicPlayer sharedInstance] setupNumberOfLoops:1000];
 }
+
+#pragma mark - Private API
 
 - (void)addBottom
 {
@@ -58,6 +62,8 @@
     [pipeBottom moveObstacleWithScale:(pipeBottomHeight) / kPipeWidth];
     pipeBottom.position = CGPointMake(self.size.width + (pipeBottom.size.width / 2.0f), (pipeBottom.size.height / 2.0f));
 }
+
+#pragma mark - Overriden private API
 
 - (NSString *)backgroundImageName
 {
