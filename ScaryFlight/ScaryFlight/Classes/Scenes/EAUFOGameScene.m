@@ -59,7 +59,7 @@ static uint32_t const kGroundCategory = 0x1 << 2;
     [self.clouds update:currentTime];
 }
 
-#pragma mark - Overriden private API
+#pragma mark - Overriden inherited private API
 
 - (NSString *)backgroundImageName
 {

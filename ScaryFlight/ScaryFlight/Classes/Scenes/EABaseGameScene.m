@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "EAScoresStoreManager.h"
 #import "EAGameCenterProvider.h"
+#import "EAUtils.h"
 
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
 
@@ -24,6 +25,7 @@
 @property (nonatomic ,strong) EAObstacle  *lastPipe;
 @property (nonatomic ,strong) EAObstacle  *pipeTop;
 @property (nonatomic ,strong) EAObstacle  *pipeBottom;
+@property (nonatomic ,assign) BOOL         topScoreBeated;
 
 @end
 
@@ -46,16 +48,17 @@
     [self makeObstaclesLoop];
     
     self.topScores = [EAScoresStoreManager getTopScore];
+    self.topScoreLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.topScores];
     
     self.scoreSound = [SKAction playSoundFileNamed:@"tick.mp3" waitForCompletion:NO];
     self.crashSound = [SKAction playSoundFileNamed:@"crash.wav" waitForCompletion:NO];
+    
+    self.topScoreBeated = NO;
 }
 
 - (void)update:(NSTimeInterval)currentTime
 {
     [super update:currentTime];
-    
-    self.topScoreLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.topScores];
     
     if (self.pipeTop.position.x > 0 && self.lastPipe != self.pipeTop) {
         if (self.hero.position.x > self.pipeTop.position.x) {
@@ -67,17 +70,11 @@
             }
             
             if (self.scores > self.topScores && self.topScores > 0) {
-                __weak typeof(self) weakSelf = self;
-                
-                static dispatch_once_t onceToken;
-                dispatch_once(&onceToken, ^{
-                    [weakSelf runAction:[SKAction playSoundFileNamed:@"Bonus.wav" waitForCompletion:NO]];
-                });
                 [[EAGameCenterProvider sharedInstance] reportScore:self.scores];
             }
             self.scoresLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.scores];
             self.lastPipe = self.pipeTop;
-            [self runAction:self.scoreSound];
+                //sound
         }
     }
 }
@@ -227,7 +224,7 @@
     }
 }
 
-#pragma mark - Private API
+#pragma mark - Overriden inherited private API
 
 - (NSString *)heroImageStateOne
 {
@@ -252,6 +249,21 @@
 - (NSString *)backgroundImageName
 {
     return nil;
+}
+
+#pragma mark - self.scores setter
+
+- (void)setScores:(NSUInteger)scores
+{
+    _scores = scores;
+    
+    if (self.topScoreBeated == NO) {
+        if (_scores > self.topScores && self.topScores > 0) {
+            [self runAction:[SKAction playSoundFileNamed:@"Bonus.wav"
+                                       waitForCompletion:NO]];
+            self.topScoreBeated = !self.topScoreBeated;
+        }
+    }
 }
 
 @end

@@ -13,6 +13,7 @@
 #import "EAHero.h"
 #import "EAGameCenterProvider.h"
 #import "EAScoresStoreManager.h"
+#import "EAUtils.h"
 
 @interface EAMenuScene ()
 
@@ -60,7 +61,6 @@
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             [[EAGameCenterProvider sharedInstance] reportScore:[EAScoresStoreManager getTopScore]];
-            NSLog(@"%d %s", __LINE__, __PRETTY_FUNCTION__);
         });
     }
 }
