@@ -9,6 +9,8 @@
 
 @interface EAGameCenterProvider : NSObject 
 
+@property (nonatomic, assign) BOOL userAuthenticated;
+
 + (EAGameCenterProvider *)sharedInstance;
 - (void)authenticateLocalUser;
 - (void)reportScore:(NSUInteger)score;

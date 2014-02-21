@@ -14,7 +14,6 @@ static NSString * const kEALeaderboardID = @"BestScoreID";
 @interface EAGameCenterProvider () <GKGameCenterControllerDelegate>
 
 @property (nonatomic, assign) BOOL           gameCenterAvailable;
-@property (nonatomic, assign) BOOL           userAuthenticated;
 @property (nonatomic, strong) EAAppDelegate *appDelegate;
 
 @end

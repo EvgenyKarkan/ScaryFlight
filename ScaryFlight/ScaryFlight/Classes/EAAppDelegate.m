@@ -18,10 +18,9 @@
     self.gameViewController = [[EAGameViewController alloc] init];
     self.window.rootViewController = self.gameViewController;
     self.window.backgroundColor = [UIColor whiteColor];
-    
     [self.window makeKeyAndVisible];
     
-        //[[EAGameCenterProvider sharedInstance] authenticateLocalUser];
+    [[EAGameCenterProvider sharedInstance] authenticateLocalUser];
     
     return YES;
 }

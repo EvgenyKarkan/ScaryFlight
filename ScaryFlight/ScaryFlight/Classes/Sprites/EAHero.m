@@ -23,7 +23,7 @@ static CGFloat const kHeroDirection = 28.5f;
                                                     kHeroDirection * sinf(heroDirection))];
     }
     
-    [self runAction:[SKAction playSoundFileNamed:@"Jump.wav" waitForCompletion:NO]];
+    [self runAction:[SKAction playSoundFileNamed:@"Jump.wav" waitForCompletion:YES]];
 }
 
 @end

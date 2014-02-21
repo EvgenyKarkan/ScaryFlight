@@ -12,6 +12,7 @@
 #import "EKMusicPlayer.h"
 #import "EAHero.h"
 #import "EAGameCenterProvider.h"
+#import "EAScoresStoreManager.h"
 
 @interface EAMenuScene ()
 
@@ -41,13 +42,27 @@
     
     [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"MenuSound.mp3"];
     [[EKMusicPlayer sharedInstance] setupNumberOfLoops:1000];
-}
+    
+    }
 
 - (void)willMoveFromView:(SKView *)view
 {
     [super willMoveFromView:view];
-    
     [[EKMusicPlayer sharedInstance] stop];
+}
+
+- (void)update:(NSTimeInterval)currentTime
+{
+    [super update:currentTime];
+    
+        //check & handle if player get top score during unauthorized game center state
+    if ([EAScoresStoreManager getTopScore] > 0 && [EAGameCenterProvider sharedInstance].userAuthenticated) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [[EAGameCenterProvider sharedInstance] reportScore:[EAScoresStoreManager getTopScore]];
+            NSLog(@"%d %s", __LINE__, __PRETTY_FUNCTION__);
+        });
+    }
 }
 
 #pragma mark - UIResponder overriden API
