@@ -11,6 +11,6 @@
 
 @property (nonatomic, assign) CGFloat scrollingSpeed;
 
-- (void) update:(NSTimeInterval)currentTime;
+- (void)update:(NSTimeInterval)currentTime;
 
 @end

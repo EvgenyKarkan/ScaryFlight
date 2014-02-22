@@ -66,7 +66,6 @@
             
             if (self.topScores == 0) {  // only if it is first game start
                 [[EAGameCenterProvider sharedInstance] reportScore:self.scores];
-                NSLog(@"First game start");
             }
             
             if (self.scores > self.topScores && self.topScores > 0) {
@@ -74,7 +73,7 @@
             }
             self.scoresLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.scores];
             self.lastPipe = self.pipeTop;
-                //sound
+            [self runAction:self.scoreSound];
         }
     }
 }
