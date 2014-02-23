@@ -29,7 +29,7 @@
     [self addBottom];
     
     [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"SpaceFlightSound.mp3"];
-    [[EKMusicPlayer sharedInstance] setupNumberOfLoops:1000];
+    [[EKMusicPlayer sharedInstance] setupNumberOfLoops:-1];
 }
 
 #pragma mark - Private API

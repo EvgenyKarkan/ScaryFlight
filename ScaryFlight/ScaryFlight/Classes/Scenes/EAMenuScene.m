@@ -42,7 +42,7 @@
     [self createSpriteButtons];
     
     [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"MenuSound.mp3"];
-    [[EKMusicPlayer sharedInstance] setupNumberOfLoops:1000];
+    [[EKMusicPlayer sharedInstance] setupNumberOfLoops:-1];
     
     }
 

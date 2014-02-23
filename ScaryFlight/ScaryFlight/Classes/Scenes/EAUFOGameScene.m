@@ -45,7 +45,7 @@ static uint32_t const kGroundCategory = 0x1 << 2;
     [self addChild:self.ground];
     
     [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"CityFlightSound.mp3"];
-    [[EKMusicPlayer sharedInstance] setupNumberOfLoops:1000];
+    [[EKMusicPlayer sharedInstance] setupNumberOfLoops:-1];
     
     self.clouds = [EAScrollingSprite spriteNodeWithImageNamed:@"Clouds"];
     self.clouds.position = CGPointMake(0, self.size.height - 15.0f);
