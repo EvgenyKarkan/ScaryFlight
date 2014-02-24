@@ -158,7 +158,7 @@
     [self addBottomPipe:centerY];
 }
 
-- (void)addTopPipe:(float)centerY
+- (void)addTopPipe:(CGFloat)centerY
 {
     self.pipeTop = [EAObstacle obstacleWithImageNamed:[self topObstacleImage]];
     CGFloat pipeTopHeight = centerY - (kPipeGap / 2.0f);
@@ -169,7 +169,7 @@
 
 #pragma mark - Public APi
 
-- (void)addBottomPipe:(float)centerY
+- (void)addBottomPipe:(CGFloat)centerY
 {
     self.pipeBottom = [EAObstacle obstacleWithImageNamed:[self bottomObstacleImage]];
     CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));

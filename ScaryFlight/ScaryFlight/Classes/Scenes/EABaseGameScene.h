@@ -13,6 +13,6 @@
 
 @property (nonatomic, strong) EAHero *hero;
 
-- (void)addBottomPipe:(float)centerY;
+- (void)addBottomPipe:(CGFloat)centerY;
 
 @end

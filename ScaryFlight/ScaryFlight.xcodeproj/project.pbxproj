@@ -64,7 +64,7 @@
 		185C4E5A18B1011F00F6DBCE /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = SOURCE_ROOT; };
 		185C4E5B18B1255300F6DBCE /* EAScoresStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAScoresStoreManager.h; sourceTree = "<group>"; };
 		185C4E5C18B1255300F6DBCE /* EAScoresStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAScoresStoreManager.m; sourceTree = "<group>"; };
-		DE044E4D18BBF358004CB425 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		DE044E4D18BBF358004CB425 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Warnings.xcconfig; path = Classes/Warnings.xcconfig; sourceTree = "<group>"; };
 		DE41575218B3F793008E0BC0 /* Jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Jump.wav; sourceTree = "<group>"; };
 		DE41575418B40107008E0BC0 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		DE41575618B401A2008E0BC0 /* EAGameCenterProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGameCenterProvider.h; sourceTree = "<group>"; };
@@ -234,6 +234,7 @@
 				DEC7B48118AE80E600724DE7 /* InfoPlist.strings */,
 				DEC7B48418AE80E600724DE7 /* main.m */,
 				DEC7B48618AE80E600724DE7 /* ScaryFlight-Prefix.pch */,
+				DE044E4D18BBF358004CB425 /* Warnings.xcconfig */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -259,7 +260,6 @@
 		DEC7B4A918AE876600724DE7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DE044E4D18BBF358004CB425 /* Warnings.xcconfig */,
 				DEC7B4AB18AE876600724DE7 /* EAAppDelegate.h */,
 				DEC7B4AC18AE876600724DE7 /* EAAppDelegate.m */,
 				DEC7B4AF18AE876600724DE7 /* Sprites */,
@@ -594,7 +594,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yevgeniy Karkan (3YZNAVUC8R)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScaryFlight/ScaryFlight-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -607,7 +607,7 @@
 					"/Users/karkanevgenij/Development/ScaryFlight/ScaryFlight/ScaryFlight/Third\\ party\\ libs/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "891FF052-D502-4D8A-BBF7-0A5AA247F20B";
+				PROVISIONING_PROFILE = "F6407BD8-15AF-4261-A2CD-CEC0E5E3CC1E";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -616,6 +616,7 @@
 		};
 		DEC7B4A318AE80E600724DE7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE044E4D18BBF358004CB425 /* Warnings.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -626,7 +627,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yevgeniy Karkan (7VW32GE5L3)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScaryFlight/ScaryFlight-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
@@ -640,7 +641,7 @@
 					"/Users/karkanevgenij/Development/ScaryFlight/ScaryFlight/ScaryFlight/Third\\ party\\ libs/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "891FF052-D502-4D8A-BBF7-0A5AA247F20B";
+				PROVISIONING_PROFILE = "D3595895-4F37-4722-B091-D10697A6DC35";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
