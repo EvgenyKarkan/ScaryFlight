@@ -13,7 +13,7 @@
 
 + (float)randomFloatWithMin:(CGFloat)min max:(CGFloat)max
 {
-    return floor(((rand() % RAND_MAX) / (RAND_MAX * 1.0)) * (max - min) + min);
+    return (float)floor(((rand() % RAND_MAX) / (RAND_MAX * 1.0)) * (max - min) + min);
 }
 
 + (BOOL)isIPhone5
@@ -33,6 +33,7 @@
     }
     
     return result;
+    
 }
 
 @end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		185C4E5918AFF5A900F6DBCE /* EABaseGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C4E5818AFF5A900F6DBCE /* EABaseGameScene.m */; };
 		185C4E5D18B1255300F6DBCE /* EAScoresStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C4E5C18B1255300F6DBCE /* EAScoresStoreManager.m */; };
+		DE044E4E18BBF358004CB425 /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DE044E4D18BBF358004CB425 /* Warnings.xcconfig */; };
 		DE41575318B3F793008E0BC0 /* Jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE41575218B3F793008E0BC0 /* Jump.wav */; };
 		DE41575518B40107008E0BC0 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE41575418B40107008E0BC0 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DE41575818B401A2008E0BC0 /* EAGameCenterProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DE41575718B401A2008E0BC0 /* EAGameCenterProvider.m */; };
@@ -63,6 +64,7 @@
 		185C4E5A18B1011F00F6DBCE /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = SOURCE_ROOT; };
 		185C4E5B18B1255300F6DBCE /* EAScoresStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAScoresStoreManager.h; sourceTree = "<group>"; };
 		185C4E5C18B1255300F6DBCE /* EAScoresStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAScoresStoreManager.m; sourceTree = "<group>"; };
+		DE044E4D18BBF358004CB425 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		DE41575218B3F793008E0BC0 /* Jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Jump.wav; sourceTree = "<group>"; };
 		DE41575418B40107008E0BC0 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		DE41575618B401A2008E0BC0 /* EAGameCenterProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGameCenterProvider.h; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		DEC7B4A918AE876600724DE7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DE044E4D18BBF358004CB425 /* Warnings.xcconfig */,
 				DEC7B4AB18AE876600724DE7 /* EAAppDelegate.h */,
 				DEC7B4AC18AE876600724DE7 /* EAAppDelegate.m */,
 				DEC7B4AF18AE876600724DE7 /* Sprites */,
@@ -405,6 +408,7 @@
 				DEFFF69A18B1210A002A48CD /* crash.wav in Resources */,
 				DEAB0D0518B01FDC00DD4A17 /* PressStart2P.ttf in Resources */,
 				DE41575318B3F793008E0BC0 /* Jump.wav in Resources */,
+				DE044E4E18BBF358004CB425 /* Warnings.xcconfig in Resources */,
 				DEF4642C18B21E5100EDF3EA /* SpaceFlightSound.mp3 in Resources */,
 				DEC7B48318AE80E600724DE7 /* InfoPlist.strings in Resources */,
 				DEF4643B18B2485C00EDF3EA /* Bonus.wav in Resources */,
@@ -579,6 +583,7 @@
 		};
 		DEC7B4A218AE80E600724DE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE044E4D18BBF358004CB425 /* Warnings.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -592,7 +597,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScaryFlight/ScaryFlight-Prefix.pch";
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
+				GCC_WARN_SHADOW = YES;
 				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				INFOPLIST_FILE = "ScaryFlight/ScaryFlight-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -623,7 +630,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScaryFlight/ScaryFlight-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
+				GCC_WARN_SHADOW = YES;
 				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				INFOPLIST_FILE = "ScaryFlight/ScaryFlight-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

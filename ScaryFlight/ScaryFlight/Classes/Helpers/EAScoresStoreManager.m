@@ -25,7 +25,7 @@ static  NSString * kTopScore= @"kTopScore";
 {
     NSString *savedValue = [[NSUserDefaults standardUserDefaults] stringForKey:kTopScore];
     
-    return [savedValue integerValue];
+    return (NSUInteger)[savedValue integerValue];
 }
 
 @end

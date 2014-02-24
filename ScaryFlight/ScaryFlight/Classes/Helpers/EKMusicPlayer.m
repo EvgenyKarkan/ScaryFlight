@@ -116,7 +116,7 @@ static id _sharedInstance;
     self.player.currentTime = 0.0f;
 }
 
-- (void)setupNumberOfLoops:(NSUInteger)loops
+- (void)setupNumberOfLoops:(NSInteger)loops
 {
     self.player.numberOfLoops = loops;
 }

@@ -17,6 +17,6 @@
 - (void)pause;
 - (void)play;
 - (void)stop;
-- (void)setupNumberOfLoops:(NSUInteger)loops;
+- (void)setupNumberOfLoops:(NSInteger)loops;
 
 @end
