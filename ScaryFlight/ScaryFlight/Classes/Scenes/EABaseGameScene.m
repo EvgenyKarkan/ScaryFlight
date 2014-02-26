@@ -223,7 +223,7 @@
     }
 }
 
-#pragma mark - Overriden inherited private API
+#pragma mark - Private API
 
 - (NSString *)heroImageStateOne
 {
