@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		185C4E5918AFF5A900F6DBCE /* EABaseGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C4E5818AFF5A900F6DBCE /* EABaseGameScene.m */; };
 		185C4E5D18B1255300F6DBCE /* EAScoresStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C4E5C18B1255300F6DBCE /* EAScoresStoreManager.m */; };
+		DE03C8DA18BDF4D9003F29D8 /* Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = DE03C8D818BDF4D9003F29D8 /* Screen.png */; };
+		DE03C8DB18BDF4D9003F29D8 /* Screen2.png in Resources */ = {isa = PBXBuildFile; fileRef = DE03C8D918BDF4D9003F29D8 /* Screen2.png */; };
 		DE41575318B3F793008E0BC0 /* Jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE41575218B3F793008E0BC0 /* Jump.wav */; };
 		DE41575518B40107008E0BC0 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE41575418B40107008E0BC0 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DE41575818B401A2008E0BC0 /* EAGameCenterProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DE41575718B401A2008E0BC0 /* EAGameCenterProvider.m */; };
@@ -63,6 +65,8 @@
 		185C4E5A18B1011F00F6DBCE /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = SOURCE_ROOT; };
 		185C4E5B18B1255300F6DBCE /* EAScoresStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAScoresStoreManager.h; sourceTree = "<group>"; };
 		185C4E5C18B1255300F6DBCE /* EAScoresStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAScoresStoreManager.m; sourceTree = "<group>"; };
+		DE03C8D818BDF4D9003F29D8 /* Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen.png; sourceTree = "<group>"; };
+		DE03C8D918BDF4D9003F29D8 /* Screen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen2.png; sourceTree = "<group>"; };
 		DE044E5018BC09BA004CB425 /* RELEASE_settings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = RELEASE_settings.xcconfig; sourceTree = "<group>"; };
 		DE044E5118BC09D9004CB425 /* DEBUG_settings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DEBUG_settings.xcconfig; sourceTree = "<group>"; };
 		DE41575218B3F793008E0BC0 /* Jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Jump.wav; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 		DEAB0D0318B01FDC00DD4A17 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DE03C8D818BDF4D9003F29D8 /* Screen.png */,
+				DE03C8D918BDF4D9003F29D8 /* Screen2.png */,
 				DE41575218B3F793008E0BC0 /* Jump.wav */,
 				DEF4643A18B2485C00EDF3EA /* Bonus.wav */,
 				DEF4643418B2320C00EDF3EA /* CityFlightSound.mp3 */,
@@ -234,8 +240,8 @@
 				DEC7B48118AE80E600724DE7 /* InfoPlist.strings */,
 				DEC7B48418AE80E600724DE7 /* main.m */,
 				DEC7B48618AE80E600724DE7 /* ScaryFlight-Prefix.pch */,
-				DE044E5018BC09BA004CB425 /* RELEASE_settings.xcconfig */,
 				DE044E5118BC09D9004CB425 /* DEBUG_settings.xcconfig */,
+				DE044E5018BC09BA004CB425 /* RELEASE_settings.xcconfig */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -404,12 +410,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE03C8DA18BDF4D9003F29D8 /* Screen.png in Resources */,
 				DEFFF69818B120DA002A48CD /* tick.mp3 in Resources */,
 				DEF4643518B2320C00EDF3EA /* CityFlightSound.mp3 in Resources */,
 				DEFFF69A18B1210A002A48CD /* crash.wav in Resources */,
 				DEAB0D0518B01FDC00DD4A17 /* PressStart2P.ttf in Resources */,
 				DE41575318B3F793008E0BC0 /* Jump.wav in Resources */,
 				DEF4642C18B21E5100EDF3EA /* SpaceFlightSound.mp3 in Resources */,
+				DE03C8DB18BDF4D9003F29D8 /* Screen2.png in Resources */,
 				DEC7B48318AE80E600724DE7 /* InfoPlist.strings in Resources */,
 				DEF4643B18B2485C00EDF3EA /* Bonus.wav in Resources */,
 				DEF4642E18B21E9600EDF3EA /* MenuSound.mp3 in Resources */,
