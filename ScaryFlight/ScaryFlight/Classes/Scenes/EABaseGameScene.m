@@ -152,7 +152,8 @@
 - (void)addObstacle
 {
      // random game complexity. Changing hole position beetwen pipes
-    CGFloat centerY = [EAUtils randomFloatWithMin:kPipeGap * 2.0f max:(self.size.height - kPipeGap * 2.0f)];
+    CGFloat delta = 2.0f;
+    CGFloat centerY = [EAUtils randomFloatWithMin:kPipeGap * delta max:(self.size.height - kPipeGap * delta)];
     
     [self addTopPipe:centerY];
     [self addBottomPipe:centerY];
@@ -223,7 +224,7 @@
     }
 }
 
-#pragma mark - Private API
+#pragma mark - Private API to override in subclasses
 
 - (NSString *)heroImageStateOne
 {
