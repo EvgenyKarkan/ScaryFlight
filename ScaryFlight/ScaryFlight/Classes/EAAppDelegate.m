@@ -23,8 +23,8 @@
     
     [[EAGameCenterProvider sharedInstance] authenticateLocalUser];
     
-        //[Flurry setCrashReportingEnabled:YES];
-        //[Flurry startSession:@""];
+//        [Flurry setCrashReportingEnabled:YES];
+//        [Flurry startSession:@""];
     
     return YES;
 }
