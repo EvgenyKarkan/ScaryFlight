@@ -204,7 +204,9 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for (UITouch *touch in touches) {
-        [self.hero flyWithYLimit:self.size.height];
+        if (touch != nil) {
+            [self.hero flyWithYLimit:self.size.height];
+        }
     }
 }
 

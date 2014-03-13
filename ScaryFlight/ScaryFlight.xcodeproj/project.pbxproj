@@ -610,6 +610,7 @@
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				INFOPLIST_FILE = "ScaryFlight/ScaryFlight-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/karkanevgenij/Development/ScaryFlight/ScaryFlight/ScaryFlight/Third\\ party\\ libs/Flurry",
@@ -644,6 +645,7 @@
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				INFOPLIST_FILE = "ScaryFlight/ScaryFlight-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/karkanevgenij/Development/ScaryFlight/ScaryFlight/ScaryFlight/Third\\ party\\ libs/Flurry",
