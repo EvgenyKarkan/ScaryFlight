@@ -52,12 +52,10 @@
 - (void)addBottomPipe:(float)centerY
 {
     [super addBottomPipe:centerY];
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-    EAObstacle *pipeBottom = [self performSelector:@selector(pipeBottom)];
-#pragma clang diagnostic pop
     
+    EAObstacle *pipeBottom = [EAObstacle obstacleWithImageNamed:[self bottomObstacleImage]];
+    [self addChild:pipeBottom];
+
     CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
     [pipeBottom moveObstacleWithScale:(pipeBottomHeight) / kPipeWidth];
     pipeBottom.position = CGPointMake(self.size.width + (pipeBottom.size.width / 2.0f), (pipeBottom.size.height / 2.0f));
