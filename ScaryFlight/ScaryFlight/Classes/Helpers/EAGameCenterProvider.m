@@ -53,7 +53,7 @@ static id _sharedInstance = nil;
 
 + (id)new
 {
-    NSException *exception = [[NSException alloc] initWithName:@"Do not use +new method"
+    NSException *exception = [[NSException alloc] initWithName:@"Don't use +new method"
                                                         reason:@"Use +sharedInstance instead"
                                                       userInfo:nil];
     [exception raise];
@@ -97,11 +97,11 @@ static id _sharedInstance = nil;
 - (void)authenticationChanged
 {
     if ([GKLocalPlayer localPlayer].isAuthenticated && !self.userAuthenticated) {
-            //NSLog(@"Authentication changed: player authenticated.");
+            NSLog(@"Authentication changed: player authenticated.");
         self.userAuthenticated = YES;
     }
     else if (![GKLocalPlayer localPlayer].isAuthenticated && self.userAuthenticated) {
-            //NSLog(@"Authentication changed: player not authenticated");
+            NSLog(@"Authentication changed: player not authenticated");
         self.userAuthenticated = NO;
     }
 }
@@ -123,9 +123,9 @@ static id _sharedInstance = nil;
             }
         };
     }
-//    else {
-//        NSLog(@"Already authenticated!");
-//    }
+    else {
+        NSLog(@"Already authenticated!");
+    }
 }
 
 - (void)reportScore:(NSUInteger)score
@@ -137,13 +137,13 @@ static id _sharedInstance = nil;
         [GKScore reportScores:@[scoreToReport] withCompletionHandler: ^(NSError *error) {
             NSParameterAssert(error == nil);
             if (error != nil) {
-                    //NSLog(@"Error occured: %@", [error localizedDescription]);
+                NSLog(@"Error occured: %@", [error localizedDescription]);
             }
         }];
     }
-//    else {
-//        NSLog(@"Score is not reported: player not authenticated");
-//    }
+    else {
+        NSLog(@"Score is not reported: player not authenticated");
+    }
 }
 
 - (void)showLeaderboard
