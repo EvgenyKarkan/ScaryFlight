@@ -132,7 +132,7 @@ static id _sharedInstance = nil;
 {
     if ([GKLocalPlayer localPlayer].isAuthenticated) {
         GKScore *scoreToReport = [[GKScore alloc] initWithLeaderboardIdentifier:kEALeaderboardID];
-        scoreToReport.value = score;
+        scoreToReport.value = (int64_t)score;
         
         [GKScore reportScores:@[scoreToReport] withCompletionHandler: ^(NSError *error) {
             NSParameterAssert(error == nil);
