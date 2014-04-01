@@ -18,3 +18,7 @@ Is it really hard to add to my сode the new design?
 Please, use my code as you wish, but please do not use icons, sounds and any kind of image assets.    
 Think difference ;)   
 Thanks! 
+
+
+Exclusive rights to distribute application through the Apple App Store belongs only to me.    
+Copyright (c) 2014 Evgeny Karkan. All rights reserved.
