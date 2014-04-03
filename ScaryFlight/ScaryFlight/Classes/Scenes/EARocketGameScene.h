@@ -10,6 +10,5 @@
 
 @interface EARocketGameScene : EABaseGameScene
 
-- (void)addBottomPipe:(float)centerY;
 
 @end
