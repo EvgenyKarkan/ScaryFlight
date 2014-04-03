@@ -49,19 +49,19 @@
     [self addChild:self.ground];
 }
 
-- (void)addBottomPipe:(float)centerY
+#pragma mark - Overriden private API
+
+- (void)addBottomPipe:(CGFloat)centerY
 {
     [super addBottomPipe:centerY];
     
     EAObstacle *pipeBottom = [EAObstacle obstacleWithImageNamed:[self bottomObstacleImage]];
     [self addChild:pipeBottom];
-
+    
     CGFloat pipeBottomHeight = self.size.height - (centerY + (kPipeGap / 2.0f));
     [pipeBottom moveObstacleWithScale:(pipeBottomHeight) / kPipeWidth];
     pipeBottom.position = CGPointMake(self.size.width + (pipeBottom.size.width / 2.0f), (pipeBottom.size.height / 2.0f));
 }
-
-#pragma mark - Overriden private API
 
 - (NSString *)backgroundImageName
 {
