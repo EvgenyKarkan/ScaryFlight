@@ -35,12 +35,20 @@ static uint32_t const kPipeCategory = 0x1 << 1;
     NSParameterAssert(scale > 0.0f);
     
     self.centerRect = CGRectMake(26.0f / kPipeWidth, 26.0f / kPipeWidth, 4.0f / kPipeWidth, 4.0f / kPipeWidth);
+    
+    if ([EAUtils isLessThanIOS_7_1]) {
+        self.yScale = scale;
+    }
+    
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
     self.physicsBody.affectedByGravity = NO;
     self.physicsBody.dynamic = NO;
     self.physicsBody.categoryBitMask = kPipeCategory;
     self.physicsBody.collisionBitMask = kHeroCategory;
-    self.yScale = scale;
+    
+    if ([EAUtils isGreaterThanOrEqualToIOS_7_1]) {
+        self.yScale = scale;
+    }
     
     SKAction *pipeAction = [SKAction moveToX:-(self.size.width / 2.0f) duration:kPipeSpeed];
     

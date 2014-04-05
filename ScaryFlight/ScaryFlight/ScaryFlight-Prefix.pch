@@ -16,4 +16,5 @@
     #import <SpriteKit/SpriteKit.h>
     #import <AVFoundation/AVFoundation.h>
     #import <GameKit/GameKit.h>
+    #import "EAUtils.h"
 #endif

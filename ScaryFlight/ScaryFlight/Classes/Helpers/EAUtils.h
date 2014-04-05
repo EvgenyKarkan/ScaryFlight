@@ -11,8 +11,8 @@
 
 + (float)randomFloatWithMin:(CGFloat)min max:(CGFloat)max;
 + (BOOL)isIPhone5;
-+ (BOOL)isIOS_7_0;
-+ (BOOL)isGreaterThanIOS_7_0;
++ (BOOL)isLessThanIOS_7_1;
++ (BOOL)isGreaterThanOrEqualToIOS_7_1;
 + (NSString *)assetName;
 
 @end
