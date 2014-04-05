@@ -19,6 +19,9 @@ Please, use my code as you wish, but please do not use icons, sounds and any kin
 Think difference ;)   
 Thanks! 
 
+##Download    
+[![alt tag](https://raw.github.com/EvgenyKarkan/ScaryFlight/master/ScaryFlight/ScaryFlight/Resources/Download_on_the_App_Store_Badge_US-UK_135x40.png)](https://itunes.apple.com/ua/app/scary-flight/id824428528?mt=8)
 
+##Copyright
 Exclusive rights to distribute application through the Apple App Store belongs only to me.    
-Copyright (c) 2014 Evgeny Karkan. All rights reserved.
+Copyright (c) 2014 Evgeny Karkan, Artem Kyslicyn. All rights reserved.
