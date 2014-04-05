@@ -153,7 +153,7 @@
 {
      // random game complexity. Changing hole position beetwen pipes
     CGFloat delta = 2.0f;
-    CGFloat centerY = [EAUtils randomFloatWithMin:kPipeGap * delta max:(self.size.height - kPipeGap * delta)];
+    CGFloat centerY = (CGFloat)[EAUtils randomFloatWithMin:kPipeGap * delta max:(self.size.height - kPipeGap * delta)];
     
     [self addTopPipe:centerY];
     [self addBottomPipe:centerY];
@@ -168,7 +168,7 @@
     [self addChild:self.pipeTop];
 }
 
-#pragma mark - Public APi
+#pragma mark - Public API
 
 - (void)addBottomPipe:(CGFloat)centerY
 {

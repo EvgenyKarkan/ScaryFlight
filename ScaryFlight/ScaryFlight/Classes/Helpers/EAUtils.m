@@ -21,6 +21,16 @@
     return (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)568.0f) < DBL_EPSILON);
 }
 
++ (BOOL)isLessThanIOS_7_1
+{
+    return [[[UIDevice currentDevice] systemVersion] compare:@"7.1" options:NSNumericSearch] == NSOrderedAscending;
+}
+
++ (BOOL)isGreaterThanOrEqualToIOS_7_1
+{
+    return [[[UIDevice currentDevice] systemVersion] compare:@"7.1" options:NSNumericSearch] != NSOrderedAscending;
+}
+
 + (NSString *)assetName
 {
     NSString *result = nil;
