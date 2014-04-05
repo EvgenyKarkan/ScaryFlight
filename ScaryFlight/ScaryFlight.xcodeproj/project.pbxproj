@@ -38,6 +38,7 @@
 		DEC7B4BF18AE9A1100724DE7 /* EARocketGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4BE18AE9A1100724DE7 /* EARocketGameScene.m */; };
 		DEC7B4C218AE9AD100724DE7 /* EAGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4C118AE9AD100724DE7 /* EAGameViewController.m */; };
 		DEC7B4C518AE9C0000724DE7 /* EAMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4C418AE9C0000724DE7 /* EAMenuScene.m */; };
+		DED7DB9118F058A00097DE49 /* Download_on_the_App_Store_Badge_US-UK_135x40.png in Resources */ = {isa = PBXBuildFile; fileRef = DED7DB9018F058A00097DE49 /* Download_on_the_App_Store_Badge_US-UK_135x40.png */; };
 		DEF4642C18B21E5100EDF3EA /* SpaceFlightSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DEF4642B18B21E5100EDF3EA /* SpaceFlightSound.mp3 */; };
 		DEF4642E18B21E9600EDF3EA /* MenuSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DEF4642D18B21E9600EDF3EA /* MenuSound.mp3 */; };
 		DEF4643118B2240000EDF3EA /* EKMusicPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF4642F18B2240000EDF3EA /* EKMusicPlayer.m */; };
@@ -109,6 +110,7 @@
 		DEC7B4C118AE9AD100724DE7 /* EAGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGameViewController.m; sourceTree = "<group>"; };
 		DEC7B4C318AE9C0000724DE7 /* EAMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAMenuScene.h; sourceTree = "<group>"; };
 		DEC7B4C418AE9C0000724DE7 /* EAMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAMenuScene.m; sourceTree = "<group>"; };
+		DED7DB9018F058A00097DE49 /* Download_on_the_App_Store_Badge_US-UK_135x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Download_on_the_App_Store_Badge_US-UK_135x40.png"; sourceTree = "<group>"; };
 		DEF4642B18B21E5100EDF3EA /* SpaceFlightSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SpaceFlightSound.mp3; sourceTree = "<group>"; };
 		DEF4642D18B21E9600EDF3EA /* MenuSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MenuSound.mp3; sourceTree = "<group>"; };
 		DEF4642F18B2240000EDF3EA /* EKMusicPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMusicPlayer.m; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		DEAB0D0318B01FDC00DD4A17 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DED7DB9018F058A00097DE49 /* Download_on_the_App_Store_Badge_US-UK_135x40.png */,
 				DE03C8D818BDF4D9003F29D8 /* Screen.png */,
 				DE03C8D918BDF4D9003F29D8 /* Screen2.png */,
 				DE41575218B3F793008E0BC0 /* Jump.wav */,
@@ -411,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE03C8DA18BDF4D9003F29D8 /* Screen.png in Resources */,
+				DED7DB9118F058A00097DE49 /* Download_on_the_App_Store_Badge_US-UK_135x40.png in Resources */,
 				DEFFF69818B120DA002A48CD /* tick.mp3 in Resources */,
 				DEF4643518B2320C00EDF3EA /* CityFlightSound.mp3 in Resources */,
 				DEFFF69A18B1210A002A48CD /* crash.wav in Resources */,
