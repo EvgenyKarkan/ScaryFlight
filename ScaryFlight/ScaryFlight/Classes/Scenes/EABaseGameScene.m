@@ -13,6 +13,7 @@
 #import "EAGameCenterProvider.h"
 #import "EAUtils.h"
 
+
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
 
 @property (nonatomic ,strong) SKLabelNode *topScoreLabel;
@@ -71,6 +72,7 @@
             if (self.scores > self.topScores && self.topScores > 0) {
                 [[EAGameCenterProvider sharedInstance] reportScore:self.scores];
             }
+            
             self.scoresLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.scores];
             self.lastPipe = self.pipeTop;
             [self runAction:self.scoreSound];
@@ -257,13 +259,16 @@
 
 - (void)setScores:(NSUInteger)scores
 {
-    _scores = scores;
+    NSParameterAssert(scores >= 0);
     
-    if (self.topScoreBeated == NO) {
-        if (_scores > self.topScores && self.topScores > 0) {
-            [self runAction:[SKAction playSoundFileNamed:@"Bonus.wav"
-                                       waitForCompletion:NO]];
-            self.topScoreBeated = !self.topScoreBeated;
+    if (_scores != scores) {
+        _scores = scores;
+        if (self.topScoreBeated == NO) {
+            if (_scores > self.topScores && self.topScores > 0) {
+                [self runAction:[SKAction playSoundFileNamed:@"Bonus.wav"
+                                           waitForCompletion:NO]];
+                self.topScoreBeated = !self.topScoreBeated;
+            }
         }
     }
 }
