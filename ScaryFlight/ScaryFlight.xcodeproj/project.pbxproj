@@ -15,9 +15,9 @@
 		DE41575518B40107008E0BC0 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE41575418B40107008E0BC0 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DE41575818B401A2008E0BC0 /* EAGameCenterProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DE41575718B401A2008E0BC0 /* EAGameCenterProvider.m */; };
 		DE582F5118B694DB001D345B /* EAUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DE582F5018B694DB001D345B /* EAUtils.m */; };
-		DE62D52A18B8AC5200473841 /* libFlurry_4.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE62D52918B8AC5200473841 /* libFlurry_4.3.2.a */; };
 		DE62D52C18B8AE3B00473841 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE62D52B18B8AE3B00473841 /* SystemConfiguration.framework */; };
 		DE62D52E18B8AE4900473841 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE62D52D18B8AE4900473841 /* Security.framework */; };
+		DE813BD719A69D9400C78739 /* libFlurry_4.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE813BD619A69D9400C78739 /* libFlurry_4.3.2.a */; };
 		DEAB0D0518B01FDC00DD4A17 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEAB0D0418B01FDC00DD4A17 /* PressStart2P.ttf */; };
 		DEC7B47918AE80E600724DE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC7B47818AE80E600724DE7 /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DEC7B47B18AE80E600724DE7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC7B47A18AE80E600724DE7 /* CoreGraphics.framework */; };
@@ -76,10 +76,10 @@
 		DE41575718B401A2008E0BC0 /* EAGameCenterProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGameCenterProvider.m; sourceTree = "<group>"; };
 		DE582F4F18B694DB001D345B /* EAUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAUtils.h; sourceTree = "<group>"; };
 		DE582F5018B694DB001D345B /* EAUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAUtils.m; sourceTree = "<group>"; };
-		DE62D52818B8AC5200473841 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		DE62D52918B8AC5200473841 /* libFlurry_4.3.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.2.a; sourceTree = "<group>"; };
 		DE62D52B18B8AE3B00473841 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DE62D52D18B8AE4900473841 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DE813BD519A69D9400C78739 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		DE813BD619A69D9400C78739 /* libFlurry_4.3.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.2.a; sourceTree = "<group>"; };
 		DEAB0D0418B01FDC00DD4A17 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
 		DEC7B47518AE80E600724DE7 /* ScaryFlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScaryFlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC7B47818AE80E600724DE7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -134,10 +134,10 @@
 				DE41575518B40107008E0BC0 /* GameKit.framework in Frameworks */,
 				DEF4643318B2242100EDF3EA /* AVFoundation.framework in Frameworks */,
 				DEC7B4A818AE81F500724DE7 /* SpriteKit.framework in Frameworks */,
+				DE813BD719A69D9400C78739 /* libFlurry_4.3.2.a in Frameworks */,
 				DEC7B47B18AE80E600724DE7 /* CoreGraphics.framework in Frameworks */,
 				DEC7B47D18AE80E600724DE7 /* UIKit.framework in Frameworks */,
 				DEC7B47918AE80E600724DE7 /* Foundation.framework in Frameworks */,
-				DE62D52A18B8AC5200473841 /* libFlurry_4.3.2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,16 +157,16 @@
 		DE62D52618B8AC5200473841 /* Third party libs */ = {
 			isa = PBXGroup;
 			children = (
-				DE62D52718B8AC5200473841 /* Flurry */,
+				DE813BD419A69D9400C78739 /* Flurry */,
 			);
 			path = "Third party libs";
 			sourceTree = "<group>";
 		};
-		DE62D52718B8AC5200473841 /* Flurry */ = {
+		DE813BD419A69D9400C78739 /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
-				DE62D52818B8AC5200473841 /* Flurry.h */,
-				DE62D52918B8AC5200473841 /* libFlurry_4.3.2.a */,
+				DE813BD519A69D9400C78739 /* Flurry.h */,
+				DE813BD619A69D9400C78739 /* libFlurry_4.3.2.a */,
 			);
 			path = Flurry;
 			sourceTree = "<group>";
@@ -626,13 +626,17 @@
 				GCC_PREFIX_HEADER = "ScaryFlight/ScaryFlight-Prefix.pch";
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
+				GCC_WARN_PEDANTIC = NO;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				INFOPLIST_FILE = "ScaryFlight/ScaryFlight-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/karkanevgenij/Development/ScaryFlight/ScaryFlight/ScaryFlight/Third\\ party\\ libs/Flurry",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/ScaryFlight/Third",
+					party,
+					libs/Flurry,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "F6407BD8-15AF-4261-A2CD-CEC0E5E3CC1E";
@@ -659,15 +663,20 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScaryFlight/ScaryFlight-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = NDEBUG;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
+				GCC_WARN_PEDANTIC = NO;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				INFOPLIST_FILE = "ScaryFlight/ScaryFlight-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/karkanevgenij/Development/ScaryFlight/ScaryFlight/ScaryFlight/Third\\ party\\ libs/Flurry",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/ScaryFlight/Third",
+					party,
+					libs/Flurry,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "D3595895-4F37-4722-B091-D10697A6DC35";

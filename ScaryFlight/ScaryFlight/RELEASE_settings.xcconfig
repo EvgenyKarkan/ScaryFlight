@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 
-
     //Warnings
 GCC_WARN_CHECK_SWITCH_STATEMENTS           = YES
 GCC_WARN_SHADOW                            = YES
@@ -28,12 +27,17 @@ GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS        = YES
 GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS          = YES
 GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO      = YES
 GCC_WARN_NON_VIRTUAL_DESTRUCTOR            = YES
+
 CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES
 CLANG_WARN_IMPLICIT_SIGN_CONVERSION        = YES
 CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION  = YES
-OTHER_CFLAGS                               = -Wextra -Wno-unused-parameter -Wunreachable-code
-GCC_TREAT_WARNINGS_AS_ERRORS               = NO //YES on DEBUG config
-RUN_CLANG_STATIC_ANALYZER                  = YES
 
-    //Turn off asserts on release
-GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS
+OTHER_CFLAGS                               = -Wextra -Wno-unused-parameter -Wunreachable-code -Wall -Werror -Wfloat-equal -Wundef
+GCC_TREAT_WARNINGS_AS_ERRORS               = NO //YES on DEBUG config
+
+GCC_OPTIMIZATION_LEVEL                            = s
+GCC_PREPROCESSOR_DEFINITIONS                      = _LIBCPP_VISIBLE= NDEBUG=1 NS_BLOCK_ASSERTIONS=1 //Turn off asserts on release
+GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = NDEBUG //turn off C asserts
+
+RUN_CLANG_STATIC_ANALYZER                  = YES
+CLANG_STATIC_ANALYZER_MODE                 = deep

@@ -63,8 +63,11 @@ static id _sharedInstance;
     NSParameterAssert(file != nil);
     
     NSError *error = nil;
-    self.player = [[AVAudioPlayer alloc] initWithData:file
-                                                error:&error];
+    
+    if (error == nil) {
+        self.player = [[AVAudioPlayer alloc] initWithData:file error:&error];
+    }
+    
     NSParameterAssert(error == nil);
     
     [self.player prepareToPlay];
@@ -82,7 +85,10 @@ static id _sharedInstance;
                                                               ofType:[fileNameWithExtension pathExtension]];
     
     NSURL *url = [[NSURL alloc] initFileURLWithPath:soundFilePath];
-    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    
+    if (error == nil) {
+        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    }
     
     NSParameterAssert(error == nil);
     
