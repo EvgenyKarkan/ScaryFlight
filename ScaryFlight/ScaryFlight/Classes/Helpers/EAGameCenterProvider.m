@@ -66,8 +66,8 @@ static id _sharedInstance = nil;
 - (id)init
 {
     if ((self = [super init])) {
-        self.gameCenterAvailable = [self isGameCenterAvailable];
-        self.appDelegate = (EAAppDelegate *)[[UIApplication sharedApplication] delegate];
+        _gameCenterAvailable = [self isGameCenterAvailable];
+        _appDelegate         = (EAAppDelegate *)[[UIApplication sharedApplication] delegate];
         
         if (self.gameCenterAvailable) {
             NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];

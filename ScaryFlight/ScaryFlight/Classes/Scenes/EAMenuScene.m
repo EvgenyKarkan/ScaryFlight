@@ -13,7 +13,7 @@
 #import "EAHero.h"
 #import "EAGameCenterProvider.h"
 #import "EAScoresStoreManager.h"
-#import "EAUtils.h"
+
 
 @interface EAMenuScene ()
 
