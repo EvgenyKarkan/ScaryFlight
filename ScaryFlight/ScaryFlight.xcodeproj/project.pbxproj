@@ -17,7 +17,6 @@
 		DE582F5118B694DB001D345B /* EAUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DE582F5018B694DB001D345B /* EAUtils.m */; };
 		DE62D52C18B8AE3B00473841 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE62D52B18B8AE3B00473841 /* SystemConfiguration.framework */; };
 		DE62D52E18B8AE4900473841 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE62D52D18B8AE4900473841 /* Security.framework */; };
-		DE813BD719A69D9400C78739 /* libFlurry_4.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE813BD619A69D9400C78739 /* libFlurry_4.3.2.a */; };
 		DEAB0D0518B01FDC00DD4A17 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEAB0D0418B01FDC00DD4A17 /* PressStart2P.ttf */; };
 		DEC7B47918AE80E600724DE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC7B47818AE80E600724DE7 /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DEC7B47B18AE80E600724DE7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC7B47A18AE80E600724DE7 /* CoreGraphics.framework */; };
@@ -78,8 +77,6 @@
 		DE582F5018B694DB001D345B /* EAUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAUtils.m; sourceTree = "<group>"; };
 		DE62D52B18B8AE3B00473841 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DE62D52D18B8AE4900473841 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		DE813BD519A69D9400C78739 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		DE813BD619A69D9400C78739 /* libFlurry_4.3.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.2.a; sourceTree = "<group>"; };
 		DEAB0D0418B01FDC00DD4A17 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
 		DEC7B47518AE80E600724DE7 /* ScaryFlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScaryFlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC7B47818AE80E600724DE7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -134,7 +131,6 @@
 				DE41575518B40107008E0BC0 /* GameKit.framework in Frameworks */,
 				DEF4643318B2242100EDF3EA /* AVFoundation.framework in Frameworks */,
 				DEC7B4A818AE81F500724DE7 /* SpriteKit.framework in Frameworks */,
-				DE813BD719A69D9400C78739 /* libFlurry_4.3.2.a in Frameworks */,
 				DEC7B47B18AE80E600724DE7 /* CoreGraphics.framework in Frameworks */,
 				DEC7B47D18AE80E600724DE7 /* UIKit.framework in Frameworks */,
 				DEC7B47918AE80E600724DE7 /* Foundation.framework in Frameworks */,
@@ -154,23 +150,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DE62D52618B8AC5200473841 /* Third party libs */ = {
-			isa = PBXGroup;
-			children = (
-				DE813BD419A69D9400C78739 /* Flurry */,
-			);
-			path = "Third party libs";
-			sourceTree = "<group>";
-		};
-		DE813BD419A69D9400C78739 /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				DE813BD519A69D9400C78739 /* Flurry.h */,
-				DE813BD619A69D9400C78739 /* libFlurry_4.3.2.a */,
-			);
-			path = Flurry;
-			sourceTree = "<group>";
-		};
 		DEAB0D0318B01FDC00DD4A17 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,7 +210,6 @@
 				DEC7B48A18AE80E600724DE7 /* Images.xcassets */,
 				DEC7B47F18AE80E600724DE7 /* Supporting Files */,
 				DEAB0D0318B01FDC00DD4A17 /* Resources */,
-				DE62D52618B8AC5200473841 /* Third party libs */,
 			);
 			path = ScaryFlight;
 			sourceTree = "<group>";
@@ -380,7 +358,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = EA;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = EvgenyKarkan;
 				TargetAttributes = {
 					DEC7B47418AE80E600724DE7 = {
@@ -535,7 +513,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -576,7 +553,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -634,9 +610,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"$(PROJECT_DIR)/ScaryFlight/Third",
-					party,
-					libs/Flurry,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "F6407BD8-15AF-4261-A2CD-CEC0E5E3CC1E";
@@ -674,12 +647,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"$(PROJECT_DIR)/ScaryFlight/Third",
-					party,
-					libs/Flurry,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D3595895-4F37-4722-B091-D10697A6DC35";
+				PROVISIONING_PROFILE = "23f2b917-d87c-4751-b443-5cacf52793e2";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -689,7 +659,6 @@
 		DEC7B4A518AE80E600724DE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ScaryFlight.app/ScaryFlight";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -712,7 +681,6 @@
 		DEC7B4A618AE80E600724DE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ScaryFlight.app/ScaryFlight";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

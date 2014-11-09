@@ -13,7 +13,7 @@
 
 #pragma mark - Designated initializer
 
-+ (id)spriteNodeWithImageNamed:(NSString *)name
++ (instancetype)spriteNodeWithImageNamed:(NSString *)name
 {
     UIImage *image = [UIImage imageNamed:name];
     
