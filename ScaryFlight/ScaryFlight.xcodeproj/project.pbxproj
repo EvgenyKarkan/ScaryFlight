@@ -358,7 +358,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = EA;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = EvgenyKarkan;
 				TargetAttributes = {
 					DEC7B47418AE80E600724DE7 = {
@@ -527,6 +527,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yevgeniy Karkan (3YZNAVUC8R)";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -586,7 +587,6 @@
 		};
 		DEC7B4A218AE80E600724DE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE044E5118BC09D9004CB425 /* DEBUG_settings.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -611,6 +611,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evgenykarkan.scaryflight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "F6407BD8-15AF-4261-A2CD-CEC0E5E3CC1E";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -621,7 +622,6 @@
 		};
 		DEC7B4A318AE80E600724DE7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE044E5018BC09BA004CB425 /* RELEASE_settings.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -648,6 +648,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.evgenykarkan.scaryflight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "23f2b917-d87c-4751-b443-5cacf52793e2";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -672,6 +673,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "ScaryFlightTests/ScaryFlightTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evgenykarkan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -690,6 +692,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScaryFlight/ScaryFlight-Prefix.pch";
 				INFOPLIST_FILE = "ScaryFlightTests/ScaryFlightTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evgenykarkan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
