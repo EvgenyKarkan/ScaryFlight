@@ -63,7 +63,7 @@ static id _sharedInstance = nil;
 
 #pragma mark - Overriden init with subscribing to GKPlayerAuthenticationDidChangeNotificationName notification
 
-- (id)init
+- (instancetype)init
 {
     if ((self = [super init])) {
         _gameCenterAvailable = [self isGameCenterAvailable];

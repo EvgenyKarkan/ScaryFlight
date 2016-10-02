@@ -8,7 +8,7 @@
 
 #import "EAAppDelegate.h"
 #import "EAGameCenterProvider.h"
-#import "Flurry.h"
+
 
 @implementation EAAppDelegate;
 
@@ -22,9 +22,6 @@
     [self.window makeKeyAndVisible];
     
     [[EAGameCenterProvider sharedInstance] authenticateLocalUser];
-    
-        //[Flurry setCrashReportingEnabled:YES];
-        //[Flurry startSession:@""];
     
     return YES;
 }

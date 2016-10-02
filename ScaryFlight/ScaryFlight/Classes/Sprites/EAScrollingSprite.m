@@ -13,7 +13,7 @@
 
 #pragma mark - Designated initializer
 
-+ (id)spriteNodeWithImageNamed:(NSString *)name
++ (instancetype)spriteNodeWithImageNamed:(NSString *)name
 {
     UIImage *image = [UIImage imageNamed:name];
     
@@ -38,13 +38,17 @@
 
 - (void)update:(NSTimeInterval)currentTime
 {
-    [self.children enumerateObjectsUsingBlock: ^(SKSpriteNode *child, NSUInteger idx, BOOL *stop) {
+    [self.children enumerateObjectsUsingBlock: ^(SKNode *child, NSUInteger idx, BOOL *stop) {
+        
         child.position = CGPointMake(child.position.x - self.scrollingSpeed, child.position.y);
-        if (child.position.x <= -child.size.width) {
-            CGFloat delta = child.position.x + child.size.width;
-            child.position = CGPointMake(child.size.width * (self.children.count - 1) + delta, child.position.y);
+        
+        if (child.position.x <= -child.frame.size.width) {
+            CGFloat delta = child.position.x + child.frame.size.width;
+            child.position = CGPointMake(child.frame.size.width * (self.children.count - 1) + delta, child.position.y);
         }
     }];
+    
+    
 }
 
 @end
