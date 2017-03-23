@@ -47,8 +47,6 @@
             child.position = CGPointMake(child.frame.size.width * (self.children.count - 1) + delta, child.position.y);
         }
     }];
-    
-    
 }
 
 @end
