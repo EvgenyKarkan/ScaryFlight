@@ -146,12 +146,15 @@
 
 - (void)addLabels
 {
+    CGFloat midX = CGRectGetMidX(self.view.frame);
+    
     SKLabelNode *titleLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
     titleLabel.text = @"Scary";
     titleLabel.fontSize = 50.0f;
     titleLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
     titleLabel.fontColor = [SKColor yellowColor];
-    titleLabel.position = CGPointMake(self.frame.origin.x + 35.0f, self.frame.size.height - 110.0f);
+    CGFloat titleWidth = titleLabel.frame.size.width;
+    titleLabel.position = CGPointMake(midX - titleWidth / 2.0f, self.frame.size.height - 100.0f);
     [self addChild:titleLabel];
     
     SKLabelNode *titleLabel2 = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
@@ -159,7 +162,8 @@
     titleLabel2.fontSize = 50.0f;
     titleLabel2.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
     titleLabel2.fontColor = [SKColor yellowColor];
-    titleLabel2.position = CGPointMake(self.frame.origin.x + 15.0f, self.frame.size.height - 170.0f);
+    CGFloat titleWidth2 = titleLabel2.frame.size.width;
+    titleLabel2.position = CGPointMake(midX - titleWidth2 / 2.0f, self.frame.size.height - 160.0f);
     [self addChild:titleLabel2];
     
     SKLabelNode *titleLabel3 = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
@@ -167,7 +171,7 @@
     titleLabel3.fontSize = 12.0f;
     titleLabel3.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
     titleLabel3.fontColor = [SKColor cyanColor];
-    titleLabel3.position = CGPointMake(CGRectGetMidX(self.view.frame) - titleLabel3.frame.size.width / 2.0f, self.frame.size.height - 250.0f);
+    titleLabel3.position = CGPointMake(midX - titleLabel3.frame.size.width / 2.0f, self.frame.size.height - 250.0f);
     [self addChild:titleLabel3];
 }
 

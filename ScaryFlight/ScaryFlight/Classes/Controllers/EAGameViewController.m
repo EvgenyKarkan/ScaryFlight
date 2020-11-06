@@ -23,7 +23,7 @@
 
 - (void)loadView
 {
-    self.view = [[SKView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    self.view = [[SKView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.skView = (SKView *)self.view;
 }
 
@@ -35,11 +35,6 @@
     [scene setScaleMode:SKSceneScaleModeAspectFill];
     
     [self.skView presentScene:scene];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - UIViewController overriden API
