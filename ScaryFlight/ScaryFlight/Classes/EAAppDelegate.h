@@ -8,7 +8,7 @@
 
 #import "EAGameViewController.h"
 
-@interface EAAppDelegate : UIResponder <UIApplicationDelegate>
+@interface EAAppDelegate: UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) EAGameViewController *gameViewController;

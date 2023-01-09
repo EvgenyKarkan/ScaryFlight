@@ -7,7 +7,7 @@
 //
 
 
-@interface EAScrollingSprite : SKSpriteNode
+@interface EAScrollingSprite: SKSpriteNode
 
 @property (nonatomic, assign) CGFloat scrollingSpeed;
 

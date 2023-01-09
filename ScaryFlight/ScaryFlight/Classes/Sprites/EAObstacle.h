@@ -7,7 +7,7 @@
 //
 
 
-@interface EAObstacle : SKSpriteNode
+@interface EAObstacle: SKSpriteNode
 
 + (instancetype)obstacleWithImageNamed:(NSString *)name;
 - (void)moveObstacleWithScale:(CGFloat)scale;
