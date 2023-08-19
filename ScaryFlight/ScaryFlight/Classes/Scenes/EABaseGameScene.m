@@ -54,6 +54,9 @@
     self.crashSound = [SKAction playSoundFileNamed:@"crash.wav" waitForCompletion:NO];
     
     self.topScoreBeated = NO;
+
+    /// SHOW FPS
+    //self.view.showsFPS = YES;
 }
 
 - (void)update:(NSTimeInterval)currentTime
