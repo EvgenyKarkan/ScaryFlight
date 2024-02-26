@@ -23,7 +23,7 @@
 
 - (void)loadView
 {
-    self.view = [[SKView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    self.view = [[SKView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.skView = (SKView *)self.view;
 }
 
