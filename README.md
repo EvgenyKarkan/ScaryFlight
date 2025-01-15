@@ -1,14 +1,14 @@
 ScaryFlight
 ===========
 
-Just another yet FlappyBird-style game using SpriteKit.   
+Just another yet FlappyBird-style game using `SpriteKit`.   
 
 ![alt tag](https://raw.github.com/EvgenyKarkan/ScaryFlight/master/ScaryFlight/ScaryFlight/Resources/Screen2.png) ..... 
 ![alt tag](https://raw.github.com/EvgenyKarkan/ScaryFlight/master/ScaryFlight/ScaryFlight/Resources/Screen.png)   
 
 ## Important Note  
 Hello everyone, let's all respect each other's work and avoid stealing ideas.  
-Feel free to use my code as you wish, but please refrain from using icons, sounds, or any image assets.  
+Feel free to use code as you wish, but please refrain from using icons, sounds, or any image assets.  
 Remember to think differently and come up with your own unique creations.  
 Thank you!
 
@@ -17,4 +17,4 @@ Thank you!
 
 ## Copyright
 Exclusive rights to distribute application through the Apple App Store belongs only to me.    
-Copyright (c) 2014 Evgeny Karkan, Artem Kyslicyn. All rights reserved.
+Copyright (c) 2014-2025 Evgeny Karkan, Artem Kyslicyn. All rights reserved.
