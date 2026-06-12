@@ -73,6 +73,54 @@
     XCTAssertThrows([[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"NoSuchFile.mp3"]);
 }
 
+- (void)testRepeatedPlaybackReusesCachedPlayer
+{
+    [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"MenuSound.mp3"];
+    id firstPlayer = [[EKMusicPlayer sharedInstance] valueForKey:@"player"];
+
+    [[EKMusicPlayer sharedInstance] stop];
+    [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"MenuSound.mp3"];
+    id secondPlayer = [[EKMusicPlayer sharedInstance] valueForKey:@"player"];
+
+    XCTAssertEqual(firstPlayer, secondPlayer, @"The same track must reuse its cached AVAudioPlayer");
+}
+
+- (void)testSwitchingTracksStopsThePreviousTrack
+{
+    // Regression: cached players stay alive, so the menu music must
+    // explicitly silence the still-looping game track and vice versa
+    [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"CityFlightSound.mp3"];
+    AVAudioPlayer *gamePlayer = [[EKMusicPlayer sharedInstance] valueForKey:@"player"];
+    XCTAssertTrue(gamePlayer.isPlaying);
+
+    [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"MenuSound.mp3"];
+    AVAudioPlayer *menuPlayer = [[EKMusicPlayer sharedInstance] valueForKey:@"player"];
+
+    XCTAssertFalse(gamePlayer.isPlaying, @"The previous track must stop when a new one starts");
+    XCTAssertTrue(menuPlayer.isPlaying);
+}
+
+- (void)testSwitchingToDataPlaybackStopsThePreviousTrack
+{
+    [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"CityFlightSound.mp3"];
+    AVAudioPlayer *gamePlayer = [[EKMusicPlayer sharedInstance] valueForKey:@"player"];
+
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"MenuSound" ofType:@"mp3"];
+    [[EKMusicPlayer sharedInstance] playMusicFile:[NSData dataWithContentsOfFile:path]];
+
+    XCTAssertFalse(gamePlayer.isPlaying, @"The previous track must stop when data playback starts");
+}
+
+- (void)testPlaybackRestartsFromBeginningWhenTrackIsReplayed
+{
+    [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"MenuSound.mp3"];
+    [[EKMusicPlayer sharedInstance] pause];
+
+    [[EKMusicPlayer sharedInstance] playMusicFileFromMainBundle:@"MenuSound.mp3"];
+
+    XCTAssertLessThan([[EKMusicPlayer sharedInstance] currentTime], 0.5);
+}
+
 #pragma mark - Playback from data
 
 - (void)testPlayMusicFileFromDataLoadsTrack

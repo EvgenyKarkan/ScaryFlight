@@ -22,15 +22,22 @@ static CGFloat const kHeroDirection = 28.5f; // Controls upward flight impulse m
 - (void)flyWithYLimit:(CGFloat)yLimit
 {
     NSParameterAssert(yLimit > 0.0f);
-    
+
+    // Built once - this runs on every tap, the hottest path in the game
+    static SKAction *jumpSound = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        jumpSound = [SKAction playSoundFileNamed:@"Jump.wav" waitForCompletion:NO];
+    });
+
     if (self.position.y < yLimit - self.size.height / 2.0f) { // <-- avoid hero to fly away from top of screen
         CGFloat heroDirection = self.zRotation + (CGFloat)M_PI_2;
         self.physicsBody.velocity = CGVectorMake(0.0f, 0.0f);
         [self.physicsBody applyImpulse:CGVectorMake(kHeroDirection * cosf((float)heroDirection),
                                                     kHeroDirection * sinf((float)heroDirection))];
     }
-    
-    [self runAction:[SKAction playSoundFileNamed:@"Jump.wav" waitForCompletion:YES]];
+
+    [self runAction:jumpSound];
 }
 
 @end

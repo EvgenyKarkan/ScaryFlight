@@ -22,6 +22,7 @@ static NSString * const kEAObstacleSpawnActionKey = @"obstacleSpawnLoop";
 @property (nonatomic ,strong) SKLabelNode *scoresLabel;
 @property (nonatomic ,strong) SKAction    *scoreSound;
 @property (nonatomic ,strong) SKAction    *crashSound;
+@property (nonatomic ,strong) SKAction    *bonusSound;
 @property (nonatomic ,assign) NSUInteger   scores;
 @property (nonatomic ,assign) NSUInteger   topScores;
 @property (nonatomic ,strong) EAObstacle  *lastPipe;
@@ -55,6 +56,7 @@ static NSString * const kEAObstacleSpawnActionKey = @"obstacleSpawnLoop";
     
     self.scoreSound = [SKAction playSoundFileNamed:@"tick.mp3" waitForCompletion:NO];
     self.crashSound = [SKAction playSoundFileNamed:@"crash.wav" waitForCompletion:NO];
+    self.bonusSound = [SKAction playSoundFileNamed:@"Bonus.wav" waitForCompletion:NO];
     
     self.topScoreBeated = NO;
     self.gameEnded = NO;
@@ -351,8 +353,7 @@ static NSString * const kEAObstacleSpawnActionKey = @"obstacleSpawnLoop";
         _scores = scores;
         if (self.topScoreBeated == NO) {
             if (_scores > self.topScores && self.topScores > 0) {
-                [self runAction:[SKAction playSoundFileNamed:@"Bonus.wav"
-                                           waitForCompletion:NO]];
+                [self runAction:self.bonusSound];
                 self.topScoreBeated = !self.topScoreBeated;
             }
         }

@@ -11,7 +11,8 @@
 
 @interface EKMusicPlayer ()
 
-@property (nonatomic, strong) AVAudioPlayer *player;
+@property (nonatomic, strong) AVAudioPlayer       *player;
+@property (nonatomic, strong) NSMutableDictionary *cachedPlayers;
 
 @end
 
@@ -70,15 +71,17 @@ static id _sharedInstance;
 - (void)playMusicFile:(NSData *)file
 {
     NSParameterAssert(file != nil);
-    
+
     NSError *error = nil;
-    
+
+    [self.player stop];
+
     if (error == nil) {
         self.player = [[AVAudioPlayer alloc] initWithData:file error:&error];
     }
-    
+
     NSParameterAssert(error == nil);
-    
+
     [self.player prepareToPlay];
     [self.player play];
 }
@@ -86,26 +89,45 @@ static id _sharedInstance;
 /**
  * Plays music file from main bundle by filename.
  * Used for menu and game background music.
+ * Players are cached per file name so each track is read from disk
+ * and prepared only once instead of on every scene transition.
  */
 - (void)playMusicFileFromMainBundle:(NSString *)fileNameWithExtension
 {
     NSParameterAssert(fileNameWithExtension != nil);
     NSParameterAssert([fileNameWithExtension length] > 0);
     NSParameterAssert(![fileNameWithExtension isEqualToString:@" "]);
-    
-    NSError *error = nil;
-    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[fileNameWithExtension stringByDeletingPathExtension]
-                                                              ofType:[fileNameWithExtension pathExtension]];
-    
-    NSURL *url = [[NSURL alloc] initFileURLWithPath:soundFilePath];
-    
-    if (error == nil) {
-        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+
+    if (self.cachedPlayers == nil) {
+        self.cachedPlayers = [NSMutableDictionary dictionary];
     }
-    
-    NSParameterAssert(error == nil);
-    
-    [self.player prepareToPlay];
+
+    AVAudioPlayer *cachedPlayer = self.cachedPlayers[fileNameWithExtension];
+
+    if (cachedPlayer == nil) {
+        NSError *error = nil;
+        NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:[fileNameWithExtension stringByDeletingPathExtension]
+                                                                  ofType:[fileNameWithExtension pathExtension]];
+
+        NSURL *url = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+
+        cachedPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+
+        NSParameterAssert(error == nil);
+
+        [cachedPlayer prepareToPlay];
+        self.cachedPlayers[fileNameWithExtension] = cachedPlayer;
+    }
+
+    // Cached players stay alive, so the outgoing track must be stopped
+    // explicitly - it no longer goes silent by being deallocated
+    if (self.player != cachedPlayer) {
+        [self.player stop];
+        self.player.currentTime = 0.0f;
+    }
+
+    self.player = cachedPlayer;
+    self.player.currentTime = 0.0f;
     [self.player play];
 }
 

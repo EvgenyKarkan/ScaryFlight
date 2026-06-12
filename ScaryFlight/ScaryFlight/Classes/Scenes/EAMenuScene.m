@@ -17,11 +17,9 @@
 
 @interface EAMenuScene ()
 
-@property (nonatomic, strong) EAHero            *ufoButton;
-@property (nonatomic, strong) EAHero            *rocketButton;
-@property (nonatomic, strong) EAUFOGameScene    *ufoScene;
-@property (nonatomic, strong) EARocketGameScene *rocketScene;
-@property (nonatomic, strong) SKSpriteNode      *rankButton;
+@property (nonatomic, strong) EAHero       *ufoButton;
+@property (nonatomic, strong) EAHero       *rocketButton;
+@property (nonatomic, strong) SKSpriteNode *rankButton;
 
 @end
 
@@ -37,10 +35,7 @@
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
-    
-    self.ufoScene = [[EAUFOGameScene alloc] initWithSize:self.size];
-    self.rocketScene = [[EARocketGameScene alloc] initWithSize:self.size];
-    
+
     [self provideBackground];
     [self addLabels];
     [self createSpriteButtons];
@@ -80,17 +75,19 @@
 /**
  * Handles touch events for menu button interactions.
  * Transitions to UFO scene, Rocket scene, or displays Game Center leaderboard.
+ * Game scenes are created lazily here so each visit to the menu
+ * allocates only the scene the player actually picks.
  */
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
     CGPoint positionInScene = [touch locationInNode:self];
-    
+
     if (CGRectContainsPoint(self.ufoButton.frame, positionInScene)) {
-        [self.scene.view presentScene:self.ufoScene];
+        [self.scene.view presentScene:[[EAUFOGameScene alloc] initWithSize:self.size]];
     }
     else if (CGRectContainsPoint(self.rocketButton.frame, positionInScene)) {
-        [self.scene.view presentScene:self.rocketScene];
+        [self.scene.view presentScene:[[EARocketGameScene alloc] initWithSize:self.size]];
     }
     else if (CGRectContainsPoint(self.rankButton.frame, positionInScene)) {
         [[EAGameCenterProvider sharedInstance] showLeaderboard];

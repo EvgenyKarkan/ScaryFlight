@@ -28,14 +28,14 @@ static NSUserDefaults *_userDefaults = nil;
 
 /**
  * Stores the top score in NSUserDefaults for persistence between sessions.
- * Synchronously saves to ensure data is written immediately.
+ * NSUserDefaults persists asynchronously on its own; forcing a synchronous
+ * flush here would block the main thread during the game over transition.
  */
 + (void)setTopScore:(NSUInteger)topScore
 {
     NSString *valueToSave = [NSString stringWithFormat:@"%lu", (unsigned long)topScore];
 
     [[self userDefaults] setObject:valueToSave forKey:kTopScore];
-    [[self userDefaults] synchronize];
 }
 
 + (NSUInteger)getTopScore
