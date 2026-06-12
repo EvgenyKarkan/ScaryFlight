@@ -12,6 +12,10 @@
 
 @implementation EAAppDelegate;
 
+/**
+ * Application entry point - creates window and root view controller.
+ * Initializes Game Center authentication for score reporting.
+ */
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

@@ -6,10 +6,19 @@
 //  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 
-
+/**
+ * Persistent score storage manager using NSUserDefaults.
+ * Handles saving and retrieving the top score between game sessions.
+ */
 @interface EAScoresStoreManager : NSObject
 
+/**
+ * Saves the top score to persistent storage.
+ * @param topScore The score value to save
+ */
 + (void)setTopScore:(NSUInteger)topScore;
+
+/// Retrieves the saved top score (0 if none saved)
 + (NSUInteger)getTopScore;
 
 @end

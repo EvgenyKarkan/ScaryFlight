@@ -82,6 +82,10 @@ static id _sharedInstance = nil;
 
 #pragma mark - Private API
 
+/**
+ * Checks if Game Center is available on this device.
+ * Verifies iOS version >= 4.1 and GKLocalPlayer class exists.
+ */
 - (BOOL)isGameCenterAvailable
 {
     Class gcClass = (NSClassFromString(@"GKLocalPlayer"));
@@ -94,6 +98,10 @@ static id _sharedInstance = nil;
     return (gcClass && osVersionSupported);
 }
 
+/**
+ * Called when Game Center authentication state changes.
+ * Updates userAuthenticated property for score reporting logic.
+ */
 - (void)authenticationChanged
 {
     if ([GKLocalPlayer localPlayer].isAuthenticated && !self.userAuthenticated) {
@@ -108,6 +116,11 @@ static id _sharedInstance = nil;
 
 #pragma mark - Public API
 
+/**
+ * Authenticates the local player with Game Center.
+ * Presents login UI if authentication is needed.
+ * Called automatically at app launch.
+ */
 - (void)authenticateLocalUser
 {
     if (!self.gameCenterAvailable) {
@@ -128,6 +141,10 @@ static id _sharedInstance = nil;
     }
 }
 
+/**
+ * Reports score to Game Center leaderboard asynchronously.
+ * Only reports if player is authenticated.
+ */
 - (void)reportScore:(NSUInteger)score
 {
     if ([GKLocalPlayer localPlayer].isAuthenticated) {
@@ -146,6 +163,10 @@ static id _sharedInstance = nil;
     }
 }
 
+/**
+ * Presents Game Center leaderboard view controller.
+ * Shows "BestScoreID" leaderboard to authenticated players.
+ */
 - (void)showLeaderboard
 {
     GKGameCenterViewController *gameCenterController = [[GKGameCenterViewController alloc] init];
@@ -163,6 +184,10 @@ static id _sharedInstance = nil;
 
 #pragma mark - GKGameCenterControllerDelegate
 
+/**
+ * Dismisses the Game Center view controller when user finishes.
+ * Required delegate method for proper dismissal handling.
+ */
 - (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
 {
     [self.appDelegate.gameViewController dismissViewControllerAnimated:YES completion:nil];

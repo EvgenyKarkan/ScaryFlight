@@ -21,6 +21,10 @@
 
 #pragma mark - Overriden SKScene API
 
+/**
+ * Sets up Rocket game scene with resizable gray ground and space-themed music.
+ * Ground is positioned at bottom with asteroid collision detection.
+ */
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
@@ -34,6 +38,10 @@
 
 #pragma mark - Private API
 
+/**
+ * Creates gray ground platform at bottom of screen.
+ * Positioned lower than UFO mode, allowing hero to fly above it.
+ */
 - (void)addBottom
 {
     self.ground = [SKSpriteNode spriteNodeWithColor:[SKColor grayColor] size:CGSizeMake(self.size.width, 30.0f)];
@@ -51,6 +59,10 @@
 
 #pragma mark - Overriden private API
 
+/**
+ * Custom implementation for Rocket mode bottom pipes.
+ * Positions pipes differently than UFO mode (centered vertically).
+ */
 - (void)addBottomPipe:(CGFloat)centerY
 {
     [super addBottomPipe:centerY];
@@ -68,21 +80,33 @@
     return @"Space";
 }
 
+/**
+ * Rocket hero animation frame one - initial sprite
+ */
 - (NSString *)heroImageStateOne
 {
     return @"Rocket";
 }
 
+/**
+ * Rocket hero animation frame two - flame effect
+ */
 - (NSString *)heroImageStateTwo
 {
     return @"Rocket2";
 }
 
+/**
+ * Top asteroid image name for Rocket obstacles
+ */
 - (NSString *)topObstacleImage
 {
     return @"AsteroidTop";
 }
 
+/**
+ * Bottom asteroid image name for Rocket obstacles
+ */
 - (NSString *)bottomObstacleImage
 {
     return @"AsteroidDown";

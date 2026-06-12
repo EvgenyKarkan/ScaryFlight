@@ -56,6 +56,10 @@
     self.topScoreBeated = NO;
 }
 
+/**
+ * Increments score when hero passes through obstacle gap.
+ * Reports score to Game Center when new top score achieved.
+ */
 - (void)update:(NSTimeInterval)currentTime
 {
     [super update:currentTime];
@@ -81,6 +85,10 @@
 
 #pragma mark - Setup sprites
 
+/**
+ * Creates and positions the background sprite using the subclass-provided image name.
+ * @see backgroundImageName - subclass method to override
+ */
 - (void)addBackground
 {
     SKTexture *backgroundTexture = [SKTexture textureWithImageNamed:[self backgroundImageName]];
@@ -89,6 +97,10 @@
     [self addChild:background];
 }
 
+/**
+ * Creates and configures the hero sprite with animated textures.
+ * Sets up physics body with density and collision bitmasks from Constants.h.
+ */
 - (void)addHero
 {
     self.hero = [EAHero spriteNodeWithImageNamed:@"UFO_new_hero"];
@@ -106,13 +118,19 @@
     [self addChild:self.hero];
     
     self.hero.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.hero.size];
+    // kDensity affects how heavy the hero feels - higher = harder to maneuver
     self.hero.physicsBody.density = kDensity;
     self.hero.physicsBody.allowsRotation = NO;
+    // Physics category bitmasks control collision detection behavior
     self.hero.physicsBody.categoryBitMask = kHeroCategory;
     self.hero.physicsBody.contactTestBitMask = kPipeCategory | kGroundCategory;
     self.hero.physicsBody.collisionBitMask = kGroundCategory | kPipeCategory;
 }
 
+/**
+ * Creates and positions the score label at top-left of screen.
+ * Initializes current score to 0.
+ */
 - (void)addScoring
 {
     self.scoresLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
@@ -127,6 +145,10 @@
     self.scores = 0;
 }
 
+/**
+ * Creates and positions the top score label at top-right of screen.
+ * Displays the highest score from persistent storage.
+ */
 - (void)addTopScore
 {
     self.topScoreLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];
@@ -139,6 +161,10 @@
     [self addChild:self.topScoreLabel];
 }
 
+/**
+ * Spawns obstacles at regular intervals using kPipeFrequency timer.
+ * Creates both top and bottom pipe pairs with random gap positioning.
+ */
 - (void)makeObstaclesLoop
 {
     self.obstacleTimer = [NSTimer scheduledTimerWithTimeInterval:kPipeFrequency
@@ -150,6 +176,11 @@
                                  forMode:NSRunLoopCommonModes];
 }
 
+/**
+ * Creates a pair of top and bottom obstacles at the specified center Y position.
+ * The gap between them is determined by kPipeGap constant.
+ * Top/bottom image names are provided by subclass implementations.
+ */
 - (void)addObstacle
 {
      // random game complexity. Changing hole position beetwen pipes
@@ -160,6 +191,10 @@
     [self addBottomPipe:centerY];
 }
 
+/**
+ * Creates top obstacle at calculated position based on centerY.
+ * Uses subclass-provided image name for themed appearance.
+ */
 - (void)addTopPipe:(CGFloat)centerY
 {
     self.pipeTop = [EAObstacle obstacleWithImageNamed:[self topObstacleImage]];
@@ -183,6 +218,10 @@
 
 #pragma mark - Helper API
 
+/**
+ * Transitions back to menu scene with horizontal door transition.
+ * Updates top score in persistent storage if current score is higher.
+ */
 - (void)gameOver
 {
     SKTransition *transition = [SKTransition doorsCloseHorizontalWithDuration:0.3f];
@@ -192,6 +231,10 @@
     [self topScoresUpdateIfNeed];
 }
 
+/**
+ * Updates top score in NSUserDefaults if current score exceeds it.
+ * Called automatically when game ends.
+ */
 - (void)topScoresUpdateIfNeed
 {
     if (self.scores > self.topScores) {
@@ -202,6 +245,10 @@
 
 #pragma mark - UIResponder overriden API
 
+/**
+ * Handles touch events - triggers hero flight upward.
+ * Each touch applies an upward impulse to the hero.
+ */
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for (UITouch *touch in touches) {
@@ -213,6 +260,10 @@
 
 #pragma mark - SKPhysicsContactDelegate
 
+/**
+ * Handles collision detection between hero and obstacles/ground.
+ * Stops obstacle timer, plays crash sound, then transitions to game over.
+ */
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
     SKNode *node = contact.bodyA.node;
@@ -229,26 +280,41 @@
 
 #pragma mark - Private API to override in subclasses
 
+/**
+ * @return Image name for hero animation frame one
+ */
 - (NSString *)heroImageStateOne
 {
     return nil;
 }
 
+/**
+ * @return Image name for hero animation frame two
+ */
 - (NSString *)heroImageStateTwo
 {
     return nil;
 }
 
+/**
+ * @return Image name for top pipe/asteroid sprite
+ */
 - (NSString *)topObstacleImage
 {
     return nil;
 }
 
+/**
+ * @return Image name for bottom pipe/asteroid sprite
+ */
 - (NSString *)bottomObstacleImage
 {
     return nil;
 }
 
+/**
+ * @return Image name for scene background
+ */
 - (NSString *)backgroundImageName
 {
     return nil;
@@ -256,6 +322,10 @@
 
 #pragma mark - self.scores setter
 
+/**
+ * Custom setter that plays bonus sound when top score is beaten.
+ * Prevents repeated bonus sound via topScoreBeated flag.
+ */
 - (void)setScores:(NSUInteger)scores
 {
     NSParameterAssert(scores >= 0);

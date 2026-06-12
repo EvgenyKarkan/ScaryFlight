@@ -13,6 +13,12 @@
 
 #pragma mark - Designated initializer
 
+/**
+ * Creates a horizontally-scrolling sprite with tiled child sprites.
+ * Builds a seamless loop by creating multiple copies of the image.
+ * Children wrap around when scrolled off-screen to create infinite scroll effect.
+ * TODO: Add iPad support (currently hardcoded to 320.0f width).
+ */
 + (instancetype)spriteNodeWithImageNamed:(NSString *)name
 {
     UIImage *image = [UIImage imageNamed:name];
@@ -36,6 +42,11 @@
 
 #pragma mark - Overriden SKSpriteNode API
 
+/**
+ * Updates child sprite positions each frame for scrolling.
+ * Wraps children to the end when they scroll off the left edge.
+ * Called by parent scene in its update: method.
+ */
 - (void)update:(NSTimeInterval)currentTime
 {
     [self.children enumerateObjectsUsingBlock: ^(SKNode *child, NSUInteger idx, BOOL *stop) {

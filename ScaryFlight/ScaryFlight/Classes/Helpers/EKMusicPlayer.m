@@ -20,8 +20,13 @@
 
 #pragma mark Singleton stuff
 
+/// Private shared instance for singleton pattern
 static id _sharedInstance;
 
+/**
+ * Returns the shared singleton instance.
+ * Thread-safe implementation using dispatch_once.
+ */
 + (EKMusicPlayer *)sharedInstance //public API
 {
     static dispatch_once_t onceToken;
@@ -58,6 +63,10 @@ static id _sharedInstance;
 
 #pragma mark - Public APIs
 
+/**
+ * Plays music from audio data object.
+ * Creates AVAudioPlayer instance and starts playback.
+ */
 - (void)playMusicFile:(NSData *)file
 {
     NSParameterAssert(file != nil);
@@ -74,6 +83,10 @@ static id _sharedInstance;
     [self.player play];
 }
 
+/**
+ * Plays music file from main bundle by filename.
+ * Used for menu and game background music.
+ */
 - (void)playMusicFileFromMainBundle:(NSString *)fileNameWithExtension
 {
     NSParameterAssert(fileNameWithExtension != nil);
@@ -96,6 +109,9 @@ static id _sharedInstance;
     [self.player play];
 }
 
+/**
+ * Control methods for playback state management.
+ */
 - (NSTimeInterval)currentTime
 {
     return self.player.currentTime;

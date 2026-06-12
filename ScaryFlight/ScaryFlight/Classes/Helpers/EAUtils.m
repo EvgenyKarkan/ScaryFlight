@@ -11,6 +11,10 @@
 
 @implementation EAUtils;
 
+/**
+ * Generates random float in range [min, max] using modulo arithmetic.
+ * Used primarily for random obstacle gap positioning.
+ */
 + (float)randomFloatWithMin:(CGFloat)min max:(CGFloat)max
 {
     return (float)floor(((rand() % RAND_MAX) / (RAND_MAX * 1.0)) * (max - min) + min);

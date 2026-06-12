@@ -30,6 +30,10 @@
 
 #pragma mark - SKScene overriden API
 
+/**
+ * Initializes menu scene - creates game scenes, background, labels, and animated buttons.
+ * Starts looping menu background music.
+ */
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
@@ -45,12 +49,19 @@
     [[EKMusicPlayer sharedInstance] setupNumberOfLoops:-1];
 }
 
+/**
+ * Stops menu music when leaving the menu scene.
+ */
 - (void)willMoveFromView:(SKView *)view
 {
     [super willMoveFromView:view];
     [[EKMusicPlayer sharedInstance] stop];
 }
 
+/**
+ * Updates score display and reports to Game Center when player beats top score.
+ * Reports stored score once if Game Center becomes authenticated mid-game.
+ */
 - (void)update:(NSTimeInterval)currentTime
 {
     [super update:currentTime];
@@ -66,6 +77,10 @@
 
 #pragma mark - UIResponder overriden API
 
+/**
+ * Handles touch events for menu button interactions.
+ * Transitions to UFO scene, Rocket scene, or displays Game Center leaderboard.
+ */
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
@@ -84,6 +99,10 @@
 
 #pragma mark - Private API
 
+/**
+ * Creates interactive menu buttons for game mode selection and leaderboard.
+ * Each button has animated sprite textures for visual feedback.
+ */
 - (void)createSpriteButtons
 {
     [self createUfoButton];
@@ -91,6 +110,10 @@
     [self createRankButton];
 }
 
+/**
+ * Creates animated UFO button for selecting UFO game mode.
+ * Positions button on left side of screen with blinking animation.
+ */
 - (void)createUfoButton
 {
     self.ufoButton = [EAHero spriteNodeWithImageNamed:@"UFO_new_hero"];
@@ -109,6 +132,10 @@
     [self addChild:self.ufoButton];
 }
 
+/**
+ * Creates animated Rocket button for selecting Rocket game mode.
+ * Positions button on right side of screen with blinking animation.
+ */
 - (void)createRocketButton
 {
     self.rocketButton = [EAHero spriteNodeWithImageNamed:@"Rocket"];
@@ -127,6 +154,9 @@
     [self addChild:self.rocketButton];
 }
 
+/**
+ * Creates the rank/leaderboard button for displaying Game Center scores.
+ */
 - (void)createRankButton
 {
     self.rankButton = [EAHero spriteNodeWithImageNamed:@"Places"];
@@ -135,6 +165,10 @@
     [self addChild:self.rankButton];
 }
 
+/**
+ * Sets up background image based on device type (iPhone 4 vs iPhone 5).
+ * Uses EAUtils to determine appropriate asset name.
+ */
 - (void)provideBackground
 {
     SKTexture *backgroundTexture = [SKTexture textureWithImageNamed:[EAUtils assetName]];
@@ -144,6 +178,10 @@
     [self addChild:background];
 }
 
+/**
+ * Creates title labels "Scary" and "Flight" with styling and positioning.
+ * Uses PressStart2P font with yellow color for retro arcade feel.
+ */
 - (void)addLabels
 {
     SKLabelNode *titleLabel = [[SKLabelNode alloc] initWithFontNamed:@"PressStart2P"];

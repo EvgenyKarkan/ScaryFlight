@@ -8,6 +8,11 @@
 
 #import "EABaseGameScene.h"
 
+/**
+ * UFO-themed game scene variant.
+ * Uses City background with UFO hero and pipe obstacles.
+ * Features scrolling clouds and ground-based collision detection.
+ */
 @interface EAUFOGameScene : EABaseGameScene
 
 @end

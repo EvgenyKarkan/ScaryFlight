@@ -8,7 +8,11 @@
 
 #import "EABaseGameScene.h"
 
+/**
+ * Rocket-themed game scene variant.
+ * Uses Space background with Rocket hero and asteroid obstacles.
+ * Features a gray ground platform at the bottom of the screen.
+ */
 @interface EARocketGameScene : EABaseGameScene
-
 
 @end

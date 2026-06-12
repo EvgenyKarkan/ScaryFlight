@@ -6,17 +6,44 @@
 //  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 
-
+/**
+ * Singleton audio player for background music and sound effects.
+ * Manages AVAudioPlayer instance for playing music files from bundle or data.
+ * Provides playback control: play, pause, stop, and loop configuration.
+ */
 @interface EKMusicPlayer : NSObject
 
+/// Shared singleton instance
 + (EKMusicPlayer *)sharedInstance;
+
+/**
+ * Plays music from NSData.
+ * @param file Audio data to play
+ */
 - (void)playMusicFile:(NSData *)file;
+
+/**
+ * Plays music file from main bundle.
+ * @param fileNameWithExtension File name with extension (e.g., @"MenuSound.mp3")
+ */
 - (void)playMusicFileFromMainBundle:(NSString *)fileNameWithExtension;
+
+/// Current playback time in seconds
 - (NSTimeInterval)currentTime;
+
+/// Total duration in seconds
 - (NSTimeInterval)duration;
+
+/// Pauses playback
 - (void)pause;
+
+/// Resumes playback
 - (void)play;
+
+/// Stops playback and resets time to zero
 - (void)stop;
+
+/// Sets number of times to loop playback (0 = no loop, -1 = infinite)
 - (void)setupNumberOfLoops:(NSInteger)loops;
 
 @end

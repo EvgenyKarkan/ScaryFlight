@@ -21,12 +21,20 @@
 
 #pragma mark - Life cycle
 
+/**
+ * Creates SKView as the main view for SpriteKit rendering.
+ * Uses full screen bounds for optimal display.
+ */
 - (void)loadView
 {
     self.view = [[SKView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     self.skView = (SKView *)self.view;
 }
 
+/**
+ * Presents the menu scene as the initial screen.
+ * Sets aspect fill scale mode for proper screen fitting.
+ */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -44,6 +52,9 @@
 
 #pragma mark - UIViewController overriden API
 
+/**
+ * Hides status bar for immersive fullscreen gameplay.
+ */
 - (BOOL)prefersStatusBarHidden
 {
     return YES;

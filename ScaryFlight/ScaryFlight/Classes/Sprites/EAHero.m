@@ -8,10 +8,17 @@
 
 #import "EAHero.h"
 
-static CGFloat const kHeroDirection = 28.5f;
+static CGFloat const kHeroDirection = 28.5f; // Controls upward flight impulse magnitude
 
 @implementation EAHero;
 
+/**
+ * Applies upward impulse for flight mechanics.
+ * The impulse magnitude is controlled by kHeroDirection constant.
+ * Includes rotation calculation based on current zRotation for angled flight trajectory.
+ * Prevents the hero from flying beyond the top screen boundary.
+ * Also plays a jump sound effect on each flight action.
+ */
 - (void)flyWithYLimit:(CGFloat)yLimit
 {
     NSParameterAssert(yLimit > 0.0f);

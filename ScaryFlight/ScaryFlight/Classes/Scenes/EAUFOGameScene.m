@@ -10,9 +10,7 @@
 #import "EAHero.h"
 #import "EKMusicPlayer.h"
 #import "EAScrollingSprite.h"
-
-static uint32_t const kHeroCategory   = 0x1 << 0;
-static uint32_t const kGroundCategory = 0x1 << 2;
+#import "Constants.h"
 
 
 @interface EAUFOGameScene ()
@@ -27,6 +25,11 @@ static uint32_t const kGroundCategory = 0x1 << 2;
 
 #pragma mark - SKScene overriden API
 
+/**
+ * Sets up UFO game scene with ground platform, cloud background, and music.
+ * Ground provides collision boundary at bottom of screen.
+ * Clouds create parallax scrolling effect via EAScrollingSprite.
+ */
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
@@ -53,6 +56,10 @@ static uint32_t const kGroundCategory = 0x1 << 2;
     [self addChild:self.clouds];
 }
 
+/**
+ * Updates cloud scrolling animation.
+ * Called every frame to maintain parallax effect.
+ */
 - (void)update:(NSTimeInterval)currentTime
 {
     [super update:currentTime];
@@ -61,26 +68,42 @@ static uint32_t const kGroundCategory = 0x1 << 2;
 
 #pragma mark - Overriden inherited private API
 
+/**
+ * Provides asset names for UFO-themed game elements.
+ * Used by base class methods to create themed sprites.
+ */
 - (NSString *)backgroundImageName
 {
     return @"City";
 }
 
+/**
+ * UFO hero animation frame one - initial sprite
+ */
 - (NSString *)heroImageStateOne
 {
     return @"UFO_new_hero";
 }
 
+/**
+ * UFO hero animation frame two - blinking effect
+ */
 - (NSString *)heroImageStateTwo
 {
     return @"UFO_new_hero2";
 }
 
+/**
+ * Top pipe image name for UFO obstacles
+ */
 - (NSString *)topObstacleImage
 {
     return @"UFO_top_pipe";
 }
 
+/**
+ * Bottom pipe image name for UFO obstacles
+ */
 - (NSString *)bottomObstacleImage
 {
     return @"UFO_down_pipe";
