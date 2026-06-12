@@ -12,6 +12,9 @@
 #import "EAScoresStoreManager.h"
 #import "EAGameCenterProvider.h"
 
+/// Action key for the obstacle spawn loop so it can be stopped on game over
+static NSString * const kEAObstacleSpawnActionKey = @"obstacleSpawnLoop";
+
 
 @interface EABaseGameScene () <SKPhysicsContactDelegate>
 
@@ -21,11 +24,11 @@
 @property (nonatomic ,strong) SKAction    *crashSound;
 @property (nonatomic ,assign) NSUInteger   scores;
 @property (nonatomic ,assign) NSUInteger   topScores;
-@property (nonatomic, strong) NSTimer     *obstacleTimer;
 @property (nonatomic ,strong) EAObstacle  *lastPipe;
 @property (nonatomic ,strong) EAObstacle  *pipeTop;
 @property (nonatomic ,strong) EAObstacle  *pipeBottom;
 @property (nonatomic ,assign) BOOL         topScoreBeated;
+@property (nonatomic ,assign) BOOL         gameEnded;
 
 @end
 
@@ -54,6 +57,7 @@
     self.crashSound = [SKAction playSoundFileNamed:@"crash.wav" waitForCompletion:NO];
     
     self.topScoreBeated = NO;
+    self.gameEnded = NO;
 }
 
 /**
@@ -162,18 +166,22 @@
 }
 
 /**
- * Spawns obstacles at regular intervals using kPipeFrequency timer.
+ * Spawns obstacles at regular intervals driven by a scene action.
  * Creates both top and bottom pipe pairs with random gap positioning.
+ * Scene actions stop and are released together with the scene, so the
+ * spawn loop cannot outlive or retain the scene (unlike an NSTimer).
  */
 - (void)makeObstaclesLoop
 {
-    self.obstacleTimer = [NSTimer scheduledTimerWithTimeInterval:kPipeFrequency
-                                                          target:self
-                                                        selector:@selector(addObstacle)
-                                                        userInfo:nil
-                                                         repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:self.obstacleTimer
-                                 forMode:NSRunLoopCommonModes];
+    __weak typeof(self) weakSelf = self;
+
+    SKAction *wait = [SKAction waitForDuration:kPipeFrequency];
+    SKAction *spawn = [SKAction runBlock: ^{
+        [weakSelf addObstacle];
+    }];
+
+    [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[wait, spawn]]]
+            withKey:kEAObstacleSpawnActionKey];
 }
 
 /**
@@ -262,15 +270,24 @@
 
 /**
  * Handles collision detection between hero and obstacles/ground.
- * Stops obstacle timer, plays crash sound, then transitions to game over.
+ * The hero may arrive as either body of the contact, and a single crash
+ * usually produces several contacts - the game over path must run once.
+ * Stops obstacle spawning, plays crash sound, then transitions to game over.
  */
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
-    SKNode *node = contact.bodyA.node;
-    __weak typeof(self) weakSelf = self;
-    
-    if ([node isKindOfClass:[EAHero class]]) {
-        [self.obstacleTimer invalidate];
+    if (self.gameEnded) {
+        return;
+    }
+
+    BOOL heroInvolved = [contact.bodyA.node isKindOfClass:[EAHero class]] ||
+                        [contact.bodyB.node isKindOfClass:[EAHero class]];
+
+    if (heroInvolved) {
+        self.gameEnded = YES;
+        [self removeActionForKey:kEAObstacleSpawnActionKey];
+
+        __weak typeof(self) weakSelf = self;
         [self runAction:self.crashSound
              completion: ^{
                  [weakSelf gameOver];

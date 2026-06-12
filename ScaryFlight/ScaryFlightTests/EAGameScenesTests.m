@@ -43,12 +43,7 @@
 
 - (void)tearDown
 {
-    // Stop the obstacle spawn timer the scene schedules in didMoveToView
-    SKScene *scene = self.view.scene;
-    if ([scene isKindOfClass:[EABaseGameScene class]]) {
-        [[scene valueForKey:@"obstacleTimer"] invalidate];
-    }
-
+    // Scene actions (including the obstacle spawn loop) stop with the scene
     [self.view presentScene:nil];
     self.view = nil;
     [[EKMusicPlayer sharedInstance] stop];
@@ -160,14 +155,30 @@
     XCTAssertFalse(ground.physicsBody.affectedByGravity);
 }
 
-- (void)testPresentedUFOSceneStartsObstacleTimer
+- (void)testPresentedUFOSceneStartsObstacleSpawnLoop
 {
     EAUFOGameScene *scene = [self presentedUFOScene];
-    NSTimer *timer = [scene valueForKey:@"obstacleTimer"];
 
-    XCTAssertNotNil(timer);
-    XCTAssertTrue(timer.isValid);
-    XCTAssertEqualWithAccuracy(timer.timeInterval, kPipeFrequency, 0.001);
+    XCTAssertNotNil([scene actionForKey:@"obstacleSpawnLoop"]);
+}
+
+- (void)testContactWithoutHeroDoesNotEndGame
+{
+    EAUFOGameScene *scene = [self presentedUFOScene];
+    SKPhysicsContact *emptyContact = [[SKPhysicsContact alloc] init];
+
+    XCTAssertNoThrow([(id<SKPhysicsContactDelegate>)scene didBeginContact:emptyContact]);
+
+    XCTAssertFalse([[scene valueForKey:@"gameEnded"] boolValue]);
+    XCTAssertNotNil([scene actionForKey:@"obstacleSpawnLoop"],
+                    @"Spawn loop must keep running when the hero is not involved");
+}
+
+- (void)testGameEndedFlagIsResetWhenScenePresented
+{
+    EAUFOGameScene *scene = [self presentedUFOScene];
+
+    XCTAssertFalse([[scene valueForKey:@"gameEnded"] boolValue]);
 }
 
 - (void)testUFOSceneAddBottomPipeAddsOneObstacle
