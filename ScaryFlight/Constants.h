@@ -25,9 +25,10 @@ static uint32_t const kGroundCategory = 0x1 << 2;
 /// Default: 2.0f
 static CGFloat const kDensity       = 2.0f;
 
-/// Horizontal movement speed for obstacles (points per second)
-/// Higher value = faster pipes, less reaction time, harder gameplay
-/// Lower value = slower pipes, more time to react, easier gameplay
+/// Time (seconds) for an obstacle to travel across the screen
+/// Used as the duration of the obstacle's moveToX: action
+/// Higher value = slower pipes, more time to react, easier gameplay
+/// Lower value = faster pipes, less reaction time, harder gameplay
 /// Default: 4.5f
 static CGFloat const kPipeSpeed     = 4.5f;
 

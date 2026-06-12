@@ -8,7 +8,9 @@
 
 /**
  * Singleton audio player for background music and sound effects.
- * Manages AVAudioPlayer instance for playing music files from bundle or data.
+ * Caches one AVAudioPlayer per bundle track, so each file is read from
+ * disk and prepared only once for the lifetime of the app.
+ * Starting a track stops the one currently playing.
  * Provides playback control: play, pause, stop, and loop configuration.
  */
 @interface EKMusicPlayer : NSObject
@@ -17,13 +19,16 @@
 + (EKMusicPlayer *)sharedInstance;
 
 /**
- * Plays music from NSData.
+ * Plays music from NSData, stopping the currently playing track.
+ * Data-based players are not cached.
  * @param file Audio data to play
  */
 - (void)playMusicFile:(NSData *)file;
 
 /**
- * Plays music file from main bundle.
+ * Plays music file from main bundle, stopping the currently playing track.
+ * The player is cached per file name; playback always restarts from
+ * the beginning of the track.
  * @param fileNameWithExtension File name with extension (e.g., @"MenuSound.mp3")
  */
 - (void)playMusicFileFromMainBundle:(NSString *)fileNameWithExtension;

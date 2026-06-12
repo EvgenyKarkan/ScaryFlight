@@ -29,8 +29,9 @@
 #pragma mark - SKScene overriden API
 
 /**
- * Initializes menu scene - creates game scenes, background, labels, and animated buttons.
+ * Initializes menu scene - creates background, labels, and animated buttons.
  * Starts looping menu background music.
+ * Game scenes are not created here - touchesBegan: builds the picked one lazily.
  */
 - (void)didMoveToView:(SKView *)view
 {
