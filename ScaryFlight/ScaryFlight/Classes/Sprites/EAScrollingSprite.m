@@ -9,6 +9,15 @@
 #import "EAScrollingSprite.h"
 
 
+@interface EAScrollingSprite ()
+
+/// Snapshot of the tile nodes - SKNode.children copies an array on every
+/// access, which is too expensive for a per-frame update loop
+@property (nonatomic, strong) NSArray *tiles;
+
+@end
+
+
 @implementation EAScrollingSprite;
 
 #pragma mark - Designated initializer
@@ -36,7 +45,9 @@
         [node addChild:child];
         total += child.size.width;
     }
-    
+
+    node.tiles = node.children;
+
     return node;
 }
 
@@ -46,18 +57,23 @@
  * Updates child sprite positions each frame for scrolling.
  * Wraps children to the end when they scroll off the left edge.
  * Called by parent scene in its update: method.
+ * Iterates the cached tile snapshot to avoid per-frame array copies.
  */
 - (void)update:(NSTimeInterval)currentTime
 {
-    [self.children enumerateObjectsUsingBlock: ^(SKNode *child, NSUInteger idx, BOOL *stop) {
-        
-        child.position = CGPointMake(child.position.x - self.scrollingSpeed, child.position.y);
-        
-        if (child.position.x <= -child.frame.size.width) {
-            CGFloat delta = child.position.x + child.frame.size.width;
-            child.position = CGPointMake(child.frame.size.width * (self.children.count - 1) + delta, child.position.y);
+    NSUInteger tilesCount = self.tiles.count;
+    CGFloat scrollingSpeed = self.scrollingSpeed;
+
+    for (SKNode *child in self.tiles) {
+        child.position = CGPointMake(child.position.x - scrollingSpeed, child.position.y);
+
+        CGFloat childWidth = child.frame.size.width;
+
+        if (child.position.x <= -childWidth) {
+            CGFloat delta = child.position.x + childWidth;
+            child.position = CGPointMake(childWidth * (tilesCount - 1) + delta, child.position.y);
         }
-    }];
+    }
 }
 
 @end

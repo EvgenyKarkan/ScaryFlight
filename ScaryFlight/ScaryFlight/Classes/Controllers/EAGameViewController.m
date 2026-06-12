@@ -24,11 +24,14 @@
 /**
  * Creates SKView as the main view for SpriteKit rendering.
  * Uses full screen bounds for optimal display.
+ * Caps rendering at 60 fps - the gameplay gains nothing from 120 Hz
+ * ProMotion rates and the cap halves GPU and battery cost there.
  */
 - (void)loadView
 {
     self.view = [[SKView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     self.skView = (SKView *)self.view;
+    self.skView.preferredFramesPerSecond = 60;
 }
 
 /**

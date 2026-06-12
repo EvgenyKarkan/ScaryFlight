@@ -65,27 +65,31 @@ static NSString * const kEAObstacleSpawnActionKey = @"obstacleSpawnLoop";
 /**
  * Increments score when hero passes through obstacle gap.
  * Reports score to Game Center when new top score achieved.
+ * Returns early while no scorable pipe exists or after the game ended,
+ * keeping the per-frame cost of this callback minimal.
  */
 - (void)update:(NSTimeInterval)currentTime
 {
     [super update:currentTime];
-    
-    if (self.pipeTop.position.x > 0 && self.lastPipe != self.pipeTop) {
-        if (self.hero.position.x > self.pipeTop.position.x) {
-            self.scores++;
-            
-            if (self.topScores == 0) {  // only if it is first game start
-                [[EAGameCenterProvider sharedInstance] reportScore:self.scores];
-            }
-            
-            if (self.scores > self.topScores && self.topScores > 0) {
-                [[EAGameCenterProvider sharedInstance] reportScore:self.scores];
-            }
-            
-            self.scoresLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.scores];
-            self.lastPipe = self.pipeTop;
-            [self runAction:self.scoreSound];
+
+    if (self.gameEnded || self.pipeTop == nil || self.lastPipe == self.pipeTop) {
+        return;
+    }
+
+    if (self.pipeTop.position.x > 0 && self.hero.position.x > self.pipeTop.position.x) {
+        self.scores++;
+
+        if (self.topScores == 0) {  // only if it is first game start
+            [[EAGameCenterProvider sharedInstance] reportScore:self.scores];
         }
+
+        if (self.scores > self.topScores && self.topScores > 0) {
+            [[EAGameCenterProvider sharedInstance] reportScore:self.scores];
+        }
+
+        self.scoresLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.scores];
+        self.lastPipe = self.pipeTop;
+        [self runAction:self.scoreSound];
     }
 }
 

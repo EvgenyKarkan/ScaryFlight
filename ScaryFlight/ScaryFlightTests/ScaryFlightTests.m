@@ -58,6 +58,14 @@
     XCTAssertTrue([skView.scene isKindOfClass:[EAMenuScene class]]);
 }
 
+- (void)testSpriteKitViewCapsFrameRate
+{
+    EAAppDelegate *delegate = (EAAppDelegate *)[UIApplication sharedApplication].delegate;
+    SKView *skView = (SKView *)delegate.gameViewController.view;
+
+    XCTAssertEqual(skView.preferredFramesPerSecond, 60);
+}
+
 - (void)testGameViewControllerHidesStatusBar
 {
     EAAppDelegate *delegate = (EAAppDelegate *)[UIApplication sharedApplication].delegate;
