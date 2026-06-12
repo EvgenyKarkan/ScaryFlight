@@ -10,8 +10,21 @@
 
 static  NSString * kTopScore= @"kTopScore";
 
+/// Injected backing store; nil means standard user defaults
+static NSUserDefaults *_userDefaults = nil;
+
 
 @implementation EAScoresStoreManager;
+
++ (NSUserDefaults *)userDefaults
+{
+    return _userDefaults ?: [NSUserDefaults standardUserDefaults];
+}
+
++ (void)setUserDefaults:(NSUserDefaults *)userDefaults
+{
+    _userDefaults = userDefaults;
+}
 
 /**
  * Stores the top score in NSUserDefaults for persistence between sessions.
@@ -20,16 +33,16 @@ static  NSString * kTopScore= @"kTopScore";
 + (void)setTopScore:(NSUInteger)topScore
 {
     NSString *valueToSave = [NSString stringWithFormat:@"%lu", (unsigned long)topScore];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:valueToSave forKey:kTopScore];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    [[self userDefaults] setObject:valueToSave forKey:kTopScore];
+    [[self userDefaults] synchronize];
 }
 
 + (NSUInteger)getTopScore
 {
     // NSUserDefaults key for stored top score
-    NSString *savedValue = [[NSUserDefaults standardUserDefaults] stringForKey:kTopScore];
-    
+    NSString *savedValue = [[self userDefaults] stringForKey:kTopScore];
+
     return (NSUInteger)[savedValue integerValue];
 }
 

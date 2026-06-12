@@ -29,6 +29,15 @@
 		DEC7B49418AE80E600724DE7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC7B47C18AE80E600724DE7 /* UIKit.framework */; };
 		DEC7B49C18AE80E600724DE7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEC7B49A18AE80E600724DE7 /* InfoPlist.strings */; };
 		DEC7B49E18AE80E600724DE7 /* ScaryFlightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B49D18AE80E600724DE7 /* ScaryFlightTests.m */; };
+		CAFE010118AE80E600724DE7 /* EAUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE000118AE80E600724DE7 /* EAUtilsTests.m */; };
+		CAFE010218AE80E600724DE7 /* EAScoresStoreManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE000218AE80E600724DE7 /* EAScoresStoreManagerTests.m */; };
+		CAFE010318AE80E600724DE7 /* EAConstantsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE000318AE80E600724DE7 /* EAConstantsTests.m */; };
+		CAFE010418AE80E600724DE7 /* EAHeroTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE000418AE80E600724DE7 /* EAHeroTests.m */; };
+		CAFE010518AE80E600724DE7 /* EAObstacleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE000518AE80E600724DE7 /* EAObstacleTests.m */; };
+		CAFE010618AE80E600724DE7 /* EAScrollingSpriteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE000618AE80E600724DE7 /* EAScrollingSpriteTests.m */; };
+		CAFE010718AE80E600724DE7 /* EKMusicPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE000718AE80E600724DE7 /* EKMusicPlayerTests.m */; };
+		CAFE010818AE80E600724DE7 /* EAGameCenterProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE000818AE80E600724DE7 /* EAGameCenterProviderTests.m */; };
+		CAFE010918AE80E600724DE7 /* EAGameScenesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFE000918AE80E600724DE7 /* EAGameScenesTests.m */; };
 		DEC7B4A818AE81F500724DE7 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC7B4A718AE81F500724DE7 /* SpriteKit.framework */; };
 		DEC7B4B018AE876600724DE7 /* EAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4AC18AE876600724DE7 /* EAAppDelegate.m */; };
 		DEC7B4B618AE998200724DE7 /* EAHero.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC7B4B518AE998200724DE7 /* EAHero.m */; };
@@ -93,6 +102,15 @@
 		DEC7B49918AE80E600724DE7 /* ScaryFlightTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ScaryFlightTests-Info.plist"; sourceTree = "<group>"; };
 		DEC7B49B18AE80E600724DE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DEC7B49D18AE80E600724DE7 /* ScaryFlightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScaryFlightTests.m; sourceTree = "<group>"; };
+		CAFE000118AE80E600724DE7 /* EAUtilsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAUtilsTests.m; sourceTree = "<group>"; };
+		CAFE000218AE80E600724DE7 /* EAScoresStoreManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAScoresStoreManagerTests.m; sourceTree = "<group>"; };
+		CAFE000318AE80E600724DE7 /* EAConstantsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAConstantsTests.m; sourceTree = "<group>"; };
+		CAFE000418AE80E600724DE7 /* EAHeroTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAHeroTests.m; sourceTree = "<group>"; };
+		CAFE000518AE80E600724DE7 /* EAObstacleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAObstacleTests.m; sourceTree = "<group>"; };
+		CAFE000618AE80E600724DE7 /* EAScrollingSpriteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAScrollingSpriteTests.m; sourceTree = "<group>"; };
+		CAFE000718AE80E600724DE7 /* EKMusicPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EKMusicPlayerTests.m; sourceTree = "<group>"; };
+		CAFE000818AE80E600724DE7 /* EAGameCenterProviderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAGameCenterProviderTests.m; sourceTree = "<group>"; };
+		CAFE000918AE80E600724DE7 /* EAGameScenesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EAGameScenesTests.m; sourceTree = "<group>"; };
 		DEC7B4A718AE81F500724DE7 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		DEC7B4AB18AE876600724DE7 /* EAAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAAppDelegate.h; sourceTree = "<group>"; };
 		DEC7B4AC18AE876600724DE7 /* EAAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAAppDelegate.m; sourceTree = "<group>"; };
@@ -233,6 +251,15 @@
 			isa = PBXGroup;
 			children = (
 				DEC7B49D18AE80E600724DE7 /* ScaryFlightTests.m */,
+				CAFE000318AE80E600724DE7 /* EAConstantsTests.m */,
+				CAFE000818AE80E600724DE7 /* EAGameCenterProviderTests.m */,
+				CAFE000918AE80E600724DE7 /* EAGameScenesTests.m */,
+				CAFE000418AE80E600724DE7 /* EAHeroTests.m */,
+				CAFE000518AE80E600724DE7 /* EAObstacleTests.m */,
+				CAFE000218AE80E600724DE7 /* EAScoresStoreManagerTests.m */,
+				CAFE000618AE80E600724DE7 /* EAScrollingSpriteTests.m */,
+				CAFE000118AE80E600724DE7 /* EAUtilsTests.m */,
+				CAFE000718AE80E600724DE7 /* EKMusicPlayerTests.m */,
 				DEC7B49818AE80E600724DE7 /* Supporting Files */,
 			);
 			path = ScaryFlightTests;
@@ -480,6 +507,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEC7B49E18AE80E600724DE7 /* ScaryFlightTests.m in Sources */,
+				CAFE010318AE80E600724DE7 /* EAConstantsTests.m in Sources */,
+				CAFE010818AE80E600724DE7 /* EAGameCenterProviderTests.m in Sources */,
+				CAFE010918AE80E600724DE7 /* EAGameScenesTests.m in Sources */,
+				CAFE010418AE80E600724DE7 /* EAHeroTests.m in Sources */,
+				CAFE010518AE80E600724DE7 /* EAObstacleTests.m in Sources */,
+				CAFE010218AE80E600724DE7 /* EAScoresStoreManagerTests.m in Sources */,
+				CAFE010618AE80E600724DE7 /* EAScrollingSpriteTests.m in Sources */,
+				CAFE010118AE80E600724DE7 /* EAUtilsTests.m in Sources */,
+				CAFE010718AE80E600724DE7 /* EKMusicPlayerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +749,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "ScaryFlightTests/ScaryFlightTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.evgenykarkan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -732,6 +769,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScaryFlight/ScaryFlight-Prefix.pch";
 				INFOPLIST_FILE = "ScaryFlightTests/ScaryFlightTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.evgenykarkan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

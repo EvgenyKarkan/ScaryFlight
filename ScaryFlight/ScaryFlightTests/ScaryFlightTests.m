@@ -7,28 +7,62 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "EAAppDelegate.h"
+#import "EAGameViewController.h"
+#import "EAMenuScene.h"
 
+/**
+ * Smoke tests covering the launched application stack.
+ * The test bundle is injected into the running ScaryFlight app,
+ * so the real app delegate, window and menu scene are available.
+ */
 @interface ScaryFlightTests : XCTestCase
 
 @end
 
 @implementation ScaryFlightTests
 
-- (void)setUp
+- (void)testAppDelegateIsCorrectClass
 {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    XCTAssertTrue([[UIApplication sharedApplication].delegate isKindOfClass:[EAAppDelegate class]]);
 }
 
-- (void)tearDown
+- (void)testAppDelegateHasWindow
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
+    EAAppDelegate *delegate = (EAAppDelegate *)[UIApplication sharedApplication].delegate;
+
+    XCTAssertNotNil(delegate.window);
+    XCTAssertTrue(delegate.window.isKeyWindow);
 }
 
-- (void)testExample
+- (void)testRootViewControllerIsGameViewController
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    EAAppDelegate *delegate = (EAAppDelegate *)[UIApplication sharedApplication].delegate;
+
+    XCTAssertNotNil(delegate.gameViewController);
+    XCTAssertEqual(delegate.window.rootViewController, delegate.gameViewController);
+}
+
+- (void)testGameViewControllerUsesSpriteKitView
+{
+    EAAppDelegate *delegate = (EAAppDelegate *)[UIApplication sharedApplication].delegate;
+
+    XCTAssertTrue([delegate.gameViewController.view isKindOfClass:[SKView class]]);
+}
+
+- (void)testMenuSceneIsPresentedAtLaunch
+{
+    EAAppDelegate *delegate = (EAAppDelegate *)[UIApplication sharedApplication].delegate;
+    SKView *skView = (SKView *)delegate.gameViewController.view;
+
+    XCTAssertTrue([skView.scene isKindOfClass:[EAMenuScene class]]);
+}
+
+- (void)testGameViewControllerHidesStatusBar
+{
+    EAAppDelegate *delegate = (EAAppDelegate *)[UIApplication sharedApplication].delegate;
+
+    XCTAssertTrue([delegate.gameViewController prefersStatusBarHidden]);
 }
 
 @end

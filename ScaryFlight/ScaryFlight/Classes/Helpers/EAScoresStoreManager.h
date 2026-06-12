@@ -21,4 +21,16 @@
 /// Retrieves the saved top score (0 if none saved)
 + (NSUInteger)getTopScore;
 
+/**
+ * Backing store used for persistence.
+ * Defaults to [NSUserDefaults standardUserDefaults] when nothing is injected.
+ */
++ (NSUserDefaults *)userDefaults;
+
+/**
+ * Injects a custom backing store, e.g. an isolated suite in unit tests.
+ * Pass nil to restore the standard user defaults.
+ */
++ (void)setUserDefaults:(NSUserDefaults *)userDefaults;
+
 @end
