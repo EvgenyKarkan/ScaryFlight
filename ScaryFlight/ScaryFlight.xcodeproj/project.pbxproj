@@ -452,6 +452,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		DE9A9D6918BAB78F00F52FF7 /* Update build number */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -466,6 +467,7 @@
 		};
 		DEAA768B190D418100C1EF94 /* Icon overlay */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
